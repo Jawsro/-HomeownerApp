@@ -1,0 +1,4 @@
+/* pages/housekeeper/housekeeper.wxss */
+.{
+  text-align: center;
+}

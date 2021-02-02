@@ -1,0 +1,130 @@
+.container{
+  padding-top: 20rpx;
+}
+.information,.message-board{
+  background: #fff;
+  border-radius: 20rpx;
+  margin:20rpx 30rpx;
+  padding:30rpx;
+}
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.information .img{
+  width: 200rpx;
+  margin-right: 20rpx;
+}
+.information .text{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #A3A2A2;
+  margin-right:50rpx;
+}
+.information .more{
+  color: #A3A2A2;
+}
+.main-title,.message-board-title{
+  color:#443C38;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:30rpx 0 0 0;
+}
+.message-board-title{
+  padding-top: 0;
+}
+.main-title .left{
+  text-align: left;
+  flex: 1;
+}
+.main-more{
+  text-align: right;
+  flex: 1;
+}
+.news-list{
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  border-bottom: 1px solid #EBEBEB;
+  padding:40rpx 0 ;
+}
+.news-list-right{
+  width: 360rpx;
+  height: 140rpx;
+}
+.news-list-left{
+  padding-right:60rpx;
+  position: relative;
+}
+.news-title {
+  color:#443C38;
+}
+.time{
+  color:#A6A6A7;
+  position: absolute;
+  bottom: 0;
+}
+.date{
+  margin-right: 40rpx;
+}
+.news-list-right image{
+  border-radius: 20rpx;
+  height: 100%;
+}
+.msg-item{
+  padding: 20rpx 0;
+}
+.user-msg{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.user-img{
+  width: 110rpx;
+  height: 110rpx;
+  margin-right: 10rpx;
+  line-height: 110rpx;
+}
+.user-img image{
+  height: 100%;
+  border-radius: 50%;
+}
+.name{
+  color:#443C38;
+}
+.floor{
+  color: #A6A6A7;
+}
+.msg-text{
+  color: #464444;
+  padding:20rpx 0;
+}
+.msg-img{
+  display: flex;
+  flex-wrap:wrap;
+}
+.imgs{
+  width: 30%;
+  margin-right: 3%;
+}
+.imgs image{
+  border-radius: 20rpx;
+}
+.msg-main .bottom{
+  display: flex;justify-content: center;align-items: center;
+  padding: 30rpx 0 0 0 ;
+}
+.msg-main .left{
+  color: #A6A6A7;
+  flex: 1;
+}
+.right{
+  text-align: right;
+  flex: 1;
+  /* display: flex; */
+  /* justify-content: right;
+  align-items: right; */
+}

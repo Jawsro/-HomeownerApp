@@ -1,0 +1,22 @@
+<view class="container">
+  <!-- 组件引入 -->
+  <header  my-property="实名认证"></header> 
+  <view>
+    <image src="http://property.shangyouyun.cn/image/bg3.png" mode="widthFix"></image>
+  </view>
+  <view class="main">
+    <view class="owner all-style" wx:for="{{idArray}}" wx:key='index' 
+    style="background:url('http://property.shangyouyun.cn/image/bg1.png') center center no-repeat;background-size: cover">
+      <view class="text" >
+        <view class="left">
+          <text class="font-weight-600 font-20">我是{{item.text}}</text>
+        </view>
+        <navigator class="right font-16" url="{{item.url}}?identity={{item.identity}}">
+          <text class="margin-right">去认证</text>
+          <text class="iconfont icon-gengduo"></text>
+        </navigator>
+      </view>
+    </view>
+    
+  </view>
+</view>

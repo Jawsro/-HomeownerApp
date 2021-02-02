@@ -1,0 +1,39 @@
+<view class="container">
+  <view style="background: linear-gradient(to bottom, #EBDDD5 0%,#D9BFB1 50%,#C9A590 100%);height:150rpx;position:fixed;top:0;left:0;right:0;z-index:9" ></view>
+  <!-- 组件引入 -->
+  <header  my-property="绑定房屋"></header> 
+  <view style="margin-top:150rpx" class="main">
+    <form bindsubmit="addHouse">
+        <view class="category-title font-14">
+          <text>填写房屋信息</text>
+        </view>
+        <view class="msg-item font-16">
+          <view class="msg-item-left">
+            <text>城市</text>
+          </view>
+          <view class="msg-item-right">
+            <picker bindchange="bindPickerChange" value="{{cityArray[cityIndex]}}" range="{{cityArray}}">
+              <view class="picker">
+                <text class="iconfont icon-dingwei margin-right" style="font-weight:600"></text>
+                {{cityArray[cityIndex]}}
+              </view>
+            </picker>
+          </view>
+        </view>
+        <view class="msg-item font-16">
+          <view class="msg-item-left">
+            <text>小区</text>
+          </view>
+          <view class="msg-item-right">
+            <picker bindchange="bindPickerChange" value="{{xiaoquArray[index]}}" range="{xiaoquArray}}">
+              <view class="picker">
+               <text class="margin-right"> {{xiaoquArray[index]}}</text>
+                <text class="iconfont icon-gengduo margin-right" style="font-weight:600"></text>
+              </view>
+            </picker>
+          </view>
+        </view>
+        <button class="form-btn font-14" formType="submit" style=" width: 90%;">确认提交</button>
+    </form>
+  </view>
+</view>

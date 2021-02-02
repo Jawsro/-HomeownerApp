@@ -1,0 +1,35 @@
+.container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.top-css{
+  line-height: 150rpx;
+  text-align: center;
+  color: #7F402F;
+}
+.main{
+  padding: 20rpx;
+}
+.list{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap:wrap;
+}
+.item{
+  width: 25%;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #7F402F;
+}
+.item-icon{
+  font-size: 74rpx;
+  
+  margin-bottom: 10rpx;
+}

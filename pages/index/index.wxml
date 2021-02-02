@@ -1,0 +1,118 @@
+<!--首页-->
+<view class="container">
+  <view class="top">
+    <view class="top-img">
+      <image src="http://property.shangyouyun.cn/image/bg4.jpg" mode="widthFix"></image>
+    </view>
+    <!-- 未登录时 -->
+    <view class="img2" wx:if="{{loginIsshow}}">
+      <image src="http://property.shangyouyun.cn/image/buzhidao.png" mode="widthFix"></image>
+      <view class="login-btn font-weight-500 font-16" bindtap="goLogin">
+        <text>注册/登录</text>
+      </view>
+    </view>
+    <!-- 登录后 -->
+    <view class="user-msg" wx:if="{{!loginIsshow}}">
+      <image src="../../images/bg5.png" style="margin:0 30rpx;height:220rpx;z-index:9"></image>
+      <view class="xiaoqu">
+        <view class="xiaoqu-name font-16">
+          <text class="margin-right">盛公馆</text>
+          <text class="margin-right">欢迎您！</text>
+          <!-- 认证后显示 开始 -->
+          <text class="iconfont icon-shouqi" bindtap="openHouseList" hidden="{{coloseHose ||hoeseListIsShow}}"></text>
+          <text class="iconfont icon-xiajiantou" bindtap="closeHouseList" hidden="{{!coloseHose}}"></text>
+          <view class="houses" hidden="{{!coloseHose}}">
+            <view class="house-list">
+              <view class="house-list-left">
+                <text class="iconfont icon-tijiaochenggong" style="color:#7F402F;margin-right: 30rpx;"></text>
+                <text class="house-msg">盛公馆1号楼/2单元/1-3301</text>
+              </view>
+              <view class="house-list-right">
+                <text class="iconfont icon-gengduo" style="color:#D4D7DE"></text>
+              </view>
+            </view>
+            <navigator class="add-house" url="../addHouse/addHouse">
+              <text class="iconfont icon-tianjiaadd73" style="color:#3B3B3B;font-size:40rpx;margin-right: 30rpx;"></text>
+              <text class="font-16">添加房屋</text>
+            </navigator>
+          </view>
+           <!-- 认证后显示 结束-->
+        </view>
+        <view class="xiaoqu-floor font-14">
+          <text>1号楼/2单元/1-3301</text>
+        </view>
+      </view>
+      <view class="erweima">
+        <text class="iconfont icon-ico" style="color: #894231;font-size:80rpx"></text>
+      </view>
+      <view class="doudou-img">
+        <image src="../../images/doudou.png"></image>
+      </view>
+      <view class="bgcolor">
+      </view>
+    </view>
+    
+  </view>
+ <view class="login-isshow" wx:if="{{!loginIsshow}}">
+    <view class="classification margin-top" >
+      <navigator 
+        class="classification-item" 
+        wx:for="{{classification}}" 
+        wx:key='index'
+        url="{{item.url}}">
+        <view class="classification-item-img iconfont {{item.icon}}"></view>
+        <view class="classification-item-text font-16">{{item.text}}</view>
+      </navigator>
+    </view>
+    <!-- <view class="grid">
+      <view class="grid-item" wx:for="{{grid}}" wx:key='index'>
+        <view class="grid-item-img iconfont {{item.url}}"></view>
+        <view class="grid-item-text font-14">{{item.text}}</view>
+      </view>
+    </view> -->
+  </view>
+  
+  <view class="swiper" >
+    <swipers swiper-img="{{swiperImg}}"></swipers>  
+  </view>
+  <!-- <view class="module padding-l-r-15">
+    <navigator class="item right" >
+      <image src="http://property.shangyouyun.cn/image/fenlei1.png" mode='widthFix'></image>
+    </navigator>
+    <navigator class="item " url="../announcement/announcement">
+      <image src="http://property.shangyouyun.cn/image/fenlei2.png" mode='widthFix'></image>
+    </navigator>
+    <view class="item right">
+      <image src="http://property.shangyouyun.cn/image/fenlei3.png" mode='widthFix'></image>
+    </view>
+    <view class="item ">
+      <image src="http://property.shangyouyun.cn/image/fenlei4.png" mode='widthFix'></image>
+    </view>
+  </view> -->
+  <view class="community padding-l-r-15">
+    <view class="font-weight-600 font-20 padding-15">
+      <text>社区动态</text>
+    </view>
+     <view class="news">
+
+      <view class="list">
+        <view>
+          <image src="http://property.shangyouyun.cn/image/gonggao.jpg" mode='widthFix'></image>
+        </view>
+        <view class="text font-16 font-weight-500">
+          <text>选出您身边最美的工作人员</text>
+        </view>
+      </view>
+
+      <view class="list">
+        <view>
+          <image src="http://property.shangyouyun.cn/image/gonggao.jpg" mode='widthFix'></image>
+        </view>
+        <view class="text font-16 font-weight-500">
+          <text>选出您身边最美的工作人员</text>
+        </view>
+      </view>
+
+     </view>
+  </view>
+</view>

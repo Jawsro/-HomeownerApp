@@ -1,0 +1,104 @@
+<view class='container'>
+   <view style="background: linear-gradient(to bottom, #EBDDD5 0%,#D9BFB1 50%,#C9A590 100%);height:360rpx;position:fixed;top:0;left:0;right:0"></view>
+   <view style="position:fixed;top:150rpx;left:30rpx;right:30rpx;height:200rpx;z-index:9" >
+    <swipers swiper-img="{{swiperImg}}"></swipers> 
+   </view>
+   <!-- 组件引入 -->
+    <header  my-property="社区公告" ></header> 
+  <!-- 精彩资讯 -->
+  <view class="information" style="margin-top:457rpx">
+    <view class="title">
+      <view class="img">
+        <image src="../../images/laba.png" mode='widthFix'></image>
+      </view>
+      <view class="text font-16">
+        <text>#本小区于本月15号起开通线上缴费功能开通线上缴费功能</text>
+      </view>
+      <view class="more">
+        <text class="iconfont icon-gengduo "></text>
+      </view>
+    </view>
+    <view class="main">
+      <view class="main-title ">
+        <view class="left font-16 font-weight-600">
+          <text>精选资讯</text>
+        </view>
+        <view class="main-more">
+          <text>更多</text> <text class="iconfont icon-gengduo "></text>
+        </view>
+      </view>
+      <view class="news">
+        <navigator class="news-list" url='../information/information'>
+          <view class="news-list-left ">
+            <view class="news-title font-14">
+              <text>#小区福利#凡本月预存下月物业费前10名奖励食用油一桶！</text>
+            </view>
+            <view class="time font-12">
+              <text class="date">2020-01-01</text>
+              <text>1小时前</text>
+            </view>
+          </view>
+          <view class="news-list-right">
+            <image src="http://property.shangyouyun.cn/image/gonggao.jpg"></image>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>  
+  <!-- 留言板 -->
+  <view class="message-board">
+    <view class="message-board-title">
+      <view class="left font-18 font-weight-600">
+        <text>小区留言板</text>
+      </view>
+      <view class="main-more">
+        <text>更多</text> <text class="iconfont icon-gengduo "></text>
+      </view>
+    </view>
+    <!-- 留言内容 -->
+    <view class="msg-list">
+      <view class="msg-item">
+
+        <view class="user-msg">
+          <view class="user-img">
+            <text class="iconfont icon-touxiang" style="color:#C9CACA;font-size:90rpx;"></text>
+          </view>
+          <view class="user-name">
+            <view class="name font-16">楼上老李子</view>
+            <view class="floor font-12">2#2518住户</view>
+          </view>
+        </view>
+
+        <view class="msg-main">
+          <view class="msg-text font-14">
+            <text>家里水管爆了，昨天物业马上来修了。这效率不错，表扬一下</text>
+          </view>
+          <view class="msg-img">
+             <view class="imgs"><image src="http://property.shangyouyun.cn/image/bg3.png" mode="widthFix"></image></view>
+             <view class="imgs"><image src="http://property.shangyouyun.cn/image/bg3.png" mode="widthFix"></image></view>
+             <view class="imgs"><image src="http://property.shangyouyun.cn/image/bg3.png" mode="widthFix"></image></view>
+          </view>
+          <view class="bottom">
+            <view class="left font-12">
+              <text>1小时前</text>
+            </view>
+            <view class="right ">
+              <text class="iconfont  {{zanIsShow ? 'icon-aixin_shixin' : 'icon-aixin'}} {{zanIsShow ? 'iscolor' : 'nocolor'}}" 
+                  style='margin-right:10rpx;font-size:16px'
+                  bindtap="dianzan">
+              </text>
+              <text style="color:#443C38; margin-right:60rpx" class="font-14">{{zanNum}}</text>
+          
+                <text class="iconfont icon-pinglun " 
+                  style='color:#393939;margin-right:10rpx;font-size:14px'>
+              </text>
+              <text 
+              style="color:#443C38;" class="font-14">10</text>
+             
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

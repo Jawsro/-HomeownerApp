@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "header":"../../components/title/title",
+    "swipers":"../../components/swiper/swiper"
+  }
+  
+}

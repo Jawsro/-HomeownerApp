@@ -1,0 +1,28 @@
+.container{
+  padding: 30rpx;
+}
+.category-title{
+  padding:20rpx 10rpx;
+}
+.msg-item{
+  display: flex;
+  align-items: center;
+  justify-content:center ;
+  background-color: #fff;
+  padding: 40rpx 10rpx;
+}
+.msg-item-left{
+  flex: 1;
+  text-align: left;
+}
+.msg-item-right{
+  flex: 1;
+  text-align: right;
+}
+.form-btn{
+  border-radius: 20rpx;
+  background-color: #884334;
+  color: #fff;
+  font-weight: 100;
+  margin-top: 60rpx;
+}
