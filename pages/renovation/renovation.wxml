@@ -69,10 +69,10 @@
         </view>
       </view>
       <view class="textarea-wrp">
-        <textarea auto-focus="true" style="height: 3em" name='zhuangxiu' placeholder="请输入装修原因，不超过200字"/>
+        <textarea style="height: 3em" name='zhuangxiu' placeholder="请输入装修原因，不超过200字"/>
       </view>
       <view class="textarea-wrp">
-        <textarea auto-focus="true" style="height: 3em" name='beizhu' placeholder="请输入备注内容，不超过200字"/>
+        <textarea style="height: 3em" name='beizhu' placeholder="请输入备注内容，不超过200字"/>
       </view> 
       <button class="form-btn font-14 {{disabled?'disabled-true':''}}" formType="submit" style=" width: 90%;" disabled="{{disabled}}">确认提交</button>
     </form>

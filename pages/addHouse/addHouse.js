@@ -7,11 +7,20 @@ Page({
   data: {
     cityArray: ['广西','桂林'],
     cityIndex: 0,
+    index:0,
     xiaoquArray:['公园悦府','碧水湾','盛公馆']
   },
   bindPickerChange: function (e) {
     //根据所选状态请求后台
-    console.log( e.detail)
+    console.log( e)
+    this.setData({
+      cityIndex: e.detail.value
+    })
+  },
+  bindcolumnchange(e){
+    console.log(e)
+  },
+  XiaoQuChange(e){
     this.setData({
       index: e.detail.value
     })

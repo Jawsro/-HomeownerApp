@@ -1,0 +1,45 @@
+<!-- 物业缴费 -->
+<view class="container">
+  <view class="top-css"></view>
+  <header  my-property="物业缴费"></header> 
+  <view class="main-margin-top main">
+    <scroll-view scroll-x="true" class="scroll" scroll-left="{{ scrollLeft }}">
+      <view class=" {{ current==item.id?'select-village':'village' }}" 
+        wx:for="{{ villageNav }}" 
+        wx:key="index" 
+        bindtap="currentNav" 
+        data-id="{{ item.id }}">
+        <view class="village-name"><text>{{item.villageName}}</text></view>
+        <view class="village-text"><text>{{item.villageText}}</text></view>
+      </view>
+    </scroll-view>
+    <scroll-view class="pay-list" scroll-y="true">
+      <view class="pay-item" wx:for="{{zhangdan}}" wx:key='index'>
+        <view class="pay-title">
+          <view class="item-left">
+            <text>{{item.yuefen}}</text>
+          </view>
+          <view class="item-right" bindtap="openPayDetails" hidden="{{item.isShow}}" data-id='{{item.id}}'>
+            <text class="iconfont icon-xiajiantou"></text>
+          </view>
+          <view class="item-right" bindtap="openPayDetails" hidden="{{!item.isShow}}" data-id='{{item.id}}'>
+            <text class="iconfont icon-shouqi"></text>
+          </view>
+        </view>
+        <view class="pay-main" hidden="{{!item.isShow}}">
+          <view class="main-title">
+            <text>本次缴费包含以下账单</text>
+          </view>
+          <view class="pay-name">
+            <view class="pay-name-left">
+              <text>{{item.wuye}}</text>
+            </view>
+            <view class="pay-name-right font-weight-600">
+              <text>￥{{item.wuyefei}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

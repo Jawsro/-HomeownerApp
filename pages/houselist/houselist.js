@@ -5,7 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    house:[
+      {
+        id:1,
+        name:'公园悦府',
+        floor:'1号楼/2单元/1-3001',
+        img:'http://property.shangyouyun.cn/image/bg3.png'
+      },
+      {
+        id:2,
+        name:'盛公馆',
+        floor:'1号楼/2单元/1-3001',
+        img:'http://property.shangyouyun.cn/image/bg3.png'
+      }
+    ]
   },
 
   /**

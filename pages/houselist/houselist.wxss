@@ -54,6 +54,14 @@
 .right-btn{
   background-color: #7F3E2F;
   color: #fff;
-  padding:20rpx 10rpx;
-  
+  padding:20rpx 15rpx;
+  display: flex;
+}
+.jiaofei{
+  flex: 2;
+  text-align: left;
+}
+.jiaofei-icon{
+  flex: 1;
+  text-align: right;
 }

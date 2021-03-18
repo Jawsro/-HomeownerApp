@@ -1,8 +1,8 @@
 // index.js
 // 获取应用实例
-const app = getApp()
-
-// pages/my/my.js
+const app = getApp();
+//调用封装的函数
+import {hots} from "../../utils/api.js"
 Page({
 
   /**
@@ -15,7 +15,7 @@ Page({
     duration: 500,
     indicatorDots: true,
     indicatorActiveColor: "white",
-    swiperImg:["http://property.shangyouyun.cn/image/gonggao.jpg","http://property.shangyouyun.cn/image/gonggao.jpg"],
+    swiperImg:["http://property.shangyouyun.cn/image/fenlei1.png","http://property.shangyouyun.cn/image/gonggao.jpg"],
     grid:[
       {
         url:"icon-shuifeiguanli",
@@ -64,15 +64,28 @@ Page({
       {
         icon:"icon-baoxiu",
         text:"装修申报",
-        url:"../announcement/announcement"
+        url:"../renovation/renovation"
       },
       {
         icon:"icon-xinwen",
         text:"社区新闻",
         url:"../announcement/announcement"
       }
+      
     ],
-    loginIsshow:false
+    loginIsshow:false,
+    changeVillageIsShow:false,
+    villageIsShow:false,
+    imgLoad:true,
+    villageName:['公园悦府','碧水湾','盛公馆']
+  },
+  changeVillage(e){
+    console.log(e.currentTarget.dataset.index)
+    this.setData({
+      villageIsShow:true,
+      changeVillageIsShow:false
+    })
+    
   },
   goLogin(){
     wx.navigateTo({
@@ -89,17 +102,35 @@ Page({
       coloseHose:false
     })
   },
+  clicka(){
+    hots()
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(!app.globalData.villageName){
+      this.setData({
+        changeVillageIsShow:true,
+        villageIsShow:false,
+      })
+    }else{
+      this.setData({
+        villageIsShow:true,
+        changeVillageIsShow:false
+      })
+    }
+    //获取二维码里面的参数，向后台发起请求获取当前小区的数据信息
+    // console.log(options)
+    // let xiaoquid=decodeURIComponent(options.id);
+    // console.log(xiaoquid)
     let _this = this;
     //获取登录和认证的状态，控制页面功能
     try {
-      // let loginStatue = wx.getStorageSync('loginStatue');//登录状态
-      // let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-      let loginStatue = 1;
-      let authenticationStatus = 1;
+      let loginStatue = wx.getStorageSync('loginStatue');//登录状态
+       let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
+    //   let loginStatue = 1;
+    // let authenticationStatus = 1;
       if (!loginStatue) {
         _this.setData({
           loginIsshow:true
@@ -132,7 +163,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    setTimeout(()=>{
+      this.setData({
+        imgLoad:false
+      })
+    },800)
   },
 
   /**

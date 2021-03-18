@@ -7,7 +7,11 @@ Page({
   data: {
 
   },
-
+  goRenovation(){
+    wx.navigateTo({
+      url: '../renovation/renovation',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

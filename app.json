@@ -1,22 +1,20 @@
 {
   "pages":[
-    "pages/renovation/renovation",
+    
     "pages/index/index",
     "pages/login/login",
+    "pages/addHouse/addHouse",
+    "pages/renovation/renovation",
+    "pages/paymentlist/paymentlist",
+    "pages/houselist/houselist",
     "pages/services/services",
     "pages/my/my", 
     "pages/IDselection/IDselection",
     "pages/owner/owner", 
-    "pages/houselist/houselist",
     "pages/announcement/announcement",
     "pages/information/information",
-     
-    "pages/housekeeper/housekeeper",
-    "pages/addHouse/addHouse",
-    "pages/propertyPayment/propertyPayment",
-    "pages/propertyPaymentRecord/propertyPaymentRecord",
-    "pages/tenant/tenant",
-    "pages/family/family"
+    "pages/phonenumber/phonenumber",
+    "pages/certification/certification"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -34,8 +32,8 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/tabbar/services.png",
-        "selectedIconPath": "images/tabbar/services-on.png"
+        "iconPath": "images/tabbar/home.png",
+        "selectedIconPath": "images/tabbar/home-on.png"
       },
       {
         "pagePath": "pages/services/services",
@@ -43,7 +41,6 @@
         "iconPath": "images/tabbar/services.png",
         "selectedIconPath": "images/tabbar/services-on.png"
       },
-      
       {
         "pagePath": "pages/my/my",
         "text": "我的",

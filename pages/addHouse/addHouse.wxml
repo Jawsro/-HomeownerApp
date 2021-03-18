@@ -12,8 +12,11 @@
             <text>城市</text>
           </view>
           <view class="msg-item-right">
-            <picker bindchange="bindPickerChange" value="{{cityArray[cityIndex]}}" range="{{cityArray}}">
-              <view class="picker">
+            <picker bindchange="bindPickerChange"
+              bindcolumnchange="bindcolumnchange"
+              value="{{cityArray[cityIndex]}}"
+              range="{{cityArray}}">
+              <view class="picker" style="padding-right:10rpx">
                 <text class="iconfont icon-dingwei margin-right" style="font-weight:600"></text>
                 {{cityArray[cityIndex]}}
               </view>
@@ -25,7 +28,7 @@
             <text>小区</text>
           </view>
           <view class="msg-item-right">
-            <picker bindchange="bindPickerChange" value="{{xiaoquArray[index]}}" range="{xiaoquArray}}">
+            <picker bindchange="XiaoQuChange" value="{{xiaoquArray[index]}}" range="{{xiaoquArray}}">
               <view class="picker">
                <text class="margin-right"> {{xiaoquArray[index]}}</text>
                 <text class="iconfont icon-gengduo margin-right" style="font-weight:600"></text>

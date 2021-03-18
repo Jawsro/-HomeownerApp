@@ -1,0 +1,54 @@
+<!--实名认证-->
+<view class="container">
+  <view class="top-css"></view>
+  <header my-property="实名认证"></header> 
+  <view class="main main-margin-top">
+    <view class="top-img">
+      <!-- <image src="../../images/bg5.png"></image> -->
+      <view class="certification-msg">
+        <view class="headimg">
+          <text class="iconfont icon-touxiang" style="color:#666666;font-size:100rpx"></text>
+        </view>
+        <view class="msg-box">
+          <view class="left-box">
+            <view class="title font-weight-600 font-18">
+              <text>您已经实名认证</text>
+            </view>
+            <view class="name">
+              <text>{{name}}</text>
+            </view>
+            <view class="idnum">
+              <text>{{idnum}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="list">
+      <!-- <view class="item">
+        <view class="item-left">
+          <text>安全设置</text>
+        </view>
+        <view class="item-right">
+          <text class="iconfont icon-gengduo" style="color:#D4D4D4"></text>
+        </view>
+      </view>
+      <view class="item">
+        <view class="item-left">
+          <text>更改认证</text>
+        </view>
+        <view class="item-right">
+          <text class="iconfont icon-gengduo" style="color:#D4D4D4"></text>
+        </view>
+      </view> -->
+      <navigator class="item" url="../phonenumber/phonenumber" hover-class="none">
+        <view class="item-left">
+          <text>修改电话</text>
+        </view>
+        <view class="item-right">
+          <text class="iconfont icon-gengduo" style="color:#D4D4D4"></text>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

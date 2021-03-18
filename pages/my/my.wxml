@@ -1,10 +1,10 @@
 <view class="container">
   <view class="top" wx:if='{{loginStatue}}'>
     <view class="top-img">
-      <image src="../../images/bg4.jpg" mode="widthFix"></image>
+      <image src="http://property.shangyouyun.cn/image/bg4.jpg" mode="widthFix"></image>
     </view>
     <view class="img2">
-      <image src="../../images/buzhidao.png" mode="widthFix"></image>
+      <image src="http://property.shangyouyun.cn/image/buzhidao.png" mode="widthFix"></image>
       <view class="login-btn font-weight-500 font-16" bindtap="goLogin">
         <text>注册/登录</text>
       </view>
@@ -21,7 +21,8 @@
     </view>
     <view class="user-msg">
       <view class="head-img">
-        <text class="iconfont icon-touxiang" style="color:#C7C7C7;font-size:60px"></text>
+        <text class="iconfont icon-touxiang" style="color:#C7C7C7;font-size:60px" wx:if="{{headImg==''?true:false}}"></text>
+        <image src="{{headImg}}" wx:if="{{headImg!=''?true:false}}" mode="widthFix" style="border-radius: 50%;"></image>
       </view>
       <view class="user-text">
         <view class="user-name font-20  font-weight-500">李先生</view>
@@ -37,7 +38,7 @@
           <text class="font-weight-600 font-20" style="margin-right:20rpx">VIP</text>
           <text class="font-26">开启业主特权生活</text>
         </view>
-        <navigator class="right font-14" url="../IDselection/IDselection">
+        <navigator class="right font-14" hover-class="none" url="../IDselection/IDselection">
           <text>立即认证</text>
         </navigator>
       </view>
@@ -49,7 +50,7 @@
 
   <view class="main">
     <!-- 钱包 -->
-    <view class="wallet">
+    <!-- <view class="wallet">
       <view class="wallet-title">
         <view class="wallet-title-left">
           <text class="font-18 font-weight-500" style="margin-right:40rpx">我的钱包</text>
@@ -60,45 +61,15 @@
           <text class="iconfont icon-gengduo" style="font-size:40rpx;color:#000;"></text>
         </view>
       </view>
-    </view>
-    <view class="functions">
+    </view> -->
+    <view class="functions" wx:if='{{!loginStatue}}'>
       <!--房屋信息  -->
-      <navigator class="functions-item" url="{{ authenticationStatus ?'../houselist/houselist':'../IDselection/IDselection'}}">
+      <navigator hover-class="none" class="functions-item" url="{{ authenticationStatus ?'../houselist/houselist':'../IDselection/IDselection'}}">
         <view class="functions-item-left">
           <text>我的房屋信息</text>
         </view>
         <view class="functions-item-right">
           <text class="right-text margin-right font-14" style="color:#DDB39E">认证业主受更多福利</text>
-          <text class="iconfont icon-gengduo" style="color:#A6A6A6"></text>
-        </view>
-      </navigator>
-      <!-- 商铺 -->
-      <navigator class="functions-item" url="{{ authenticationStatus ?'../houselist/houselist':'../IDselection/IDselection'}}">
-        <view class="functions-item-left">
-          <text>我的商铺</text>
-        </view>
-        <view class="functions-item-right">
-          <!-- <text class="right-text margin-right font-14" style="color:#DDB39E">认证业主受更多福利</text> -->
-          <text class="iconfont icon-gengduo" style="color:#A6A6A6"></text>
-        </view>
-      </navigator>
-      <!-- 车位 -->
-      <navigator class="functions-item" url="{{ authenticationStatus ?'../houselist/houselist':'../IDselection/IDselection'}}">
-        <view class="functions-item-left">
-          <text>我的车位</text>
-        </view>
-        <view class="functions-item-right">
-          <!-- <text class="right-text margin-right font-14" style="color:#DDB39E">认证业主受更多福利</text> -->
-          <text class="iconfont icon-gengduo" style="color:#A6A6A6"></text>
-        </view>
-      </navigator>
-       <!-- 汽车 -->
-      <navigator class="functions-item" url="{{ authenticationStatus ?'../houselist/houselist':'../IDselection/IDselection'}}">
-        <view class="functions-item-left">
-          <text>我的汽车</text>
-        </view>
-        <view class="functions-item-right">
-          <!-- <text class="right-text margin-right font-14" style="color:#DDB39E">认证业主受更多福利</text> -->
           <text class="iconfont icon-gengduo" style="color:#A6A6A6"></text>
         </view>
       </navigator>

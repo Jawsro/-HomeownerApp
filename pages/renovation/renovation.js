@@ -85,7 +85,7 @@ Page({
    */
   onLoad: function (options) {
     let now = new Date();
-    let today = now.getFullYear()+'-'+now.getMonth()+'-'+now.getDate();
+    let today = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
 
     console.log(now)
     

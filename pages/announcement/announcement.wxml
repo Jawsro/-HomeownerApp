@@ -28,7 +28,10 @@
         </view>
       </view>
       <view class="news">
-        <navigator class="news-list" url='../information/information'>
+        <navigator 
+          class="news-list" 
+          url='../information/information'
+          hover-class="none">
           <view class="news-list-left ">
             <view class="news-title font-14">
               <text>#小区福利#凡本月预存下月物业费前10名奖励食用油一桶！</text>

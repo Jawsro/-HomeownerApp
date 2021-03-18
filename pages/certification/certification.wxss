@@ -1,0 +1,53 @@
+.container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.top-img{
+  padding:100rpx 0 60rpx;
+}
+.certification-msg{
+  width: 80%;
+  margin:0rpx auto;
+  background: linear-gradient(to bottom, #E5D3C9 0%,#EFE4DE 50%,#D0B19D 100%);
+  border-radius: 20rpx;
+  position: relative;
+}
+.headimg{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  top: -50rpx;
+  left: 50%;
+  margin-left: -50rpx;
+}
+.msg-box{
+  display: flex;
+  padding:80rpx 0;
+}
+.left-box{
+  flex: 1;
+  color: #824030;
+  padding-left:60rpx ;
+}
+.name{
+  padding: 30rpx 0;
+}
+.list{
+  background: #fff;
+  padding:0 60rpx 60rpx;
+}
+.item{
+  display: flex;
+  padding: 40rpx 0;
+  border-bottom: 2rpx solid #D4D4D4;
+}
+.item-left{
+  flex: 1;
+}
+.item-right{
+  flex: 0 0 60rpx;
+  width: 60rpx;
+}

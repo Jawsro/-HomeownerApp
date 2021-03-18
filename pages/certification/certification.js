@@ -1,18 +1,39 @@
-// pages/propertyPayment/propertyPayment.js
+// pages/certification/certification.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    idnum:'425652157455665',
+    name:'李菲'
   },
-
+  getName (name) {
+    var newStr;
+    if (name.length === 2) {
+        newStr = '*'+name.substr(1, 1)  ;
+    } else if (name.length > 2) {
+        var char = '';
+        for (let i = 0, len = name.length - 2; i < len; i++) {
+            char += '*';
+        }
+        newStr = name.substr(0, 1) + char + name.substr(-1, 1);
+    } else {
+        newStr = name;
+    }
+    return newStr;
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let num = this.data.idnum.replace(/^(.{3})(?:\d+)(.{2})$/,"$1***************$2");
+    let name = this.getName(this.data.name)
+    console.log(name)
+    this.setData({
+      idnum:num,
+      name:name
+    })
   },
 
   /**
