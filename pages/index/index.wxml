@@ -5,21 +5,36 @@
       <text>请先选择小区</text>
     </view>
     <view class="village-list">
-      <view class="village-item" 
-        wx:for="{{villageName}}" 
-        wx:key='index' 
-        data-index="{{index}}"
-        bindtap="changeVillage">
-        <text>{{item}}</text>
-      </view>
+      <scroll-view scroll-y="true" style="height:500rpx">
+        <view class="village-item" 
+          wx:for="{{subdistrictList}}" 
+          wx:key='index' 
+          data-id="{{item.id}}"
+          data-index='{{index}}'
+          data-name='{{item.short_name}}'
+          bindtap="changeVillage">
+          <text>{{item.short_name}}</text>
+        </view>
+      </scroll-view>
     </view>
   </view>
 </view>
 <view class="container" wx:if="{{villageIsShow}}">
   <view class="top" style="background:url('http://property.shangyouyun.cn/image/bg4.jpg') center center no-repeat;background-size: cover">
-    <!-- <view class="top-img">
-      <image src="http://property.shangyouyun.cn/image/bg4.jpg" mode="widthFix"></image>
-    </view> -->
+    <!-- 小区选择 -->
+    <view class="subdistrict-list font-14 font-weight-600">
+      <picker bindchange="subdistrictNameChange"
+        value="{{subdistrictList[villageNameIndex]}}"
+        range="{{subdistrictList}}"
+        range-key='short_name'
+       >
+        <view class="picker">
+          {{subdistrictList[villageNameIndex].short_name}}
+          <text class="iconfont icon-xiajiantou margin-right" style="font-weight:600"></text>
+        </view>
+      </picker>
+      
+    </view>
     <!-- 未登录时 -->
     <view class="img2" wx:if="{{loginIsshow}}" >
       <image src="http://property.shangyouyun.cn/image/buzhidao.png" mode="widthFix"></image>

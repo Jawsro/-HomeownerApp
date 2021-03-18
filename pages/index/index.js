@@ -2,13 +2,15 @@
 // 获取应用实例
 const app = getApp();
 //调用封装的函数
-import {hots} from "../../utils/api.js"
+import {HttpRequest} from "../../utils/http.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    subdistrictList:[],//小区列表
+    villageNameIndex:0,//首页显示的小区
     autoplay: true,
     circular: true,
     interval: 2000,
@@ -77,15 +79,59 @@ Page({
     changeVillageIsShow:false,
     villageIsShow:false,
     imgLoad:true,
-    villageName:['公园悦府','碧水湾','盛公馆']
+    
   },
+  //选择小区进入首页
   changeVillage(e){
-    console.log(e.currentTarget.dataset.index)
+    console.log( e.currentTarget)
+    let id = e.currentTarget.dataset.id;
+    let data= {
+      subdistrictId:id
+    }
+    HttpRequest('/app.php/subdistrict/getSubdistrictInfo',data,'get',res=>{
+      console.log(res)
+    })
     this.setData({
       villageIsShow:true,
-      changeVillageIsShow:false
+      changeVillageIsShow:false,
+      villageNameIndex:e.currentTarget.dataset.index
     })
     
+  },
+  //请求小区列表
+  _getSubdistrictList(id){
+    let _this = this;
+    HttpRequest('/app.php/subdistrict/getSubdistrictList',{},'get',function(res){
+      res.data.forEach(item =>{
+        _this.data.subdistrictList.push(item.short_name)
+      })
+      _this.data.subdistrictList =res.data
+      for(let i = 0;i<res.data.length;i++){
+        if(res.data[i].id==id){
+          _this.data.villageNameIndex = i
+        }
+      }
+      _this.setData({
+        subdistrictList: _this.data.subdistrictList,
+        villageNameIndex: _this.data.villageNameIndex
+      })
+    })
+    
+  },
+  //进入首页切换小区
+  subdistrictNameChange(e){
+  let index = e.detail.value;
+    this.setData({
+      villageNameIndex: index
+    })
+    let id = this.data.subdistrictList[index].id
+    let data= {
+      subdistrictId: id 
+    }
+    console.log(id)
+    HttpRequest('/app.php/subdistrict/getSubdistrictInfo',data,'get',res=>{
+      console.log(res)
+    })
   },
   goLogin(){
     wx.navigateTo({
@@ -102,35 +148,37 @@ Page({
       coloseHose:false
     })
   },
-  clicka(){
-    hots()
-  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(!app.globalData.villageName){
+    
+    //获取二维码里面的参数，向后台发起请求获取当前小区的数据信息
+    //判断用户是扫码进入还是搜索进入
+    let xiaoquid=decodeURIComponent(options.subdistrictId);
+    let villageNameIndex = 0;
+    if (xiaoquid =='undefined') { 
       this.setData({
         changeVillageIsShow:true,
         villageIsShow:false,
       })
+      //搜索进入小程序需要请求小区列表
     }else{
       this.setData({
         villageIsShow:true,
-        changeVillageIsShow:false
+        changeVillageIsShow:false,
       })
+      
     }
-    //获取二维码里面的参数，向后台发起请求获取当前小区的数据信息
-    // console.log(options)
-    // let xiaoquid=decodeURIComponent(options.id);
-    // console.log(xiaoquid)
+    this._getSubdistrictList(xiaoquid);
     let _this = this;
     //获取登录和认证的状态，控制页面功能
     try {
-      let loginStatue = wx.getStorageSync('loginStatue');//登录状态
+     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
        let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-    //   let loginStatue = 1;
-    // let authenticationStatus = 1;
+       //let loginStatue = 1;
+      // let authenticationStatus = 1;
       if (!loginStatue) {
         _this.setData({
           loginIsshow:true

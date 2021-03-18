@@ -5,16 +5,12 @@ App({
    */
   globalData: {
     userInfo: null,
-    villageName:'',
   },
   /**
    * 生命周期函数--监听小程序初始化
    */
   onLaunch(options) {
     this.setApiRoot();//版本更新
-    // console.log(options)
-    this.globalData.villageName = options.query.id;
-    //console.log(this.globalData.villageName)
     // 展示本地存储能力
     // const logs = wx.getStorageSync('logs') || []
     // logs.unshift(Date.now())
