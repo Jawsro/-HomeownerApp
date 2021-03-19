@@ -10,9 +10,12 @@
         indicator-active-color="{{indicatorActiveColor}}"
        >
         <block >
+        <navigator url='{{item.jump_link}}' hover-class="none">
           <swiper-item wx:for="{{swiperImg}}" wx:key='index'>
-           <image src="{{item}}" mode='widthFix'style="height:100%"></image>
+           <image src="{{item.posters_url}}" mode='widthFix'></image>
           </swiper-item>
+        </navigator>
+          
           
         </block>
       </swiper>

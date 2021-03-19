@@ -102,28 +102,27 @@
     <swipers swiper-img="{{swiperImg}}"></swipers>  
   </view>
   <view class="community padding-l-r-15">
-    <view class="font-weight-600 font-20 padding-15" bindtap="clicka">
-      <text>社区动态</text>
+    <view class="notices" >
+      <text class="font-weight-600 font-20 padding-15 left">社区动态</text>
+      <navigator url='/pages/noticelist/noticelist?title=社区动态' hover-class="none" class="right">
+        <text>更多</text>
+        <text class="iconfont icon-gengduo "></text>
+      </navigator>
     </view>
      <view class="news">
 
-      <view class="list">
+      <navigator class="list" 
+        wx:for="{{noticeList}}"
+        wx:key='index'
+        url="'{{item.jump_link}}?newsId='+{{item.id}}"
+        hover-class="none">
         <view>
-          <image src="http://property.shangyouyun.cn/image/gonggao.jpg" mode='widthFix'></image>
+          <image src="{{item.posters_url}}" mode='widthFix'></image>
         </view>
         <view class="text font-16 font-weight-500">
-          <text>选出您身边最美的工作人员</text>
+          <text>{{item.title}}</text>
         </view>
-      </view>
-
-      <view class="list">
-        <view>
-          <image src="http://property.shangyouyun.cn/image/gonggao.jpg" mode='widthFix'></image>
-        </view>
-        <view class="text font-16 font-weight-500">
-          <text>选出您身边最美的工作人员</text>
-        </view>
-      </view>
+      </navigator>
 
      </view>
   </view>

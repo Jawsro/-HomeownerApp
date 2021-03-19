@@ -1,0 +1,29 @@
+<view class='container'>
+  <view class="top-css"></view>
+  <!-- 组件引入 -->
+  <header  my-property="{{title}}" bind:attached="attached"></header> 
+  <view class="information" >
+    <view class="main">
+      <view class="news">
+        <navigator 
+          class="news-list" 
+          url='../information/information'
+          hover-class="none"
+          wx:for="{{noticeList}}"
+          wx:key='index'>
+          <view class="news-list-left ">
+            <view class="news-title font-14">
+              <text>{{item.title}}</text>
+            </view>
+            <view class="time font-12">
+              <text class="date">{{item.createtime}}</text>
+            </view>
+          </view>
+          <view class="news-list-right">
+            <image src="{{item.posters_url}}" mode='widthFix'></image>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view> 
+</view>

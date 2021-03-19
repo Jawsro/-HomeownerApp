@@ -38,7 +38,7 @@
             </view>
             <view class="time font-12">
               <text class="date">2020-01-01</text>
-              <text>1小时前</text>
+              <!-- <text>1小时前</text> -->
             </view>
           </view>
           <view class="news-list-right">

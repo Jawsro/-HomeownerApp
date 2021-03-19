@@ -15,7 +15,7 @@
         {
           "name": "scan",
           "pathName": "pages/index/index",
-          "query": "subdistrictId=7",
+          "query": "subdistrictId=2",
           "scene": 1011
         }
       ]
