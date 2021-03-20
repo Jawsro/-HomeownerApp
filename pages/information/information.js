@@ -2,7 +2,9 @@
 // 获取应用实例
 const app = getApp();
 //调用封装的函数
-import {HttpRequest} from "../../utils/http.js"
+import {HttpRequest} from "../../utils/http.js";
+import {timeDate} from "../../utils/util.js";
+let dianzanLock = true ;
 Page({
 
   /**
@@ -10,37 +12,88 @@ Page({
    */
   data: {
     zanIsShow:false,
-    zanNum:66,
-    title:'精彩资讯'
+    zanNum:0,
+    title:'精彩资讯',
+    newsConten:{},//文章内容
+    newsList:[],//推荐
+    newsId:0,//文章id
   },
+  //点赞
   dianzan(){
-    this.zanIsShow =! this.zanIsShow;
-    console.log(this.data.zanNum)
-    let num = this.data.zanNum;
-    if(!this.zanIsShow){
-      //取消点赞
-      //请求后台取消成功修改数据
-      this.setData({
-        zanIsShow:false,
-        zanNum:num-1
+    let _this = this;
+    let loginStatue = wx.getStorageSync('loginStatue');//登录状态
+    if(!loginStatue){
+      wx.showModal({
+        title: '提示',
+        content: '您未登录，请先登录后再点赞',
+        success (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '../login/login',
+            })
+          } else if (res.cancel) {
+            
+          }
+        }
       })
     }else{
-      //点赞
-      //请求后台点赞成功修改数据
+      // if(!dianzanLock){
+      //   return false;
+      // }
+      //dianzanLock = false
+      if( this.zanIsShow ){
+        return false;
+      }
+      this.zanIsShow =true;
+      let num = this.data.zanNum;
       this.setData({
         zanIsShow:true,
         zanNum:num+1
       })
+      HttpRequest('/app.php/subdistrict_api/newsPraise',{newsId:_this.data.newsId},'get',res=>{
+        console.log(res)
+        if(res.status == true){
+          wx.showToast({
+            title: '点赞成功',
+            duration:2000
+          })
+        }
+      })
     }
-      
-    
+   
   },
   //获取文章内容
   _getNewsContent(id){
+    let _this = this;
     HttpRequest('/app.php/subdistrict_api/getNewsContent',{newsId:id},'get',res=>{
       if(res.status == true){
-        console.log(res)
+        _this.data.newsConten = res.data;
+        if(!res.data.author_nickname ){
+          _this.data.newsConten.author_nickname  = ' '
+        }
+        _this.data.newsConten.createtime = timeDate(_this.data.newsConten.createtime)
+        _this.setData({
+          newsConten:_this.data.newsConten,
+          zanNum:res.data.praise
+        })
       }
+      console.log( _this.data.newsConten)
+    })
+  },
+  //社区动态
+  _getNewsList(id){
+    let _this = this;
+    let data = {
+      subdistrictId :id,
+      page:1
+    };
+    HttpRequest('/app.php/subdistrict_api/getNewsList',data,'get',res=>{
+      if(res.status == true){
+        _this.data.newsList = res.data;
+        _this.setData({
+          newsList:_this.data.newsList
+        })
+      } 
     })
   },
   /**
@@ -48,11 +101,15 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-
+    let id = wx.getStorageSync('subdistrictId');
+    this.data.newsId = options.newsId;
     this.setData({
       title:options.title
     })
-    this._getNewsContent(options.newsId)
+    this._getNewsContent(options.newsId);
+    if(options.title == '社区动态'){
+      this._getNewsList(id);
+    }
   },
 
   /**

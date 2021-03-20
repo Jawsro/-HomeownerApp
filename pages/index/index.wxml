@@ -43,7 +43,7 @@
       </view>
     </view>
     <!-- 登录后 -->
-    <view class="user-msg" wx:if="{{!loginIsshow}}" >
+    <view class="user-msg" wx:if="{{loginNoshow}}" >
       <image src="../../images/bg5.png" style="margin:0 30rpx;height:220rpx;z-index:9"></image>
       <view class="xiaoqu" >
         <view class="xiaoqu-name font-16">
@@ -86,17 +86,17 @@
     </view> 
     
   </view>
- <view class="login-isshow" wx:if="{{!loginIsshow}}">
+ <view class="login-isshow">
     <view class="classification margin-top" >
-      <navigator 
-        hover-class="none"
+      <view 
+        bindtap="goIcon"
         class="classification-item" 
         wx:for="{{classification}}" 
         wx:key='index'
-        url="{{item.url}}">
+        data-url="{{item.url}}">
         <view class="classification-item-img iconfont {{item.icon}}"></view>
         <view class="classification-item-text font-16">{{item.text}}</view>
-      </navigator>
+      </view>
     </view>
   </view>
   
@@ -114,7 +114,7 @@
      <view class="news">
 <!-- url="'{{item.jump_link}}?newsId='+{{item.id}}" -->
       <navigator class="list" 
-        wx:for="{{noticeList}}"
+        wx:for="{{newsList}}"
         wx:key='index'
         url="/pages/information/information?newsId={{item.id}}&title=社区动态"
         hover-class="none"

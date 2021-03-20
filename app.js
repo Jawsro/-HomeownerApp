@@ -1,22 +1,40 @@
 // app.js
+//调用封装的函数
+import {HttpRequest} from "./utils/http.js"
 App({
   /**
    * 全局变量
    */
-  globalData: {
-    userInfo: null,
-  },
+  globalData: {},
   /**
    * 生命周期函数--监听小程序初始化
    */
   onLaunch(options) {
     this.setApiRoot();//版本更新
-    // 展示本地存储能力
-    // const logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
-
-   
+    //判断用户的登录状态(非第一次进入小程序)
+    if(wx.getStorageSync('loginStatue') == false && typeof wx.getStorageSync('loginStatue') != 'string'){
+      HttpRequest('/app.php/login_api/loginStatus?token=token',{token:wx.getStorageSync('token')},'get',res=>{
+        console.log(res)
+        if(res.code == true){//未登录
+          wx.setStorageSync('loginStatue', true);
+        }else{
+          wx.showModal({
+            title: '提示',
+            content: '登录已过期！',
+            success (res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '../login/login',
+                })
+              } else if (res.cancel) {
+                
+              }
+            }
+          })
+        }
+      })
+    }
+    
     // 获取用户信息
     // wx.getSetting({
     //   success: res => {

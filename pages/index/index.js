@@ -11,42 +11,8 @@ Page({
   data: {
     subdistrictList:[],//小区列表
     villageNameIndex:0,//首页显示的小区的索引
-    noticeList:[],//社区动态
+    newsList:[],//社区动态
     swiperImg:[],//轮播图
-    // grid:[
-    //   {
-    //     url:"icon-shuifeiguanli",
-    //     text:"水费"
-    //   },
-    //   {
-    //     url:"icon-dianfeifuwu",
-    //     text:"电费"
-    //   },
-    //   {
-    //     url:"icon-icon_tingchejiaofei-copy",
-    //     text:"停车费"
-    //   },
-    //   {
-    //     url:"icon-baoxiu",
-    //     text:"物业报修"
-    //   },
-    //   {
-    //     url:"icon-fuli",
-    //     text:"业主福利"
-    //   },
-    //   // {
-    //   //   url:"icon-qiandao",
-    //   //   text:"签到积分"
-    //   // },
-    //   {
-    //     url:"icon-fuwu",
-    //     text:"便民服务"
-    //   },
-    //   {
-    //     url:"icon-19",
-    //     text:"更多"
-    //   },
-    // ],
     classification:[
       {
         icon:"icon-wuyefeiyongchuzhang",
@@ -70,9 +36,10 @@ Page({
       }
     ],
     loginIsshow:false,//控制登录注册按钮
+    loginNoshow:false,//控制登录注册按钮
     changeVillageIsShow:false,//控制小区列表选择页面（搜索进入小区）
-    villageIsShow:false,//控制首页是个现实（扫码进入）
-    
+    villageIsShow:false,//控制首页是个显示（扫码进入）
+    hoeseListIsShow:true
   },
   //选择小区进入首页
   changeVillage(e){
@@ -81,12 +48,13 @@ Page({
     // 获取轮播图
     this._getHeadlinesList(id);
     //社区动态
-    this._getNoticeList(id);
+    this._getNewsList(id);
     this.setData({
       villageIsShow:true,
       changeVillageIsShow:false,
       villageNameIndex:e.currentTarget.dataset.index
     })
+    
   },
   //进入首页切换小区
   subdistrictNameChange(e){
@@ -98,7 +66,9 @@ Page({
     // 获取轮播图
     this._getHeadlinesList(id);
     //社区动态
-    this._getNoticeList(id);
+    this._getNewsList(id);
+    //并缓存小区id
+    wx.setStorageSync('subdistrictId', id)
   },
   //请求小区列表
   _getSubdistrictList(id){
@@ -139,17 +109,17 @@ Page({
     })
   },
   //社区动态
-  _getNoticeList(id){
+  _getNewsList(id){
     let _this = this;
     let data = {
       subdistrictId :id,
       page:1
     };
-    HttpRequest('/app.php/subdistrict_api/getNoticeList',data,'get',res=>{
+    HttpRequest('/app.php/subdistrict_api/getNewsList',data,'get',res=>{
       if(res.status == true){
-        _this.data.noticeList = res.data;
+        _this.data.newsList = res.data;
         _this.setData({
-          noticeList:_this.data.noticeList
+          newsList:_this.data.newsList
         })
       } 
     })
@@ -169,7 +139,21 @@ Page({
       coloseHose:false
     })
   },
-  
+  goIcon(e){
+    let loginStatue = wx.getStorageSync('loginStatue');//登录状态
+    let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
+    if(!loginStatue && !authenticationStatus){
+      wx.showModal({
+        title: '提示',
+        content: '请先登录并且完成身份认证！',
+        showCancel: false
+      })
+    }else{
+      wx.navigateTo({
+        url: e.currentTarget.dataset.url
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -190,13 +174,12 @@ Page({
         changeVillageIsShow:false,
       })
       this._getHeadlinesList(xiaoquid);
-      this._getNoticeList(xiaoquid);
+      this._getNewsList(xiaoquid);
       wx.setStorageSync('subdistrictId', xiaoquid)
       this._getSubdistrictList(xiaoquid);
     }
     //根据缓存中的 subdistrictId 判断用户是否是初次进入小程序
     let subdistrictId = wx.getStorageSync('subdistrictId');
-    console.log(subdistrictId)
     //第二次进入小区
     if(subdistrictId){
       this.setData({
@@ -204,53 +187,73 @@ Page({
         changeVillageIsShow:false
       })
       this._getHeadlinesList(subdistrictId);
-      this._getNoticeList(subdistrictId);
+      this._getNewsList(subdistrictId);
     }
     
     let _this = this;
     //获取登录和认证的状态，控制页面功能
     try {
-        // let loginStatue = wx.getStorageSync('loginStatue');//登录状态
-        // let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-      let loginStatue = 1;
-      let authenticationStatus = 1;
-      if (!loginStatue) {
-        _this.setData({
-          loginIsshow:true
-        })
-      }else{
-        _this.setData({
-          loginIsshow:false,
-          villageIsShow:true,
-          changeVillageIsShow:false,
-          villageNameIndex:wx.getStorageSync('subdistrictId')
-        })
-      }
-      if (!authenticationStatus) {
-        _this.setData({
-          hoeseListIsShow:true
-        })
-      }else{
-        _this.setData({
-          hoeseListIsShow:false,
-          villageNameIndex:wx.getStorageSync('subdistrictId')
-        })
-      }
-    } catch (e) {}
+        let loginStatue = wx.getStorageSync('loginStatue');//登录状态
+        let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
+        if (!loginStatue) {
+          _this.setData({
+            loginIsshow:true,
+            loginNoshow:false
+          })
+        }else{
+          _this.setData({
+            loginIsshow:false,
+            loginNoshow:true,
+            villageIsShow:true,
+            changeVillageIsShow:false,
+            villageNameIndex:wx.getStorageSync('subdistrictId')
+          })
+          //登录状态并且已认证
+          if (!authenticationStatus) {
+            _this.setData({
+              hoeseListIsShow:true
+            })
+          }else{
+            _this.setData({
+              hoeseListIsShow:false,
+              villageNameIndex:wx.getStorageSync('subdistrictId')
+            })
+          }
+        }
+        
+      } catch (e) {}
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    let loginStatue = wx.getStorageSync('loginStatue');//登录状态
+    console.log(loginStatue)
+    let _this = this;
+    //获取登录和认证的状态，控制页面功能
+    try {
+        let loginStatue = wx.getStorageSync('loginStatue');//登录状态
+        if (!loginStatue) {
+          _this.setData({
+            loginIsshow:true,
+            loginNoshow:false
+          })
+        }else{
+          _this.setData({
+            loginIsshow:false,
+            loginNoshow:true
+          })
+        }
+        
+      } catch (e) {}
   },
 
   /**
