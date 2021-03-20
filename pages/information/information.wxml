@@ -1,7 +1,7 @@
 <view class='container'>
   <view class="top-css"></view>
   <!-- 组件引入 -->
-  <header  my-property="精彩资讯" bind:attached="attached"></header> 
+  <header  my-property="{{title}}" bind:attached="attached"></header> 
   <view class="article" style="margin-top: 150rpx;">
      <view class="top">
       <view class="title font-weight-600 font-20">

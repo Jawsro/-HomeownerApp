@@ -1,7 +1,7 @@
 <!--首页-->
 <view class="change-village" wx:if="{{changeVillageIsShow}}" style="background:url('http://property.shangyouyun.cn/image/bg.jpg') center center no-repeat;background-size: cover;background-attachment:fixed;">
   <view class="change-village-main">
-    <view class="change-village-title">
+    <view class="change-village-title" wx:if="{{subdistrictList.length>0}}">
       <text>请先选择小区</text>
     </view>
     <view class="village-list">
@@ -47,16 +47,16 @@
       <image src="../../images/bg5.png" style="margin:0 30rpx;height:220rpx;z-index:9"></image>
       <view class="xiaoqu" >
         <view class="xiaoqu-name font-16">
-          <text class="margin-right">盛公馆</text>
+          <text class="margin-right">{{subdistrictList[villageNameIndex].short_name}}</text>
           <text class="margin-right">欢迎您！</text>
           <!-- 认证后显示 开始 -->
-          <text class="iconfont icon-shouqi" bindtap="openHouseList" hidden="{{coloseHose ||hoeseListIsShow}}"></text>
-          <text class="iconfont icon-xiajiantou" bindtap="closeHouseList" hidden="{{!coloseHose}}"></text>
+          
           <view class="houses" hidden="{{!coloseHose}}">
             <view class="house-list">
               <view class="house-list-left">
                 <text class="iconfont icon-tijiaochenggong" style="color:#7F402F;margin-right: 20rpx;"></text>
                 <text class="house-msg">盛公馆1号楼/2单元/1-3301</text>
+                
               </view>
               <view class="house-list-right">
                 <text class="iconfont icon-gengduo" style="color:#D4D7DE"></text>
@@ -71,6 +71,8 @@
        </view>
        <view class="xiaoqu-floor font-14" hidden="{{hoeseListIsShow}}">
           <text>1号楼/2单元/1-3301</text>
+          <text class="iconfont icon-shouqi" bindtap="openHouseList" hidden="{{coloseHose ||hoeseListIsShow}}"></text>
+          <text class="iconfont icon-xiajiantou" bindtap="closeHouseList" hidden="{{!coloseHose}}"></text>
         </view>
       </view>
       <view class="erweima">
@@ -110,12 +112,13 @@
       </navigator>
     </view>
      <view class="news">
-
+<!-- url="'{{item.jump_link}}?newsId='+{{item.id}}" -->
       <navigator class="list" 
         wx:for="{{noticeList}}"
         wx:key='index'
-        url="'{{item.jump_link}}?newsId='+{{item.id}}"
-        hover-class="none">
+        url="/pages/information/information?newsId={{item.id}}&title=社区动态"
+        hover-class="none"
+        wx:if="{{index<5}}">
         <view>
           <image src="{{item.posters_url}}" mode='widthFix'></image>
         </view>

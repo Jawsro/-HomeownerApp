@@ -10,7 +10,7 @@ Page({
    */
   data: {
     subdistrictList:[],//小区列表
-    villageNameIndex:0,//首页显示的小区
+    villageNameIndex:0,//首页显示的小区的索引
     noticeList:[],//社区动态
     swiperImg:[],//轮播图
     // grid:[
@@ -69,10 +69,9 @@ Page({
         url:"../announcement/announcement"
       }
     ],
-    loginIsshow:false,
-    changeVillageIsShow:false,
-    villageIsShow:false,
-    imgLoad:true,
+    loginIsshow:false,//控制登录注册按钮
+    changeVillageIsShow:false,//控制小区列表选择页面（搜索进入小区）
+    villageIsShow:false,//控制首页是个现实（扫码进入）
     
   },
   //选择小区进入首页
@@ -89,9 +88,20 @@ Page({
       villageNameIndex:e.currentTarget.dataset.index
     })
   },
+  //进入首页切换小区
+  subdistrictNameChange(e){
+    let index = e.detail.value;
+    this.setData({
+      villageNameIndex: index
+    })
+    let id = this.data.subdistrictList[index].id
+    // 获取轮播图
+    this._getHeadlinesList(id);
+    //社区动态
+    this._getNoticeList(id);
+  },
   //请求小区列表
   _getSubdistrictList(id){
-    console.log(id)
     let _this = this;
     HttpRequest('/app.php/subdistrict_api/getSubdistrictList',{},'get',function(res){
       if(res.status == true){
@@ -104,27 +114,13 @@ Page({
             }
           }
         }
+        /////////
         _this.setData({
           subdistrictList: _this.data.subdistrictList,
           villageNameIndex: _this.data.villageNameIndex
         })
       }
-      
-      
     })
-    
-  },
-  //进入首页切换小区
-  subdistrictNameChange(e){
-    let index = e.detail.value;
-    this.setData({
-      villageNameIndex: index
-    })
-    let id = this.data.subdistrictList[index].id
-    // 获取轮播图
-    this._getHeadlinesList(id);
-    //社区动态
-    this._getNoticeList(id);
   },
   // 获取轮播图
   _getHeadlinesList(id){
@@ -178,21 +174,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
     //获取二维码里面的参数，向后台发起请求获取当前小区的数据信息
     //判断用户是扫码进入还是搜索进入
     let xiaoquid=decodeURIComponent(options.subdistrictId);
-    
-    console.log(wx.getStorageSync('subdistrictId'))
-    let villageNameIndex = 0;
-    if (xiaoquid =='undefined') { 
+    if (xiaoquid =='undefined') { //搜索进入
       this.setData({
         changeVillageIsShow:true,
         villageIsShow:false,
       })
       //搜索进入小程序需要请求小区列表
       this._getSubdistrictList(wx.getStorageSync('subdistrictId'));
-    }else{
+    }else{//扫码进入
       this.setData({
         villageIsShow:true,
         changeVillageIsShow:false,
@@ -202,15 +194,26 @@ Page({
       wx.setStorageSync('subdistrictId', xiaoquid)
       this._getSubdistrictList(xiaoquid);
     }
-    
+    //根据缓存中的 subdistrictId 判断用户是否是初次进入小程序
+    let subdistrictId = wx.getStorageSync('subdistrictId');
+    console.log(subdistrictId)
+    //第二次进入小区
+    if(subdistrictId){
+      this.setData({
+        villageIsShow:true,
+        changeVillageIsShow:false
+      })
+      this._getHeadlinesList(subdistrictId);
+      this._getNoticeList(subdistrictId);
+    }
     
     let _this = this;
     //获取登录和认证的状态，控制页面功能
     try {
-        let loginStatue = wx.getStorageSync('loginStatue');//登录状态
-        let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-      // let loginStatue = 1;
-      // let authenticationStatus = 1;
+        // let loginStatue = wx.getStorageSync('loginStatue');//登录状态
+        // let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
+      let loginStatue = 1;
+      let authenticationStatus = 1;
       if (!loginStatue) {
         _this.setData({
           loginIsshow:true
@@ -247,11 +250,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    setTimeout(()=>{
-      this.setData({
-        imgLoad:false
-      })
-    },800)
+  
   },
 
   /**

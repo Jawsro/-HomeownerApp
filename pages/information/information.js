@@ -1,4 +1,8 @@
 // pages/information/information.js
+// 获取应用实例
+const app = getApp();
+//调用封装的函数
+import {HttpRequest} from "../../utils/http.js"
 Page({
 
   /**
@@ -6,7 +10,8 @@ Page({
    */
   data: {
     zanIsShow:false,
-    zanNum:66
+    zanNum:66,
+    title:'精彩资讯'
   },
   dianzan(){
     this.zanIsShow =! this.zanIsShow;
@@ -30,11 +35,24 @@ Page({
       
     
   },
+  //获取文章内容
+  _getNewsContent(id){
+    HttpRequest('/app.php/subdistrict_api/getNewsContent',{newsId:id},'get',res=>{
+      if(res.status == true){
+        console.log(res)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
 
+    this.setData({
+      title:options.title
+    })
+    this._getNewsContent(options.newsId)
   },
 
   /**
