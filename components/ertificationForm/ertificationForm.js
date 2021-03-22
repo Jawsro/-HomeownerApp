@@ -1,3 +1,7 @@
+const app = getApp();
+//调用封装的函数
+import {HttpRequest} from "../../utils/http.js";
+let lock = false;
 Component({
   /**
    * 页面的初始数据
@@ -13,16 +17,49 @@ Component({
    * 事件
    */
   methods:{
-    chose_pic_before: function (t){
+    chose_pic_before(t){
       let _this=this,
       curPic = t.target;
       wx.chooseImage({
+        count:1,
         sizeType: ['original', 'compressed'],
+        sourceType: ['album', 'camera'],
         success(res) {
           const tempFilePaths = res.tempFilePaths
           console.log(tempFilePaths,)
           wx.uploadFile({
-            // url: app.globalData.site_url+'index.php?s=/api/upload/image&wxapp_id=10001',
+            url: app.globalData.siteUrl+'/app.php/upload_api/idcard?token='+wx.getStorageSync('token')+'&&img=true',
+            filePath: tempFilePaths[0],
+            name: 'file',
+            formData: {
+              'user': 'test'
+            },
+            success(res) {
+              console.log(res)
+              const data = JSON.parse(res.data);
+              let url = data.url;
+              if(data.status && url){
+                _this.setData({
+                  idbeforeImg: app.globalData.siteUrl + url 
+                })
+              }
+           
+            }
+          })
+        }
+      })
+    },
+    chose_pic_after(){
+      let _this=this;
+      wx.chooseImage({
+        count:1,
+        sizeType: ['original', 'compressed'],
+        sourceType: ['album', 'camera'],
+        success(res) {
+          const tempFilePaths = res.tempFilePaths
+          console.log(tempFilePaths,)
+          wx.uploadFile({
+            url: app.globalData.siteUrl+'/app.php/upload_api/idcard?token='+wx.getStorageSync('token')+'&&img=false',
             filePath: tempFilePaths[0],
             name: 'file',
             formData: {
@@ -31,44 +68,18 @@ Component({
             success(res) {
               const data = JSON.parse(res.data);
               let url = data.image_url;
-              // if(data.status&&url){
-              //   _this.setData({
-              //     mendian_url: app.globalData.site_url + url 
-              
+              if(data.status && url){
+                _this.setData({
+                  idbeforeImg: app.globalData.siteUrl + url 
+                })
+              }
             }
           })
-        }
-      })
-    },
-    chose_pic_after(){
-      let _this=this,
-      curPic = t.target;
-      wx.chooseImage({
-      sizeType: ['original', 'compressed'],
-      success(res) {
-        const tempFilePaths = res.tempFilePaths
-        console.log(tempFilePaths,)
-        wx.uploadFile({
-          // url: app.globalData.site_url+'index.php?s=/api/upload/image&wxapp_id=10001',
-          filePath: tempFilePaths[0],
-          name: 'file',
-          formData: {
-            'user': 'test'
-          },
-          success(res) {
-            const data = JSON.parse(res.data);
-            let url = data.image_url;
-            // if(data.status&&url){
-            //   _this.setData({
-            //     mendian_url: app.globalData.site_url + url 
-            
-          }
-        })
       }
     })
     },
     setData(e){
-      console.log(e.detail)
+      console.log(e)
       if(lock){
         return;
       }

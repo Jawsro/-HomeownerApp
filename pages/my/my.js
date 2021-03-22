@@ -87,15 +87,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-    this.setData({
-      authenticationStatus :  authenticationStatus,
-    })
-    console.log(wx.getStorageSync('token') != '')
-    if(wx.getStorageSync('token')){
-      this._getAppUserInfo();
-    }
+  onLoad: function (options) {console.log(options)
+    
     
   },
 
@@ -103,6 +96,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    
+    
     this.attached()
   },
 
@@ -111,16 +106,12 @@ Page({
    */
   onShow: function () {
     this.isLogin();
-   
-    if (app.globalData.userInfo) {
-      this.setData({
-        headImg:app.globalData.userInfo.avatarUrl
-      })
-      console.log(app.globalData.userInfo.avatarUrl)
-    }else{
-      this.setData({
-        headImg:this.data.headImg
-      })
+   let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
+    this.setData({
+      authenticationStatus :  authenticationStatus,
+    })
+    if(wx.getStorageSync('token') != ''){
+      this._getAppUserInfo();
     }
   },
 

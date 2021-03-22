@@ -1,9 +1,9 @@
 {
   "pages":[
+    "pages/renovation/renovation",
     "pages/index/index",
     "pages/login/login",
     "pages/addHouse/addHouse",
-    "pages/renovation/renovation",
     "pages/paymentlist/paymentlist",
     "pages/houselist/houselist",
     "pages/services/services",
