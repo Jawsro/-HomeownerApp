@@ -20,26 +20,69 @@ Page({
         url:"../houselist/houselist"
       },
       {
+        icon:"icon-yuechi",
+        text:"一键开门",
+        ulr:""
+      },
+      {
+        icon:"icon-baoxiu",
+        text:"报事报修",
+        url:"../renovation/renovation"
+      },
+      {
+        icon:"icon-wuyebaoxiu",
+        text:"装修申报",
+        url:"../renovation/renovation"
+      },
+     
+    ],
+    grid:[
+      {
         icon:"icon-gonggao",
         text:"社区公告",
         url:"../announcement/announcement"
       },
       {
-        icon:"icon-baoxiu",
-        text:"装修申报",
-        url:"../renovation/renovation"
+        icon:"icon-bangbangmangmdpi",
+        text:"帮帮忙"
       },
       {
-        icon:"icon-xinwen",
-        text:"社区新闻",
-        url:"../announcement/announcement"
-      }
+        icon:"icon-daishoubaoguo",
+        text:"代收包裹"
+      },
+      {
+        icon:"icon-ziyuan",
+        text:"表扬物业"
+      },
+      {
+        icon:"icon-navicon-yjjy",
+        text:"意见建议"
+      },
+      {
+        icon:"icon-shouyetubiao-05",
+        text:"房屋租售"
+      },
+      {
+        icon:"icon-wupinquchu-05",
+        text:"物品放行"
+      },
+      {
+        icon:"icon-toupiao",
+        text:"投票"
+      },
     ],
     loginIsshow:false,//控制登录注册按钮
     loginNoshow:false,//控制登录注册按钮
     changeVillageIsShow:false,//控制小区列表选择页面（搜索进入小区）
     villageIsShow:false,//控制首页是个显示（扫码进入）
     hoeseListIsShow:true
+  },
+  goGrid(){
+    wx.showModal({
+      title: '提示',
+      content: '功能开发中。。。',
+      showCancel: false
+    })
   },
   //选择小区进入首页
   changeVillage(e){
@@ -142,17 +185,17 @@ Page({
   goIcon(e){
     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
     let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-    if(!loginStatue && !authenticationStatus){
-      wx.showModal({
-        title: '提示',
-        content: '请先登录并且完成身份认证！',
-        showCancel: false
-      })
-    }else{
+    if(loginStatue && authenticationStatus !=''){ 
       wx.navigateTo({
         url: e.currentTarget.dataset.url
       })
-    }
+    }else { 
+        wx.showModal({
+          title: '提示',
+          content: '请先登录并且完成身份认证！',
+          showCancel: false
+        })
+      } 
   },
   /**
    * 生命周期函数--监听页面加载
@@ -236,7 +279,6 @@ Page({
    */
   onShow: function () {
     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
-    console.log(loginStatue)
     let _this = this;
     //获取登录和认证的状态，控制页面功能
     try {

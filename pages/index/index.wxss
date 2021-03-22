@@ -102,11 +102,11 @@
 .add-house{
   padding: 30rpx 0rpx;
 }
-.erweima{
+/* .erweima{
   position: absolute;
   right: 80rpx;
   z-index:10
-}
+} */
 .doudou-img{
   position: absolute;
   bottom: 0rpx;

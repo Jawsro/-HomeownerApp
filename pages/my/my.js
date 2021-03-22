@@ -6,18 +6,28 @@ Page({
   data: {
     loginStatue:true,
     authenticationStatus:false,
-    headImg:''
+    headImg:'',
+    functionLisr:[
+      {
+        name:'我的车位 ',
+        url:''
+      },{
+        name:'我的汽车 ',
+        url:''
+      },{
+        name:'我的商铺 ',
+        url:''
+      },
+  ]
   },
   isLogin(){
       let _this = this;
     try {
       let loginStatue = wx.getStorageSync('loginStatue');
-      //let loginStatue = 1;
       if (!loginStatue) {
         _this.setData({
           loginStatue:true
         })
-        console.log(1111)
       }else{
         _this.setData({
           loginStatue:false
@@ -29,6 +39,28 @@ Page({
   goLogin(){
     wx.navigateTo({
       url: '../login/login',
+    })
+  },
+  goClick(){
+    let loginStatue = wx.getStorageSync('loginStatue');//登录状态
+    let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
+    if(loginStatue && authenticationStatus !=''){ 
+      wx.navigateTo({
+        url: '../houselist/houselist'
+      })
+    }else { console.log(1111)
+        wx.showModal({
+          title: '提示',
+          content: '请先登录并且完成身份认证！',
+          showCancel: false
+        })
+      } 
+  },
+  goFunction(){
+    wx.showModal({
+      title: '提示',
+      content: '功能开发中...',
+      showCancel: false
     })
   },
   attached() { 
@@ -44,7 +76,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
+    this.setData({
+      authenticationStatus :  authenticationStatus,
+    })
   },
 
   /**

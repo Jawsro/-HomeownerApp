@@ -15,7 +15,7 @@ App({
     if(wx.getStorageSync('loginStatue') == false && typeof wx.getStorageSync('loginStatue') != 'string'){
       HttpRequest('/app.php/login_api/loginStatus?token=token',{token:wx.getStorageSync('token')},'get',res=>{
         console.log(res)
-        if(res.code == true){//未登录
+        if(res.status == true){//未登录
           wx.setStorageSync('loginStatue', true);
         }else{
           wx.showModal({

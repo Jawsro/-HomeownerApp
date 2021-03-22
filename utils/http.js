@@ -4,6 +4,9 @@ var header = {
   'content-type': 'application/json'
 }
 function HttpRequest(url, data,method = "GET", callback) {
+  data = Object.assign({
+    token: wx.getStorageSync('token')
+  }, data);
   wx.showLoading({
     title: '加载中...',
   })
@@ -21,6 +24,10 @@ function HttpRequest(url, data,method = "GET", callback) {
           content: res.data.msg ,
           showCancel: false
         })
+      }else if(res.data.status == -1){
+        wx.navigateTo({
+          url: "/pages/login/login"
+        });
       }
       return typeof callback == "function" && callback(res.data)
     },

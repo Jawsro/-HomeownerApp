@@ -45,17 +45,18 @@ Page({
         return false;
       }
       this.zanIsShow =true;
-      let num = this.data.zanNum;
-      this.setData({
-        zanIsShow:true,
-        zanNum:num+1
-      })
+      
       HttpRequest('/app.php/subdistrict_api/newsPraise',{newsId:_this.data.newsId},'get',res=>{
         console.log(res)
         if(res.status == true){
           wx.showToast({
             title: '点赞成功',
             duration:2000
+          });
+          let num = this.data.zanNum;
+          this.setData({
+            zanIsShow:true,
+            zanNum:num+1
           })
         }
       })
@@ -77,7 +78,6 @@ Page({
           zanNum:res.data.praise
         })
       }
-      console.log( _this.data.newsConten)
     })
   },
   //社区动态
@@ -100,7 +100,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     let id = wx.getStorageSync('subdistrictId');
     this.data.newsId = options.newsId;
     this.setData({

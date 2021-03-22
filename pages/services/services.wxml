@@ -6,7 +6,7 @@
   <view class="main main-margin-top">
     <view class="list">
       <view class="item"  bindtap="goRenovation">
-        <view class="icon-baoxiu iconfont item-icon"></view>
+        <view class="icon-wuyebaoxiu iconfont item-icon"></view>
         <view class="text font-16">
           装修申报
         </view>

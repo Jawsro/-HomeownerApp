@@ -30,14 +30,14 @@ Page({
           // 发送 res.code 到后台换取 openId, sessionKey, unionId
           HttpRequest('/app.php/login_api/wechatLogin',{code:res.code},'get',result=>{
             console.log(result)
-            if(result.code == true){
+            if(result.status == true){
               wx.showToast({
                 title: result.msg,
                 duration:2000
               })
               //发送用户信息到后台
               //成功后将后台返回来的token,用户id保存在本地
-              wx.setStorageSync('token', result.data);
+              wx.setStorageSync('token', result.token);
               wx.setStorageSync('loginStatue', true);
               setTimeout( () => {
                 wx.switchTab({
