@@ -1,5 +1,5 @@
 
-var rootDocment = 'http://gsh.5gzvip.idcfengye.com';//请求地址
+const rootDocment = 'http://gsh.5gzvip.idcfengye.com';//请求地址
 var header = {
   'content-type': 'application/json'
 }

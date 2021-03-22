@@ -50,7 +50,7 @@
 .user-name{
   color: #000;
 }
-.grade{
+/* .grade{
   border: 1rpx solid #833833;
   border-radius: 40rpx;
   color: #833833;
@@ -58,12 +58,12 @@
   margin-top: 16rpx;
   width: 130rpx;
   text-align: center;
-}
-.erweima{
+} */
+/* .erweima{
   position: absolute;
   bottom: 0;
   right: 80rpx;
-}
+} */
 .img{
  
   position: absolute;
@@ -74,22 +74,22 @@
 .img image{
   height: 100%;
 }
-.img-vip{
+/* .img-vip{
   position: absolute;
   bottom:-60rpx;
   z-index: 9;
   left: 20rpx;
   right: 20rpx;
-}
-.text{
+} */
+/* .text{
   color: #894231;
   display: flex;
   padding: 0rpx 60rpx 0rpx 80rpx;
   align-items: center;
   border-radius: 20rpx;
   margin: 60rpx 0;
-}
-.left{
+} */
+/* .left{
   flex: 1;
   text-align: left;
 }
@@ -101,9 +101,9 @@
   border-radius: 40rpx;
   padding: 10rpx 0;
   text-align: center;
-}
+} */
 .main{
-  margin: 90rpx 30rpx 0 30rpx;
+  margin: 65rpx 30rpx 0 30rpx;
 }
 .wallet{
   background-color: #fff;

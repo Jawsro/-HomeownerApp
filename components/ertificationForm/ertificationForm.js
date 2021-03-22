@@ -15,7 +15,7 @@ Component({
   methods:{
     chose_pic_before: function (t){
       let _this=this,
-        curPic = t.target;
+      curPic = t.target;
       wx.chooseImage({
         sizeType: ['original', 'compressed'],
         success(res) {

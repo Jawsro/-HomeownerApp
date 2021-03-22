@@ -21,14 +21,21 @@ Page({
       title: "正在登录",
       mask: true
     });
+    let nickname = e.detail.userInfo.nickName,
+        weixin_headimg = e.detail.userInfo.avatarUrl
     console.log(e)
     // 登录
     wx.login({
       success: res => {
         console.log(res);
+        let data = {
+          nickname,
+          weixin_headimg,
+          code:res.code
+        }
         if(res.code){
           // 发送 res.code 到后台换取 openId, sessionKey, unionId
-          HttpRequest('/app.php/login_api/wechatLogin',{code:res.code},'get',result=>{
+          HttpRequest('/app.php/login_api/wechatLogin',data,'get',result=>{
             console.log(result)
             if(result.status == true){
               wx.showToast({

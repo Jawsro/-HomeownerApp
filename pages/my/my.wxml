@@ -10,7 +10,7 @@
       </view>
     </view>
   </view>
-  <view class="top" style="height:400rpx" wx:if='{{!loginStatue}}'>
+  <view class="top" style="height:320rpx" wx:if='{{!loginStatue}}'>
     <view class="top-title" style="height:{{height}}px;position:fixed;top:{{top}}px;left:20px;right:0;color:#833833;font-weight:600;display:flex;justify-content: center;align-items: center;z-index:10">
       <view style="flex:0 0 110rpx;" class="font-18 font-weight-500">
         我的
@@ -21,18 +21,18 @@
     </view>
     <view class="user-msg">
       <view class="head-img">
-        <text class="iconfont icon-touxiang" style="color:#C7C7C7;font-size:60px" wx:if="{{headImg==''?true:false}}"></text>
-        <image src="{{headImg}}" wx:if="{{headImg!=''?true:false}}" mode="widthFix" style="border-radius: 50%;"></image>
+        <text class="iconfont icon-touxiang" style="color:#C7C7C7;font-size:60px" wx:if="{{userInfo.weixin_headimg==null?true:false}}"></text>
+        <image src="{{userInfo.weixin_headimg}}" wx:if="{{headImg!=null?true:false}}" mode="widthFix" style="border-radius: 50%;"></image>
       </view>
       <view class="user-text">
-        <view class="user-name font-20  font-weight-500">李先生</view>
-        <view class="grade font-12">普通用户</view>
+        <view class="user-name font-20  font-weight-500">{{userInfo.nickname}}</view>
+        <!-- <view class="grade font-12">普通用户</view> -->
       </view>
       <!-- <view class="erweima">
         <text class="iconfont icon-ico" style="color: #894231;font-size:80rpx"></text>
       </view> -->
     </view>
-    <view class="img-vip" style="background:url('http://gsh.5gzvip.idcfengye.com/assets/app/bg1.jpg') center center no-repeat;background-size: cover">
+    <!-- <view class="img-vip" style="background:url('http://gsh.5gzvip.idcfengye.com/assets/app/bg1.jpg') center center no-repeat;background-size: cover">
        <view class="text" >
         <view class="left">
           <text class="font-weight-600 font-20" style="margin-right:20rpx">VIP</text>
@@ -45,7 +45,7 @@
     </view>
     <view class="img">
       <image src="../../images/doudou.png"></image>
-    </view>
+    </view> -->
   </view>
 
   <view class="main">
@@ -77,9 +77,9 @@
        <!--汽车，车位，商铺 -->
       <view class="functions-item" 
         wx:for='{{functionLisr}}'
-        :key='index'
+        wx:key='index'
         bindtap="goFunction">
-        <view class="functions-item-left" bindtap="goClick">
+        <view class="functions-item-left">
           <text>{{item.name}}</text>
         </view>
         <view class="functions-item-right">

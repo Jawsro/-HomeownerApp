@@ -144,6 +144,9 @@ Page({
     HttpRequest('/app.php/subdistrict_api/getHeadlinesList',data,'get',res=>{
       if(res.status == true){
         _this.data.swiperImg = res.data;
+        _this.data.swiperImg.forEach(item =>{
+          item.posters_url = app.globalData.siteUrl + item.posters_url
+        })
         _this.setData({
           swiperImg:_this.data.swiperImg
         })
@@ -161,6 +164,9 @@ Page({
     HttpRequest('/app.php/subdistrict_api/getNewsList',data,'get',res=>{
       if(res.status == true){
         _this.data.newsList = res.data;
+        _this.data.newsList.forEach(item =>{
+          item.posters_url = app.globalData.siteUrl + item.posters_url
+        })
         _this.setData({
           newsList:_this.data.newsList
         })

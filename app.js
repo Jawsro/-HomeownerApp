@@ -1,11 +1,13 @@
 // app.js
 //调用封装的函数
-import {HttpRequest} from "./utils/http.js"
+import {HttpRequest,siteUrl} from "./utils/http.js"
 App({
   /**
    * 全局变量
    */
-  globalData: {},
+  globalData: {
+    siteUrl:'http://gsh.5gzvip.idcfengye.com/'
+  },
   /**
    * 生命周期函数--监听小程序初始化
    */
@@ -13,7 +15,7 @@ App({
     this.setApiRoot();//版本更新
     //判断用户的登录状态(非第一次进入小程序)
     if(wx.getStorageSync('loginStatue') == false && typeof wx.getStorageSync('loginStatue') != 'string'){
-      HttpRequest('/app.php/login_api/loginStatus?token=token',{token:wx.getStorageSync('token')},'get',res=>{
+      HttpRequest('/app.php/login_api/loginStatus',{token:wx.getStorageSync('token')},'get',res=>{
         console.log(res)
         if(res.status == true){//未登录
           wx.setStorageSync('loginStatue', true);

@@ -1,4 +1,6 @@
 const app = getApp();
+//调用封装的函数
+import {HttpRequest} from "../../utils/http.js"
 Page({
   /**
    * 页面的初始数据
@@ -72,6 +74,16 @@ Page({
         top	// 标题栏top。如果标题栏高度比胶囊大，设置为 top - (navigationHeight - bar.height)/2
     })
   },
+  _getAppUserInfo(){
+    HttpRequest("/app.php/app_user_api/getAppUserInfo",{},'get',res =>{
+      if(res.status == true){
+        this.setData({
+          userInfo : res.data
+        })
+      }
+      console.log(res)
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -80,6 +92,11 @@ Page({
     this.setData({
       authenticationStatus :  authenticationStatus,
     })
+    console.log(wx.getStorageSync('token') != '')
+    if(wx.getStorageSync('token')){
+      this._getAppUserInfo();
+    }
+    
   },
 
   /**
