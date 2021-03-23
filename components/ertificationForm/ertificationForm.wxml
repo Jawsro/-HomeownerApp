@@ -21,10 +21,28 @@
       <view class="input-msg">
         <view class="left-name">
           <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-          <text class="font-16 font-weight-500">楼栋房号</text>
+          <text class="font-16 font-weight-500">楼栋号</text>
         </view>
         <view class="input">
-          <input placeholder="请输入完整的住宅信息" class="font-15" name="floor" style="color:#B7B7B7"></input>
+          <input placeholder="请输入楼栋号" class="font-15" name="floor1" style="color:#B7B7B7"></input>
+        </view>
+      </view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16 font-weight-500">单元号</text>
+        </view>
+        <view class="input">
+          <input placeholder="若没有区分单元，请输入1" class="font-15" name="floor1" style="color:#B7B7B7"></input>
+        </view>
+      </view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16 font-weight-500">房号</text>
+        </view>
+        <view class="input">
+          <input placeholder="请输入房号" class="font-15" name="floor" style="color:#B7B7B7"></input>
         </view>
       </view>
       <view class="input-msg" hidden="{{identity =='owner'}}">

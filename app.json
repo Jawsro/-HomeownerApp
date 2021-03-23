@@ -1,6 +1,6 @@
 {
   "pages":[
-    "pages/renovation/renovation",
+    
     "pages/index/index",
     "pages/login/login",
     "pages/addHouse/addHouse",
@@ -14,6 +14,7 @@
     "pages/information/information",
     "pages/phonenumber/phonenumber",
     "pages/noticelist/noticelist",
+    "pages/renovation/renovation",
     "pages/certification/certification"
   ],
   "window":{

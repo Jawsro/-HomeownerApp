@@ -12,24 +12,31 @@ App({
    * 生命周期函数--监听小程序初始化
    */
   onLaunch(options) {
+    console.log(options)
+    //获取二维码里面的参数，缓存在本地
+    let xiaoquid=decodeURIComponent(options.query.subdistrictId);
+    if(xiaoquid != 'undefined'){
+      wx.setStorageSync('subdistrictId', xiaoquid);
+    }
+    
     this.setApiRoot();//版本更新
     //判断用户的登录状态(非第一次进入小程序)
-    if(wx.getStorageSync('loginStatue') == false && typeof wx.getStorageSync('loginStatue') != 'string'){
+    if(wx.getStorageSync('token') != ''){
       HttpRequest('/app.php/login_api/loginStatus',{token:wx.getStorageSync('token')},'get',res=>{
-        console.log(res)
-        if(res.status == true){//未登录
+        if(res.status == true){//已登录
           wx.setStorageSync('loginStatue', true);
         }else{
           wx.showModal({
             title: '提示',
-            content: '登录已过期！',
+            content: '登录已过期！请先登录',
+            showCancel: false,
             success (res) {
               if (res.confirm) {
                 wx.navigateTo({
                   url: '../login/login',
                 })
               } else if (res.cancel) {
-                
+                wx.setStorageSync('loginStatue', false);
               }
             }
           })

@@ -107,6 +107,7 @@ Page({
   onShow: function () {
     this.isLogin();
    let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
+   console.log(wx.getStorageSync('token'))
     this.setData({
       authenticationStatus :  authenticationStatus,
     })

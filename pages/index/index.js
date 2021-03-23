@@ -207,10 +207,43 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //获取二维码里面的参数，向后台发起请求获取当前小区的数据信息
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    // let loginStatue = wx.getStorageSync('loginStatue');//登录状态
+    // let _this = this;
+    // //获取登录和认证的状态，控制页面功能
+    // try {
+    //     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
+    //     if (!loginStatue) {
+    //       _this.setData({
+    //         loginIsshow:true,
+    //         loginNoshow:false
+    //       })
+    //     }else{
+    //       _this.setData({
+    //         loginIsshow:false,
+    //         loginNoshow:true
+    //       })
+    //     }
+        
+    //   } catch (e) {}
+    //获取本地缓存的小区id，初次使用该小程序只有扫描二维码进入的才会在本地缓存(app.js中缓存)
+    let xiaoquid=wx.getStorageSync('subdistrictId');
+    console.log(xiaoquid)
     //判断用户是扫码进入还是搜索进入
-    let xiaoquid=decodeURIComponent(options.subdistrictId);
-    if (xiaoquid =='undefined') { //搜索进入
+    if (xiaoquid =='') { //搜索进入
       this.setData({
         changeVillageIsShow:true,
         villageIsShow:false,
@@ -268,37 +301,6 @@ Page({
               villageNameIndex:wx.getStorageSync('subdistrictId')
             })
           }
-        }
-        
-      } catch (e) {}
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    let loginStatue = wx.getStorageSync('loginStatue');//登录状态
-    let _this = this;
-    //获取登录和认证的状态，控制页面功能
-    try {
-        let loginStatue = wx.getStorageSync('loginStatue');//登录状态
-        if (!loginStatue) {
-          _this.setData({
-            loginIsshow:true,
-            loginNoshow:false
-          })
-        }else{
-          _this.setData({
-            loginIsshow:false,
-            loginNoshow:true
-          })
         }
         
       } catch (e) {}
