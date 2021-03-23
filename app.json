@@ -36,12 +36,7 @@
         "iconPath": "images/tabbar/home.png",
         "selectedIconPath": "images/tabbar/home-on.png"
       },
-      {
-        "pagePath": "pages/services/services",
-        "text": "社区服务",
-        "iconPath": "images/tabbar/services.png",
-        "selectedIconPath": "images/tabbar/services-on.png"
-      },
+      
       {
         "pagePath": "pages/my/my",
         "text": "我的",
