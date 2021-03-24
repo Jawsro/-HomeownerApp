@@ -10,9 +10,11 @@
         indicator-active-color="{{indicatorActiveColor}}"
        >
         <block >
-        <navigator url='{{item.jump_link}}' hover-class="none">
-          <swiper-item wx:for="{{swiperImg}}" wx:key='index'>
-           <image src="{{item.posters_url}}" mode='widthFix'></image>
+        <navigator 
+          wx:for="{{swiperImg}}" wx:key='index'
+          url="../../pages/information/information?newsId={{item.id}}&title=详情" hover-class="none">
+          <swiper-item >
+           <image src="{{item.head_image}}" mode='widthFix'></image>
           </swiper-item>
         </navigator>
           

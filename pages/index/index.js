@@ -2,7 +2,8 @@
 // 获取应用实例
 const app = getApp();
 //调用封装的函数
-import {HttpRequest} from "../../utils/http.js"
+import {HttpRequest} from "../../utils/http.js";
+import {timeDate} from "../../utils/util.js";
 Page({
 
   /**
@@ -34,6 +35,7 @@ Page({
         text:"装修申报",
         url:"../renovation/renovation"
       },
+      
      
     ],
     grid:[
@@ -75,21 +77,40 @@ Page({
     loginNoshow:false,//控制登录注册按钮
     changeVillageIsShow:false,//控制小区列表选择页面（搜索进入小区）
     villageIsShow:false,//控制首页是个显示（扫码进入）
-    hoeseListIsShow:true
+    // hoeseListIsShow:true
   },
-  goGrid(){
-    wx.showModal({
-      title: '提示',
-      content: '功能开发中。。。',
-      showCancel: false
-    })
+  goGrid(e){
+    let index = e.currentTarget.dataset.index;
+    let loginStatue = wx.getStorageSync('loginStatue');//登录状态
+    console.log(loginStatue)
+    if(loginStatue){ 
+     if(index == 0){
+      wx.navigateTo({
+        url: '../announcement/announcement'
+      })
+     }else{
+      wx.showModal({
+        title: '提示',
+        content: '功能开发中。。。',
+        showCancel: false
+      })
+     }
+    }else {
+        wx.showModal({
+          title: '提示',
+          content: '请先登录',
+          showCancel: false
+        })
+      } 
   },
+    
+
   //选择小区进入首页
   changeVillage(e){
     let id = e.currentTarget.dataset.id;
     wx.setStorageSync('subdistrictId', id)
     // 获取轮播图
-    this._getHeadlinesList(id);
+    this._getHomepageSwiperList(id);
     //社区动态
     this._getNewsList(id);
     this.setData({
@@ -107,7 +128,7 @@ Page({
     })
     let id = this.data.subdistrictList[index].id
     // 获取轮播图
-    this._getHeadlinesList(id);
+    this._getHomepageSwiperList(id);
     //社区动态
     this._getNewsList(id);
     //并缓存小区id
@@ -136,20 +157,21 @@ Page({
     })
   },
   // 获取轮播图
-  _getHeadlinesList(id){
+  _getHomepageSwiperList(id){
     let _this = this;
     let data= {
       subdistrictId: id 
     } 
-    HttpRequest('/app.php/subdistrict_api/getHeadlinesList',data,'get',res=>{
+    HttpRequest('/app.php/information_api/getHomepageSwiperList',data,'get',res=>{
       if(res.status == true){
         _this.data.swiperImg = res.data;
         _this.data.swiperImg.forEach(item =>{
-          item.posters_url = app.globalData.siteUrl + item.posters_url
+          item.head_image = app.globalData.siteUrl + item.head_image
         })
         _this.setData({
           swiperImg:_this.data.swiperImg
         })
+        console.log(_this.data.swiperImg)
       }
       
     })
@@ -161,11 +183,12 @@ Page({
       subdistrictId :id,
       page:1
     };
-    HttpRequest('/app.php/subdistrict_api/getNewsList',data,'get',res=>{
+    HttpRequest('/app.php/information_api/getNewsList',data,'get',res=>{
       if(res.status == true){
         _this.data.newsList = res.data;
         _this.data.newsList.forEach(item =>{
-          item.posters_url = app.globalData.siteUrl + item.posters_url
+          item.head_image = app.globalData.siteUrl + item.head_image;
+          item.createtime = timeDate (item.createtime)
         })
         _this.setData({
           newsList:_this.data.newsList
@@ -178,16 +201,16 @@ Page({
       url: '../login/login',
     })
   },
-  openHouseList(){
-    this.setData({
-      coloseHose:true
-    })
-  },
-  closeHouseList(){
-    this.setData({
-      coloseHose:false
-    })
-  },
+  // openHouseList(){
+  //   this.setData({
+  //     coloseHose:true
+  //   })
+  // },
+  // closeHouseList(){
+  //   this.setData({
+  //     coloseHose:false
+  //   })
+  // },
   goIcon(e){
     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
     let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
@@ -221,62 +244,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // let loginStatue = wx.getStorageSync('loginStatue');//登录状态
-    // let _this = this;
-    // //获取登录和认证的状态，控制页面功能
-    // try {
-    //     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
-    //     if (!loginStatue) {
-    //       _this.setData({
-    //         loginIsshow:true,
-    //         loginNoshow:false
-    //       })
-    //     }else{
-    //       _this.setData({
-    //         loginIsshow:false,
-    //         loginNoshow:true
-    //       })
-    //     }
-        
-    //   } catch (e) {}
     //获取本地缓存的小区id，初次使用该小程序只有扫描二维码进入的才会在本地缓存(app.js中缓存)
     let xiaoquid=wx.getStorageSync('subdistrictId');
-    console.log(xiaoquid)
+    //console.log(xiaoquid)
     //判断用户是扫码进入还是搜索进入
     if (xiaoquid =='') { //搜索进入
       this.setData({
         changeVillageIsShow:true,
         villageIsShow:false,
       })
-      //搜索进入小程序需要请求小区列表
-      this._getSubdistrictList(wx.getStorageSync('subdistrictId'));
     }else{//扫码进入
       this.setData({
         villageIsShow:true,
         changeVillageIsShow:false,
       })
-      this._getHeadlinesList(xiaoquid);
-      this._getNewsList(xiaoquid);
-      wx.setStorageSync('subdistrictId', xiaoquid)
-      this._getSubdistrictList(xiaoquid);
     }
-    //根据缓存中的 subdistrictId 判断用户是否是初次进入小程序
-    let subdistrictId = wx.getStorageSync('subdistrictId');
-    //第二次进入小区
-    if(subdistrictId){
-      this.setData({
-        villageIsShow:true,
-        changeVillageIsShow:false
-      })
-      this._getHeadlinesList(subdistrictId);
-      this._getNewsList(subdistrictId);
-    }
-    
+    this._getSubdistrictList(xiaoquid);
+    this._getHomepageSwiperList(xiaoquid);
+    this._getNewsList(xiaoquid);
     let _this = this;
     //获取登录和认证的状态，控制页面功能
     try {
         let loginStatue = wx.getStorageSync('loginStatue');//登录状态
-        let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
+        // let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
         if (!loginStatue) {
           _this.setData({
             loginIsshow:true,
@@ -290,17 +280,17 @@ Page({
             changeVillageIsShow:false,
             villageNameIndex:wx.getStorageSync('subdistrictId')
           })
-          //登录状态并且已认证
-          if (!authenticationStatus) {
-            _this.setData({
-              hoeseListIsShow:true
-            })
-          }else{
-            _this.setData({
-              hoeseListIsShow:false,
-              villageNameIndex:wx.getStorageSync('subdistrictId')
-            })
-          }
+          // //登录状态并且已认证
+          // if (!authenticationStatus) {
+          //   _this.setData({
+          //     // hoeseListIsShow:true
+          //   })
+          // }else{
+          //   _this.setData({
+          //     hoeseListIsShow:false,
+          //     villageNameIndex:wx.getStorageSync('subdistrictId')
+          //   })
+          // }
         }
         
       } catch (e) {}

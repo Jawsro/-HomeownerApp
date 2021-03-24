@@ -25,9 +25,21 @@ function HttpRequest(url, data,method = "GET", callback) {
           showCancel: false
         })
       }else if(res.data.status == -1){
-        wx.navigateTo({
-          url: "/pages/login/login"
-        });
+        wx.showModal({
+          title: '提示',
+          content: '登录已过期！请先登录',
+          showCancel: false,
+          success (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../login/login',
+              })
+            }
+          }
+        })
+        // wx.navigateTo({
+        //   url: "/pages/login/login"
+        // });
       }
       return typeof callback == "function" && callback(res.data)
     },

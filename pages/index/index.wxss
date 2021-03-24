@@ -58,7 +58,7 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  top:162rpx;
+  top:169rpx;
   width: 100%;
 }
 .xiaoqu{
@@ -76,7 +76,7 @@
   color: #1C222D;
   padding: 10rpx 0;
 }
-.houses{
+/* .houses{
   background-color: #fff;
   border-radius: 20rpx;
   position: absolute;
@@ -90,8 +90,8 @@
   align-items: center;
   padding: 30rpx 0rpx;
   border-bottom: 1rpx solid #F4F4F4;
-}
-.house-list-left{
+} */
+/* .house-list-left{
   margin-right: 20rpx;
 }
 
@@ -101,7 +101,7 @@
 }
 .add-house{
   padding: 30rpx 0rpx;
-}
+} */
 /* .erweima{
   position: absolute;
   right: 80rpx;
@@ -120,7 +120,7 @@
   position: absolute;
   bottom: -64rpx;
   width: 100%;
-  height:126rpx ;
+  height:100rpx ;
   background-color: #E9D8D0;
 }
 .classification{
@@ -141,7 +141,7 @@
   justify-content: center;
 }
 .classification-item-img{
-  font-size: 74rpx;
+  font-size: 66rpx;
   color: #7F402F;
   margin-bottom: 10rpx;
 }
@@ -150,12 +150,12 @@
 }
 .grid{
   background: #fff;
-  margin: 10rpx 0;
+  /* margin: 10rpx 0; */
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap:wrap;
-  padding:30rpx 0;
+  padding:30rpx 0 0;
   width: 100%;
 }
 .grid-item{
@@ -168,13 +168,13 @@
   margin-bottom: 40rpx;
 }
 .grid-item-img{
-  font-size: 78rpx;
+  font-size: 56rpx;
   color: #C8A792;
 }
 .grid-item-text{
   color: #C8A792;
 }
-.module{
+/* .module{
   display: flex;
   flex-wrap:wrap;
   padding:20rpx 30rpx;
@@ -183,13 +183,13 @@
 .module .item{
   width:49%;
   margin-bottom: 10rpx;
-}
-.right{
+} */
+/* .right{
   margin-right: 10rpx;
-}
-.module .item image{
+} */
+/* .module .item image{
   border-radius: 10rpx;
-}
+} */
 .community .list{
   margin-bottom: 30rpx;
 }

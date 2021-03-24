@@ -58,6 +58,21 @@ Page({
         })
       } 
   },
+  goOwner(){
+    let loginStatue = wx.getStorageSync('loginStatue');//登录状态
+    console.log(loginStatue)
+    if(loginStatue){ 
+      wx.navigateTo({
+        url: '../owner/owner'
+      })
+    }else {
+        wx.showModal({
+          title: '提示',
+          content: '请先登录',
+          showCancel: false
+        })
+      } 
+  },
   goFunction(){
     wx.showModal({
       title: '提示',

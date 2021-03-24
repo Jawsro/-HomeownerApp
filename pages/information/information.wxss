@@ -48,7 +48,7 @@
 .zan-text{
   padding-top: 20rpx;
 }
-.recommend{
+/* .recommend{
   background-color: #fff;
   padding: 40rpx 30rpx;
 }
@@ -80,4 +80,4 @@
 .news-list-right image{
   border-radius: 20rpx;
   height: 100%;
-}
+} */

@@ -63,10 +63,15 @@ Page({
     }
    
   },
-  //获取文章内容
+  //获取文章内容------社区动态
   _getNewsContent(id){
     let _this = this;
-    HttpRequest('/app.php/subdistrict_api/getNewsContent',{newsId:id},'get',res=>{
+    let subdistrictId = wx.getStorageSync('subdistrictId');
+    let data = {
+      subdistrictId,
+      id
+    }
+    HttpRequest('/app.php/information_api/getNewsContent',data,'get',res=>{
       if(res.status == true){
         _this.data.newsConten = res.data;
         if(!res.data.author_nickname ){
@@ -80,34 +85,43 @@ Page({
       }
     })
   },
-  //社区动态
-  _getNewsList(id){
+  //获取文章内容------轮播图
+  _getHomepageSwiperListContent(id){
     let _this = this;
+    let subdistrictId = wx.getStorageSync('subdistrictId');
     let data = {
-      subdistrictId :id,
-      page:1
-    };
-    HttpRequest('/app.php/subdistrict_api/getNewsList',data,'get',res=>{
+      subdistrictId,
+      id
+    }
+    HttpRequest('/app.php/information_api/getHomepageSwiperListContent',data,'get',res=>{
       if(res.status == true){
-        _this.data.newsList = res.data;
+        _this.data.newsConten = res.data;
+        if(!res.data.author_nickname ){
+          _this.data.newsConten.author_nickname  = ' '
+        }
+        _this.data.newsConten.createtime = timeDate(_this.data.newsConten.createtime)
         _this.setData({
-          newsList:_this.data.newsList
+          newsConten:_this.data.newsConten,
+          zanNum:res.data.praise
         })
-      } 
+      }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let id = wx.getStorageSync('subdistrictId');
+    console.log(options)
+    let subdistrictId = wx.getStorageSync('subdistrictId');
     this.data.newsId = options.newsId;
     this.setData({
       title:options.title
     })
-    this._getNewsContent(options.newsId);
+    
     if(options.title == '社区动态'){
-      this._getNewsList(id);
+      this._getNewsContent(options.newsId);
+    }else if(options.title == '详情'){
+      this._getHomepageSwiperListContent(options.newsId);
     }
   },
 

@@ -9,25 +9,22 @@
       </view>
       <view class="mag font-14">
         <view class="left">
-          <!-- <text class="margin-right">6.3万阅读</text> -->
+          <text class="margin-right" wx:if="{{newsConten.reading}}">{{newsConten.reading}}人阅读</text>
           <text>{{newsConten.createtime}}</text>
         </view>
-        <!-- <view class="right">
-          <text class="margin-right">约6万字</text>
-          <text>阅读需6分钟</text>
-        </view> -->
       </view>
     </view>
 
     <view class="author font-16 font-weight-500">
-      <text>文|{{newsConten.author_nickname}}</text>
+      <text>{{newsConten.author_nickname}}</text>
     </view>
 
     <view class="main font-16 font-weight-500">
-        {{newsConten.content}}
+      <rich-text nodes="{{newsConten.content}}"></rich-text>
+        
     </view>
 
-    <view class="zan">
+    <view class="zan" wx:if="{{newsConten.praise}}">
       <view class="dianzan" bindtap="dianzan">
         <text class="iconfont {{zanIsShow ? 'icon-dianzan1' : 'icon-dianzan'}} {{zanIsShow ? 'iscolor' : 'nocolor'}} icon" ></text>
         <text class="zan-num {{zanIsShow ? 'iscolor' : 'nocolor'}}" >{{zanNum}}</text>
@@ -38,11 +35,11 @@
     </view>
   </view>
 
-  <view class="recommend">
+  <!-- <view class="recommend">
     <view class="recommern-title font-weight-600 font-16">
       <text>相关推荐</text>
     </view>
-     <view class="news">
+    <view class="news">
 
         <navigator class="news-list"
           hover-class="none"
@@ -64,6 +61,6 @@
           </view>
         </navigator>
 
-      </view>
     </view>
+  </view> -->
 </view>
