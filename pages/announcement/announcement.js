@@ -5,30 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    zanIsShow:false,
-    zanNum:66,
-    swiperImg:["http://property.shangyouyun.cn/image/gonggao.jpg","http://property.shangyouyun.cn/image/gonggao.jpg"],
-  },
-  dianzan(){
-    this.zanIsShow =! this.zanIsShow;
-    console.log(this.data.zanNum)
-    let num = this.data.zanNum;
-    if(!this.zanIsShow){
-      //取消点赞
-      //请求后台取消成功修改数据
-      this.setData({
-        zanIsShow:false,
-        zanNum:num-1
-      })
-    }else{
-      //点赞
-      //请求后台点赞成功修改数据
-      this.setData({
-        zanIsShow:true,
-        zanNum:num+1
-      })
-    }
-    
+    text:'#本小区于本月15号起开通线上缴费功能开通线上缴费功能',
+    marqueePace: 1,
+    marqueeDistance: 0,//初始滚动距离
+    marquee_margin: 20,
+    size:14,
+    interval: 20// 时间间隔
   },
   /**
    * 生命周期函数--监听页面加载
@@ -48,9 +30,45 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+     // 页面显示
+     var that = this;
+     var length = that.data.text.length * that.data.size;//文字长度
+     var windowWidth = wx.getSystemInfoSync().windowWidth ;// 屏幕宽度
+     console.log(length,windowWidth);
+     that.setData({
+       length: length,
+       windowWidth: windowWidth
+     });
+     that.scrolltxt();// 第一个字消失后立即从右边出现
   },
-
+  scrolltxt: function () {
+    var that = this;
+    var length = that.data.length;//滚动文字的宽度
+    var windowWidth = that.data.windowWidth;//屏幕宽度
+    if (length > windowWidth){
+      var interval = setInterval(function () {
+        var maxscrollwidth = parseInt(length);//滚动的最大宽度，文字宽度+间距，如果需要一行文字滚完后再显示第二行可以修改marquee_margin值等于windowWidth即可
+        var crentleft = that.data.marqueeDistance;
+        if (crentleft < maxscrollwidth) {//判断是否滚动到最大宽度
+          that.setData({
+            marqueeDistance: crentleft + that.data.marqueePace
+          })
+        }
+        else {
+          //console.log("替换");
+          that.setData({
+            marqueeDistance: 0 // 直接重新滚动
+          });
+          clearInterval(interval);
+          that.scrolltxt();
+        }
+      }, that.data.interval);
+    }
+    else{
+      that.setData({ marquee_margin:"1000"});//只显示一条不滚动右边间距加大，防止重复显示
+    } 
+    console.log(length,windowWidth)
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

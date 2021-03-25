@@ -13,7 +13,7 @@
   align-items: center;
 }
 .information .img{
-  width: 200rpx;
+  width: 500rpx;
   margin-right: 20rpx;
 }
 .information .text{
@@ -21,8 +21,15 @@
   overflow: hidden;
   white-space: nowrap;
   color: #A3A2A2;
-  margin-right:50rpx;
+  /* position:absolute;
+  top:0;
+  left:210rpx;
+  font-size:14px;
+  height:90rpx;
+  line-height:90rpx; */
+ padding-left:20rpx;
 }
+
 .information .more{
   color: #A3A2A2;
 }

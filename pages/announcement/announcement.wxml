@@ -8,12 +8,16 @@
       <view class="img">
         <image src="../../images/laba.png" mode='widthFix'></image>
       </view>
-      <view class="text font-16">
-        <text>#本小区于本月15号起开通线上缴费功能开通线上缴费功能</text>
+      <view class="text font-14">
+        <view  style="transform: translateX(-{{marqueeDistance}}px)">
+        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>
+        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>    
       </view>
-      <view class="more">
+
+      </view>
+      <!-- <view class="more">
         <text class="iconfont icon-gengduo "></text>
-      </view>
+      </view> -->
     </view>
     <view class="main">
       <view class="main-title ">
