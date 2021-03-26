@@ -10,40 +10,97 @@ Page({
    * 页面的初始数据
    */
   data: {
-    noticeList:[]
+    noticeList:[],
+    moreText:'加载中',
+    page:1
   },
   //社区动态
-  _getNoticeList(id){
+  _getNoticeList(){
+    let subdistrictId = wx.getStorageSync('subdistrictId');
     let _this = this;
+    if(_this.data.moreText != '加载中'){
+      return false;
+    }
+    console.log(123)
+    _this.data.moreText = '正在加载更多';
     let data = {
-      subdistrictId :id,
-      page:1
+      subdistrictId :subdistrictId,
+      page:_this.data.page
     };
-    HttpRequest('/app.php/subdistrict_api/getNoticeList',data,'get',res=>{
+    HttpRequest('/app.php/information_api/getNewsList',data,'get',res=>{
       if(res.status == true){
-        console.log(res)
-        _this.data.noticeList = res.data;
-        _this.data.noticeList.forEach(item =>{
+        res.data.forEach(item =>{
+          item.head_image = app.globalData.siteUrl + item.head_image;
           item.createtime=timeDate(item.createtime)
         })
+        _this.data.noticeList = _this.data.noticeList.concat(res.data)
+        if( res.data.length<0){
+          _this.data.moreText ='暂无数据';
+          
+        }else if(res.data.length<10){
+          _this.data.moreText ='没有更多数据了';
+          
+        }else{
+          _this.data.page ++;
+          _this.data.moreText ='加载中';
+        }
         _this.setData({
-          noticeList:_this.data.noticeList
+          noticeList:_this.data.noticeList,
+          moreText:_this.data.moreText
         })
       } 
     })
   },
+  goInformation(e){
+    let id = e.currentTarget.dataset.id;
+    let content = e.currentTarget.dataset.content;
+    console.log(typeof content)
+    if (content == true){
+      wx.navigateTo({
+        url: '/pages/information/information?newsId='+id+'&title=社区动态',
+      })
+    }
+  },
+  //上拉加载
+  // _getMoreList(){
+   
+    
+  //   let data = {
+  //     subdistrictId :subdistrictId,
+  //     page:_this.data.page
+  //   };
+  //   HttpRequest('/app.php/information_api/getNewsList',data,'get',res =>{
+  //     _this.data.moreText = '';
+  //     if(res.status == true ){
+  //       rea.data.forEach(item =>{
+  //         item.head_image = app.globalData.siteUrl + item.head_image;
+  //         item.createtime=timeDate(item.createtime)
+  //       })
+  //       _this.data.noticeList = _this.data.noticeList.concat( rea.data)
+  //       if(res.data.length<10){
+  //         _this.data.moreText ='没有更多数据了';
+  //       }else{
+  //         _this.data.moreText = '加载更多';
+  //         _this.data.page ++;
+  //       }
+  //       _this.setData({
+  //         noticeList:_this.data.noticeList,
+  //         moreText:_this.data.moreText
+  //       })
+  //     }
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    console.log(options);
     let _this = this;
-    let subdistrictId = wx.getStorageSync('subdistrictId');
     _this.setData({
       title:options.title
     })
     if(options.title =='社区动态'){
-      _this._getNoticeList(subdistrictId)
+      _this._getNoticeList()
     }
   },
 
@@ -79,14 +136,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this._getNoticeList();//上拉加载列表数据
+  console.log('页面上拉触底事件的处理函数')
   },
 
   /**

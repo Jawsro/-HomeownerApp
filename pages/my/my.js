@@ -9,18 +9,39 @@ Page({
     loginStatue:true,
     authenticationStatus:false,
     headImg:'',
-    functionLisr:[
+    functionList:[
       {
-        name:'我的车位 ',
-        url:''
-      },{
-        name:'我的汽车 ',
-        url:''
-      },{
-        name:'我的商铺 ',
-        url:''
+        id:1,
+        name:'我的房屋信息 ',
+        text:'房屋',
+        url:'',
+        dataList:[],
+        isShow:false
       },
-  ]
+      {
+        id:2,
+        name:'我的车位 ',
+        text:'车位',
+        url:'',
+        dataList:[],
+        isShow:false
+      },{
+        id:3,
+        name:'我的汽车 ',
+        text:'汽车',
+        url:'',
+        dataList:[],
+        isShow:false
+      },{
+        id:4,
+        name:'我的商铺 ',
+        text:'商铺',
+        url:'',
+        dataList:[],
+        isShow:false
+      },
+  ],
+  contentIsshow:false,
   },
   isLogin(){
       let _this = this;
@@ -46,17 +67,21 @@ Page({
   goClick(){
     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
     let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-    if(loginStatue && authenticationStatus !=''){ 
-      wx.navigateTo({
-        url: '../houselist/houselist'
-      })
-    }else { console.log(1111)
-        wx.showModal({
-          title: '提示',
-          content: '请先登录并且完成身份认证！',
-          showCancel: false
-        })
-      } 
+    this.setData({
+      contentIsshow:true
+    })
+    // if(loginStatue && authenticationStatus !=''){ 
+    //   // wx.navigateTo({
+    //   //   url: '../houselist/houselist'
+    //   // })
+     
+    // }else { console.log(1111)
+    //     wx.showModal({
+    //       title: '提示',
+    //       content: '请先登录并且完成身份认证！',
+    //       showCancel: false
+    //     })
+    //   } 
   },
   goOwner(){
     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
@@ -73,12 +98,42 @@ Page({
         })
       } 
   },
-  goFunction(){
-    wx.showModal({
-      title: '提示',
-      content: '功能开发中...',
-      showCancel: false
-    })
+  goFunction(e){
+    console.log(e)
+    let id = e.currentTarget.dataset.id;
+    let loginStatue = wx.getStorageSync('loginStatue');//登录状态
+    let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
+    if(loginStatue && authenticationStatus !=''){ 
+      if(id == 1){
+        this.data.functionList.forEach(item =>{
+          if(item.id==id){
+            if(item.isShow==true){
+              item.isShow=false
+            }else{
+              item.isShow=true
+            }
+          }else{
+            item.isShow=false
+          }
+        })
+        this.setData({
+          functionList:this.data.functionList
+        })
+      }else{
+        wx.showModal({
+          title: '提示',
+          content: '功能开发中...',
+          showCancel: false
+        })
+      }
+      
+    }else { console.log(1111)
+        wx.showModal({
+          title: '提示',
+          content: '请先登录并且完成身份认证！',
+          showCancel: false
+        })
+      } 
   },
   attached() { 
     let bar = wx.getMenuButtonBoundingClientRect()		// 获取胶囊丸信息
@@ -96,23 +151,18 @@ Page({
           userInfo : res.data
         })
       }
-      console.log(res)
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {console.log(options)
-    
-    
+  onLoad: function (options) {
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
-    
     this.attached()
   },
 
@@ -121,8 +171,7 @@ Page({
    */
   onShow: function () {
     this.isLogin();
-   let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-   console.log(wx.getStorageSync('token'))
+    let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
     this.setData({
       authenticationStatus :  authenticationStatus,
     })

@@ -171,7 +171,6 @@ Page({
         _this.setData({
           swiperImg:_this.data.swiperImg
         })
-        console.log(_this.data.swiperImg)
       }
       
     })
@@ -226,6 +225,16 @@ Page({
         })
       } 
   },
+  goInformation(e){
+    let id = e.currentTarget.dataset.id;
+    let content = e.currentTarget.dataset.content;
+    console.log(typeof content)
+    if (content == true){
+      wx.navigateTo({
+        url: '/pages/information/information?newsId='+id+'&title=社区动态',
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -236,14 +245,20 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-    
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+     //判断用户的登录状态(非第一次进入小程序)
+     if(wx.getStorageSync('token') != ''){
+      HttpRequest('/app.php/login_api/loginStatus',{token:wx.getStorageSync('token')},'get',res=>{
+        if(res.status == true){//已登录
+          wx.setStorageSync('loginStatue', true);
+        }
+      })
+    }
     //获取本地缓存的小区id，初次使用该小程序只有扫描二维码进入的才会在本地缓存(app.js中缓存)
     let xiaoquid=wx.getStorageSync('subdistrictId');
     //console.log(xiaoquid)
@@ -321,7 +336,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
   },
 
   /**

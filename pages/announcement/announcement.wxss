@@ -1,22 +1,31 @@
 .container{
   padding-top: 20rpx;
 }
-.information,.message-board{
+/* .information,.message-board{
   background: #fff;
   border-radius: 20rpx;
   margin:20rpx 30rpx;
   padding:30rpx;
+} */
+.information{
+  margin:20rpx 30rpx;
+}
+.title,.main{
+  background: #fff;
+  padding:30rpx;
+  border-radius: 20rpx;
 }
 .title{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20rpx;
 }
-.information .img{
+.title .img{
   width: 500rpx;
   margin-right: 20rpx;
 }
-.information .text{
+.title .text{
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -33,12 +42,18 @@
 .information .more{
   color: #A3A2A2;
 }
-.main-title,.message-board-title{
+/* .main-title,.message-board-title{
   color:#443C38;
   display: flex;
   justify-content: center;
   align-items: center;
   padding:30rpx 0 0 0;
+} */
+.main-title{
+  color:#443C38;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .message-board-title{
   padding-top: 0;
@@ -47,22 +62,21 @@
   text-align: left;
   flex: 1;
 }
-.main-more{
+/* .main-more{
   text-align: right;
   flex: 1;
-}
+} */
 .news-list{
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   border-bottom: 1px solid #EBEBEB;
   padding:40rpx 0 ;
 }
 .news-list-right{
-  width: 360rpx;
-  height: 140rpx;
+  flex: 0 0 200rpx;
 }
 .news-list-left{
+  flex:1;
   padding-right:60rpx;
   position: relative;
 }

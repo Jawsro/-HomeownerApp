@@ -19,9 +19,9 @@
       <text>{{newsConten.author_nickname}}</text>
     </view>
 
-    <view class="main font-16 font-weight-500">
-      <rich-text nodes="{{newsConten.content}}"></rich-text>
-        
+    <view class="main">
+      <rich-text nodes="{{newsConten.content}}">
+      </rich-text>
     </view>
 
     <view class="zan" wx:if="{{newsConten.praise}}">
@@ -29,9 +29,9 @@
         <text class="iconfont {{zanIsShow ? 'icon-dianzan1' : 'icon-dianzan'}} {{zanIsShow ? 'iscolor' : 'nocolor'}} icon" ></text>
         <text class="zan-num {{zanIsShow ? 'iscolor' : 'nocolor'}}" >{{zanNum}}</text>
       </view>
-      <view class="zan-text font-14">
+      <!-- <view class="zan-text font-14">
         <text>点赞，写的不错</text>
-      </view>
+      </view> -->
     </view>
   </view>
 

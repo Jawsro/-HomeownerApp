@@ -45,8 +45,11 @@ Page({
         return false;
       }
       this.zanIsShow =true;
-      
-      HttpRequest('/app.php/subdistrict_api/newsPraise',{newsId:_this.data.newsId},'get',res=>{
+      let data ={
+        subdistrictId: wx.getStorageSync('subdistrictId'),
+        id:_this.data.newsId
+      }
+      HttpRequest('/app.php/information_api/newsPraise',data,'get',res=>{
         console.log(res)
         if(res.status == true){
           wx.showToast({
@@ -107,6 +110,28 @@ Page({
       }
     })
   },
+  //获取文章内容------社区公告
+  _getAnnouncementContent(id){
+    let _this = this;
+    let subdistrictId = wx.getStorageSync('subdistrictId');
+    let data = {
+      subdistrictId,
+      id
+    }
+    HttpRequest('/app.php/information_api/getAnnouncementContent',data,'get',res=>{
+      if(res.status == true){
+        _this.data.newsConten = res.data;
+        if(!res.data.author_nickname ){
+          _this.data.newsConten.author_nickname  = ' '
+        }
+        _this.data.newsConten.createtime = timeDate(_this.data.newsConten.createtime)
+        _this.setData({
+          newsConten:_this.data.newsConten,
+          zanNum:res.data.praise
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -122,6 +147,8 @@ Page({
       this._getNewsContent(options.newsId);
     }else if(options.title == '详情'){
       this._getHomepageSwiperListContent(options.newsId);
+    }else if(options.title == '社区公告'){
+      this._getAnnouncementContent(options.newsId)
     }
   },
 

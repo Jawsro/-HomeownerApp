@@ -17,7 +17,7 @@ image{
   display: block;
 }
 .nocolor{
-  color:#A6A6A7;
+  color:#fff;
 }
 .iscolor{
   color:#FD526C ;

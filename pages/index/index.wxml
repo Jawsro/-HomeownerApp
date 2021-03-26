@@ -119,23 +119,24 @@
       </navigator>
     </view>
      <view class="news">
-      <navigator class="list" 
+      <view class="list" 
         wx:for="{{newsList}}"
         wx:key='index'
-        url="/pages/information/information?newsId={{item.id}}&title=社区动态"
-        hover-class="none"
-        wx:if="{{index<3}}">
+        bindtap="goInformation"
+        data-id='{{item.id}}'
+        data-content='{{item.content}}'
+        wx:if="{{index<5}}">
         <view class="text font-16">
           <text>{{item.title}}</text>
         </view>
         <view>
           <image src="{{item.head_image}}" mode='widthFix'></image>
         </view>
-        <view class="text font-1 notices" style="color:#A7A7AA">
+        <view class="text font-14 notices" style="color:#A7A7AA">
           <text class="left">{{item.createtime}}</text>
           <text class="right" style="padding-right:10rpx">{{item.reading}} 阅读</text>
         </view>
-      </navigator>
+      </view>
 
      </view>
   </view>

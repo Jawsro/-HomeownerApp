@@ -1,4 +1,8 @@
 // pages/announcement/announcement.js
+const app = getApp();
+//调用封装的函数
+import {HttpRequest} from "../../utils/http.js";
+import {timeDate} from "../../utils/util.js";
 Page({
 
   /**
@@ -10,37 +14,15 @@ Page({
     marqueeDistance: 0,//初始滚动距离
     marquee_margin: 20,
     size:14,
-    interval: 20// 时间间隔
+    interval: 20,// 时间间隔
+    announcementList:[],
+    moreText:'加载中',
+    page:1
   },
   /**
-   * 生命周期函数--监听页面加载
+   * 
+   * 事件
    */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-     // 页面显示
-     var that = this;
-     var length = that.data.text.length * that.data.size;//文字长度
-     var windowWidth = wx.getSystemInfoSync().windowWidth ;// 屏幕宽度
-     console.log(length,windowWidth);
-     that.setData({
-       length: length,
-       windowWidth: windowWidth
-     });
-     that.scrolltxt();// 第一个字消失后立即从右边出现
-  },
   scrolltxt: function () {
     var that = this;
     var length = that.data.length;//滚动文字的宽度
@@ -66,8 +48,83 @@ Page({
     }
     else{
       that.setData({ marquee_margin:"1000"});//只显示一条不滚动右边间距加大，防止重复显示
-    } 
-    console.log(length,windowWidth)
+    }
+  },
+  _getAnnouncementList(){
+    let subdistrictId = wx.getStorageSync('subdistrictId');
+    let _this = this;
+    if(_this.data.moreText != '加载中'){
+      return false;
+    }
+    console.log(123)
+    _this.data.moreText = '正在加载更多';
+    let data = {
+      subdistrictId :subdistrictId,
+      page:_this.data.page
+    };
+    HttpRequest('/app.php/information_api/getAnnouncementList',data,'get',res=>{
+      if(res.status == true){
+        res.data.forEach(item =>{
+          item.head_image = app.globalData.siteUrl + item.head_image;
+          item.createtime=timeDate(item.createtime)
+        })
+        _this.data.announcementList = _this.data.announcementList.concat(res.data)
+        if( res.data.length<0){
+          _this.data.moreText ='暂无数据';
+          
+        }else if(res.data.length<10){
+          _this.data.moreText ='没有更多数据了';
+          
+        }else{
+          _this.data.page ++;
+          _this.data.moreText ='加载中';
+        }
+        _this.setData({
+          announcementList:_this.data.announcementList,
+          moreText:_this.data.moreText
+        })
+      } 
+    })
+  },
+  goInformation(e){
+    let id = e.currentTarget.dataset.id;
+    let content = e.currentTarget.dataset.content;
+    console.log(typeof content)
+    if (content == true){
+      wx.navigateTo({
+        url: '/pages/information/information?newsId='+id+'&title=社区公告',
+      })
+    }
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+     // 页面显示
+     var that = this;
+     var length = that.data.text.length * that.data.size;//文字长度
+     var windowWidth = wx.getSystemInfoSync().windowWidth ;// 屏幕宽度
+     that.setData({
+       length: length,
+       windowWidth: windowWidth
+     });
+     that.scrolltxt();// 第一个字消失后立即从右边出现
+     //数据请求
+    this._getAnnouncementList()
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -94,7 +151,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+      //上拉数据加载
+      this._getAnnouncementList()
   },
 
   /**

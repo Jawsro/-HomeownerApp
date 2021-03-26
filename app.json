@@ -3,18 +3,18 @@
     
     "pages/index/index",
     "pages/login/login",
-    "pages/addHouse/addHouse",
-    "pages/paymentlist/paymentlist",
-    "pages/houselist/houselist",
-    "pages/services/services",
     "pages/my/my", 
+    "pages/paymentlist/paymentlist",
+    "pages/addHouse/addHouse",
     "pages/IDselection/IDselection",
     "pages/owner/owner", 
-    "pages/announcement/announcement",
     "pages/information/information",
-    "pages/phonenumber/phonenumber",
-    "pages/noticelist/noticelist",
     "pages/renovation/renovation",
+    "pages/noticelist/noticelist",
+    "pages/announcement/announcement",
+    "pages/services/services",
+    "pages/houselist/houselist",
+    "pages/phonenumber/phonenumber",
     "pages/certification/certification"
   ],
   "window":{
@@ -23,6 +23,9 @@
     "navigationBarTitleText": "Weixin",
     "navigationBarTextStyle":"black",
     "navigationStyle": "custom"
+  },
+  "networkTimeout": {
+    "request": 30000
   },
   "tabBar": {
     "color": "#828282",

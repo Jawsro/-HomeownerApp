@@ -1,7 +1,7 @@
 <view class='container'>
   <view class="top-css"></view>
-   <!-- 组件引入 -->
-    <header  my-property="社区公告" ></header> 
+  <!-- 组件引入 -->
+  <header  my-property="社区公告" ></header> 
   <!-- 精彩资讯 -->
   <view class="information" style="margin-top:150rpx">
     <view class="title">
@@ -9,11 +9,10 @@
         <image src="../../images/laba.png" mode='widthFix'></image>
       </view>
       <view class="text font-14">
-        <view  style="transform: translateX(-{{marqueeDistance}}px)">
-        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>
-        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>    
-      </view>
-
+        <view style="transform: translateX(-{{marqueeDistance}}px)">
+          <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>
+          <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>    
+        </view>
       </view>
       <!-- <view class="more">
         <text class="iconfont icon-gengduo "></text>
@@ -24,28 +23,32 @@
         <view class="left font-16 font-weight-600">
           <text>精选资讯</text>
         </view>
-        <view class="main-more">
+        <!-- <view class="main-more">
           <text>更多</text> <text class="iconfont icon-gengduo "></text>
-        </view>
+        </view> -->
       </view>
       <view class="news">
-        <navigator 
+        <view 
           class="news-list" 
-          url='../information/information'
-          hover-class="none">
+          wx:for="{{announcementList}}"
+          wx:key='index'
+          bindtap="goInformation"
+          data-id='{{item.id}}'
+          data-content='{{item.content}}'
+          >
           <view class="news-list-left ">
             <view class="news-title font-14">
-              <text>#小区福利#凡本月预存下月物业费前10名奖励食用油一桶！</text>
+              <text>{{item.title}}</text>
             </view>
             <view class="time font-12">
-              <text class="date">2020-01-01</text>
-              <!-- <text>1小时前</text> -->
+              <text class="date">{{item.createtime}}</text>
+              <!-- <text>{{item.createtime}}</text> -->
             </view>
           </view>
           <view class="news-list-right">
-            <image src="http://property.shangyouyun.cn/image/gonggao.jpg"></image>
+            <image src="{{item.head_image}}" mode='widthFix'></image>
           </view>
-        </navigator>
+        </view>
       </view>
     </view>
   </view>  

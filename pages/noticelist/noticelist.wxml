@@ -4,11 +4,12 @@
   <header  my-property="{{title}}" bind:attached="attached"></header> 
   <view class="information" >
     <view class="main">
-      <view class="news">
-        <navigator 
+      <view class="news" wx:if='{{noticeList.length > 0}}'>
+        <view 
           class="news-list" 
-          url='../information/information'
-          hover-class="none"
+          bindtap="goInformation"
+          data-id='{{item.id}}'
+          data-content='{{item.content}}'
           wx:for="{{noticeList}}"
           wx:key='index'>
           <view class="news-list-left ">
@@ -17,13 +18,17 @@
             </view>
             <view class="time font-12">
               <text class="date">{{item.createtime}}</text>
+              <text>{{item.reading}} 阅读</text>
             </view>
           </view>
           <view class="news-list-right">
-            <image src="{{item.posters_url}}" mode='widthFix'></image>
+            <image src="{{item.head_image}}" mode='widthFix'></image>
           </view>
-        </navigator>
+        </view>
       </view>
+    </view>
+    <view class="more font-14">
+      <text>------{{moreText}}------</text>
     </view>
   </view> 
 </view>

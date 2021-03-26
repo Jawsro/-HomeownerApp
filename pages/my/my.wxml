@@ -26,7 +26,11 @@
       </view>
       <view class="user-text">
         <view class="user-name font-20  font-weight-500">{{userInfo.nickname}}</view>
-        <!-- <view class="grade font-12">普通用户</view> -->
+        <view class="grade font-12" 
+          wx:if ="{{ authenticationStatus == ''? true:false}}"
+          bindtap="goOwner">
+          未实名认证</view>
+        <view class="grade font-12" wx:if ="{{ authenticationStatus != ''? true:false}}">已认证</view>
       </view>
       <!-- <view class="erweima">
         <text class="iconfont icon-ico" style="color: #894231;font-size:80rpx"></text>
@@ -63,19 +67,48 @@
       </view>
     </view> -->
     <view class="functions">
-      <!--房屋信息  -->
-      <view class="functions-item" >
-        <view class="functions-item-left" bindtap="goClick">
-          <text>我的房屋信息</text>
+       <!--汽车，车位，商铺 -->
+       <view class="functions-item" 
+        wx:for='{{functionList}}'
+        wx:key='index'
+        data-id="{{item.id}}"
+        bindtap="goFunction">
+        <view class="functions-name">
+          <view class="functions-item-left">
+            <text>{{item.name}}</text>
+          </view>
+          <view class="functions-item-right" wx:if ="{{ item.text =='房屋'  && authenticationStatus == ''? true:false}}" 
+          catchtap="goOwner">
+            <text class="right-text margin-right font-14" style="color:#DDB39E" >认证业主受更多福利</text>
+            <!-- <text class="iconfont icon-gengduo" style="color:#A6A6A6"></text> -->
+          </view>
+          <text class="iconfont icon-gengduo" 
+            style="color:#A6A6A6" 
+            wx:if ="{{!item.isShow}}"></text>
+          <text class="iconfont icon-xiajiantou" style="color:#A6A6A6" wx:if="{{item.isShow}}"></text>
         </view>
-        <view class="functions-item-right" wx:if ="{{ authenticationStatus == ''? true:false}}" 
-          bindtap="goOwner">
-          <text class="right-text margin-right font-14" style="color:#DDB39E" >认证业主受更多福利</text>
-          <text class="iconfont icon-gengduo" style="color:#A6A6A6"></text>
+        <view class="functions-content font-14" wx:if="{{item.isShow}}">
+          <view class="content-item" wx:for="{{item.dataList}}" wx:for-item="index"  wx:key='this'>  
+            <text>{{index}}</text>
+          </view>
+          <!-- <view wx:if="{{item.dataList.length<1}}">暂无数据</view> -->
+          <view class="add">
+            <text class="iconfont icon-tianjiaadd73" style="font-size:40rpx"></text>添加{{item.text}}
+          </view>
         </view>
       </view>
-       <!--汽车，车位，商铺 -->
-      <view class="functions-item" 
+
+
+
+
+
+
+
+
+
+
+
+      <!-- <view class="functions-item" 
         wx:for='{{functionLisr}}'
         wx:key='index'
         bindtap="goFunction">
@@ -85,7 +118,7 @@
         <view class="functions-item-right">
           <text class="iconfont icon-gengduo" style="color:#A6A6A6"></text>
         </view>
-      </view>
+      </view> -->
     </view>
   </view>
 </view>
