@@ -29,3 +29,4 @@
     "pages/renovation/renovation",------------装修申报
 
     "pages/certification/certification"---------------实名认证成功后的详细信息（待定）
+    "pages/opendoor/opendoor", -----------------一键开门

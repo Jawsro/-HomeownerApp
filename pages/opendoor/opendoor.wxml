@@ -1,0 +1,57 @@
+<view class='container'>
+  <view class="top-css"></view>
+  <!-- 组件引入 -->
+  <header  my-property="一键开门" ></header> 
+  <view class="main font-14">
+    <view class="title">
+      <text class="">可开启的门禁</text>
+    </view>
+    <scroll-view scroll-y="true" style="height:100%;">
+      <view class="door-msg">
+        <view class="door-item" wx:for='{{doorMsg}}'wx:key='index'>
+          <view class="item-left">
+            <text>{{item.name}}</text>
+          </view>
+          <view class="right-item" bindtap="openDoor" data-name='{{item.name}}'>
+            <text>开门</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="mask" wx:if='{{maskIsshow}}'>
+    <view class="tishi" wx:if='{{successIshow}}'>
+      <view class="doorname">
+        <text>{{doorName}}</text>
+      </view>
+      <view class="tishi-box">
+        <view class="icon">
+          <view style="margin-bottom:30rpx">
+            <text class="iconfont icon-tijiaochenggong" style="color:#35D692;font-size:100rpx;"></text>
+          </view>
+         
+          <view class="font-14" style="color:#803D33;">开门成功</view>
+        </view>
+      </view>
+      <view class="close" bindtap="closeTishi">
+        <text class="iconfont icon-close-o" style="color:#803D33;font-size:70rpx;"></text>
+      </view>
+    </view>
+    <view class="tishi" wx:if='{{loadingIshow}}'>
+      <view class="doorname">
+        <text>{{doorName}}</text>
+      </view>
+      <view class="tishi-box" >
+        <view class="icon">
+          <view style="margin-bottom:30rpx">
+            <text class="iconfont icon-yuechi1" style="color:#803D33;font-size:100rpx;"></text>
+          </view>
+          <view class="jindutiao">
+            <view class="jindutiao1" style="width:{{width}}rpx"></view>
+          </view>
+          <view class="font-14" style="color:#803D33;">正在开门</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

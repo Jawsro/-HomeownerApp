@@ -1,0 +1,89 @@
+
+.container{
+  position: fixed;
+  top:0rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: pink;
+}
+.main{
+  height: 100%;
+  padding:30rpx 20rpx;
+  margin-top:150rpx;
+}
+.title{
+  color:#A1A0A5;
+  padding-bottom: 30rpx;
+}
+.door-msg{
+  margin-bottom: 270rpx;
+}
+.door-item{
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding:30rpx 20rpx 30rpx;
+  margin-bottom: 19rpx;
+}
+.item-left{
+  flex:1;
+  font-weight: 600;
+}
+.right-item{
+  flex: 0 0 200rpx;
+  background-color: #8B4535;
+  border-radius: 40rpx;
+  color:#fff;
+  padding: 10rpx 0;
+  text-align: center;
+}
+.mask{
+  position: fixed;
+  top:0rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.3);
+}
+.tishi{
+  position: absolute; 
+  width:490rpx;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.doorname{
+  background: linear-gradient(to bottom, #EBDDD5 0%,#D9BFB1 50%,#C9A590 100%);
+  padding:30rpx 0;
+  color:#803D33;
+  border-top-right-radius: 20rpx;
+  border-top-left-radius: 20rpx;
+}
+.tishi-box{
+  background-color: #fff;
+  border-bottom-right-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+  padding:150rpx 0;
+}
+.jindutiao{
+  width:300rpx;
+  height: 30rpx;
+  background-color: pink;
+  border-radius: 40rpx;
+  margin:10rpx auto ;
+  position: relative;
+}
+.jindutiao1{
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  background-color: #803D33;
+  border-radius: 40rpx;
+}
+.close{
+  margin-top:30rpx
+}
