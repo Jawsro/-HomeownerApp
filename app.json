@@ -1,19 +1,18 @@
 {
   "pages":[
-    "pages/opendoor/opendoor",
+   
+    
     "pages/index/index",
     "pages/login/login",
-    "pages/my/my", 
+    "pages/my/my", "pages/addHouse/addHouse",
+    "pages/opendoor/opendoor",
     "pages/paymentlist/paymentlist",
-    "pages/addHouse/addHouse",
-    "pages/IDselection/IDselection",
     "pages/owner/owner", 
     "pages/information/information",
     "pages/renovation/renovation",
     "pages/noticelist/noticelist",
     "pages/announcement/announcement",
     "pages/services/services",
-    "pages/houselist/houselist",
     "pages/phonenumber/phonenumber",
     "pages/certification/certification"
   ],

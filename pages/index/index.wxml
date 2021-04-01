@@ -1,5 +1,5 @@
 <!--首页-->
-<view class="change-village" wx:if="{{changeVillageIsShow}}" style="background:url('http://gsh.5gzvip.idcfengye.com/assets/app/bg.jpg') center center no-repeat;background-size: cover;background-attachment:fixed;">
+<view class="change-village" wx:if="{{changeVillageIsShow}}" style="background:url('http://api.5gzvip.idcfengye.com/assets/app/bg.jpg') center center no-repeat;background-size: cover;background-attachment:fixed;">
   <view class="change-village-main">
     <view class="change-village-title" wx:if="{{subdistrictList.length>0}}">
       <text>请先选择小区</text>
@@ -20,7 +20,7 @@
   </view>
 </view>
 <view class="container" wx:if="{{villageIsShow}}">
-  <view class="top" style="background:url('http://gsh.5gzvip.idcfengye.com/assets/app/bg4.jpg') center center no-repeat;background-size: cover">
+  <view class="top" style="background:url('http://api.5gzvip.idcfengye.com/assets/app/bg4.jpg') center center no-repeat;background-size: cover">
     <!-- 小区选择 -->
     <view class="subdistrict-list font-14 font-weight-600">
       <picker bindchange="subdistrictNameChange"
@@ -37,14 +37,14 @@
     </view>
     <!-- 未登录时 -->
     <view class="img2" wx:if="{{loginIsshow}}" >
-      <image src="http://gsh.5gzvip.idcfengye.com/assets/app/buzhidao.jpg" mode="widthFix"></image>
+      <image src="http://api.5gzvip.idcfengye.com/assets/app/buzhidao.jpg" mode="widthFix"></image>
       <view class="login-btn font-weight-500 font-16" bindtap="goLogin">
         <text>注册/登录</text>
       </view>
     </view>
     <!-- 登录后 -->
     <view class="user-msg" wx:if="{{loginNoshow}}" >
-      <image src="http://gsh.5gzvip.idcfengye.com/assets/app/bg5.jpg" style="margin:0 30rpx;height:220rpx;z-index:9"></image>
+      <image src="http://api.5gzvip.idcfengye.com/assets/app/bg5.jpg" style="margin:0 30rpx;height:220rpx;z-index:9"></image>
       <view class="xiaoqu" >
         <view class="xiaoqu-name font-16">
           <text class="margin-right">{{subdistrictList[villageNameIndex].short_name}}</text>

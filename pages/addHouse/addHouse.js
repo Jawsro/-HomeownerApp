@@ -1,4 +1,6 @@
 // pages/addHouse/addHouse.js
+//调用封装的函数
+import {HttpRequest} from "../../utils/http.js";
 Page({
 
   /**
@@ -7,8 +9,8 @@ Page({
   data: {
     cityArray: ['广西','桂林'],
     cityIndex: 0,
-    index:0,
-    xiaoquArray:['公园悦府','碧水湾','盛公馆']
+    subdistrictList:[],
+    villageNameIndex:0
   },
   bindPickerChange: function (e) {
     //根据所选状态请求后台
@@ -25,11 +27,40 @@ Page({
       index: e.detail.value
     })
   },
+  //请求小区列表
+  _getSubdistrictList(){
+    let _this = this;
+    let subdistrictId = wx.getStorageSync('subdistrictId');
+    HttpRequest('/app.php/subdistrict_api/getSubdistrictList',{},'get',function(res){
+      if(res.status == true){
+        _this.data.subdistrictList =res.data
+        //表示用户是扫描二维码进入小程序，需要在小区列表查找该ID对应的小区名显示在首页
+        if(subdistrictId !='undefined'){
+          for(let i = 0;i<res.data.length;i++){
+            if(res.data[i].id==subdistrictId){
+              _this.data.villageNameIndex = i
+            }
+          }
+        }
+        /////////
+        _this.setData({
+          subdistrictList: _this.data.subdistrictList,
+          villageNameIndex: _this.data.villageNameIndex
+        })
+      }
+    })
+  },
+  subdistrictNameChange(e){
+    let index = e.detail.value;
+    this.setData({
+      villageNameIndex: index
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this._getSubdistrictList();
   },
 
   /**

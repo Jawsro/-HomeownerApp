@@ -1,5 +1,5 @@
 <!-- 登录 -->
-<view class="container" style="background:url('http://gsh.5gzvip.idcfengye.com/assets/app/bg.jpg') center center no-repeat;background-size: cover;background-attachment:fixed;">
+<view class="container" style="background:url('http://api.5gzvip.idcfengye.com/assets/app/bg.jpg') center center no-repeat;background-size: cover;background-attachment:fixed;">
   <!-- 组件引入 -->
   <header  my-property="登录"></header> 
   <!--登录方式选择 -->

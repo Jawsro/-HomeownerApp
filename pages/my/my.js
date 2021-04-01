@@ -14,7 +14,7 @@ Page({
         id:1,
         name:'我的房屋信息 ',
         text:'房屋',
-        url:'',
+        url:'../addHouse/addHouse',
         dataList:[],
         isShow:false
       },
@@ -22,7 +22,7 @@ Page({
         id:2,
         name:'我的车位 ',
         text:'车位',
-        url:'',
+        url:'../addHouse/addHouse',
         dataList:[],
         isShow:false
       },{
@@ -41,7 +41,6 @@ Page({
         isShow:false
       },
   ],
-  contentIsshow:false,
   },
   isLogin(){
       let _this = this;
@@ -64,25 +63,6 @@ Page({
       url: '../login/login',
     })
   },
-  goClick(){
-    let loginStatue = wx.getStorageSync('loginStatue');//登录状态
-    let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-    this.setData({
-      contentIsshow:true
-    })
-    // if(loginStatue && authenticationStatus !=''){ 
-    //   // wx.navigateTo({
-    //   //   url: '../houselist/houselist'
-    //   // })
-     
-    // }else { console.log(1111)
-    //     wx.showModal({
-    //       title: '提示',
-    //       content: '请先登录并且完成身份认证！',
-    //       showCancel: false
-    //     })
-    //   } 
-  },
   goOwner(){
     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
     console.log(loginStatue)
@@ -98,13 +78,22 @@ Page({
         })
       } 
   },
+  addMsg(e){
+    let id = e.currentTarget.dataset.id;
+    this.data.functionList.forEach(item =>{
+      if(item.id==id){
+       wx.navigateTo({
+         url:item.url
+       })
+      }
+    })
+  },
   goFunction(e){
-    console.log(e)
     let id = e.currentTarget.dataset.id;
     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
     let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-    if(loginStatue && authenticationStatus !=''){ 
-      if(id == 1){
+    if(loginStatue && authenticationStatus != ''){ 
+      if(id != 4){
         this.data.functionList.forEach(item =>{
           if(item.id==id){
             if(item.isShow==true){
@@ -157,6 +146,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(wx.getStorageSync('token') != ''){
+      this._getAppUserInfo();
+    }
   },
 
   /**
@@ -175,9 +167,7 @@ Page({
     this.setData({
       authenticationStatus :  authenticationStatus,
     })
-    if(wx.getStorageSync('token') != ''){
-      this._getAppUserInfo();
-    }
+    
   },
 
   /**

@@ -9,24 +9,12 @@ Page({
         {id:1,name:'13栋2单元门'},
         {id:1,name:'13栋2单元门'},
         {id:1,name:'13栋2单元门'},
-        {id:1,name:'13栋2单元门'},
-        {id:1,name:'13栋2单元门'},
-        {id:1,name:'13栋2单元门'},
-        {id:1,name:'13栋2单33元门'},
-        {id:1,name:'13栋2wwqwq单元门'},
-        {id:1,name:'13栋2单元门'},
-        {id:1,name:'wqw'},
-        {id:1,name:'13栋2单元门'},
-        {id:1,name:'13栋2单元门'},
-        {id:1,name:'13栋2单元门'},
-        {id:1,name:'13栋2单元门'},
-        {id:1,name:'13栋2单元门'},
-        {id:1,name:'13栋2wwqwq单元门'},
+        {id:1,name:'13栋2单元门'}
       ],
       successIshow:false,
       loadingIshow:false,
       maskIsshow:false,
-      w:30
+      w:0
   },
   openDoor(e) {
     let name = e.currentTarget.dataset.name;
@@ -35,14 +23,13 @@ Page({
     let _this= this;
     let i = setInterval(() =>{
       if(width>=1){
-        
         clearInterval(i);
         this.setData({
           loadingIshow:false,
           successIshow:true
         })
       }else{
-        width = parseFloat(width.toFixed(2))+0.1
+        width = parseFloat(width.toFixed(1))+0.1
         w = width*300
         console.log(width,w)
       }

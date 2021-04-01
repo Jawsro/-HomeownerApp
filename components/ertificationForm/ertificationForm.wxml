@@ -1,5 +1,5 @@
 <view class="ertification-form">
-   <form bindsubmit="setData">
+   <form bindsubmit="setDataForm">
       <view class="input-msg">
         <view class="left-name">
           <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
@@ -9,7 +9,7 @@
           <input placeholder="请输入真实姓名" class="font-15" name="name" style="color:#B7B7B7"></input>
         </view>
       </view>
-      <view class="input-msg">
+      <!-- <view class="input-msg">
         <view class="left-name">
           <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
           <text class="font-16 font-weight-500">身份证号</text>
@@ -17,8 +17,8 @@
         <view class="input">
           <input placeholder="请输入16位身份证号" class="font-15" name="userID" style="color:#B7B7B7"></input>
         </view>
-      </view>
-      <view class="input-msg">
+      </view> -->
+      <!-- <view class="input-msg">
         <view class="left-name">
           <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
           <text class="font-16 font-weight-500">楼栋号</text>
@@ -44,14 +44,24 @@
         <view class="input">
           <input placeholder="请输入房号" class="font-15" name="floor" style="color:#B7B7B7"></input>
         </view>
-      </view>
-      <view class="input-msg" hidden="{{identity =='owner'}}">
+      </view> -->
+      <view class="input-msg">
         <view class="left-name">
           <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-          <text class="font-16 font-weight-500">业主姓名</text>
+          <text class="font-16 font-weight-500">身份选择</text>
         </view>
         <view class="input">
-          <input placeholder="请输入业主真实姓名" class="font-15" name="ownername" style="color:#B7B7B7"></input>
+          <picker bindchange="idChange"
+            value="{{idArray[index]}}"
+            range="{{idArray}}"
+            range-key='text'
+          >
+            <view class="picker">
+              {{idArray[index].text}}
+              <text class="iconfont icon-xiajiantou margin-right" style="font-weight:600"></text>
+            </view>
+          </picker>
+          <input placeholder="" class="font-15" name="ownername" style="color:#B7B7B7;display:none"></input>
         </view>
       </view>
       <!-- <view class="input-msg">
@@ -85,7 +95,7 @@
           <view class="pic-left">
             <view class="image" bindtap="chose_pic_before">
               <image 
-                src="http://gsh.5gzvip.idcfengye.com/assets/app/2.jpg" 
+                src="http://api.5gzvip.idcfengye.com/assets/app/2.jpg" 
                 mode='widthFix' 
                 hidden="{{idbeforeImg != ''}}">
               </image>
@@ -102,7 +112,7 @@
           </view>
           <view class="pic-right">
             <view class="image" bindtap="chose_pic_after">
-               <image src="http://gsh.5gzvip.idcfengye.com/assets/app/1.jpg" 
+               <image src="http://api.5gzvip.idcfengye.com/assets/app/1.jpg" 
                 mode='widthFix' 
                 hidden="{{idAfterImg != ''}}">
               </image>

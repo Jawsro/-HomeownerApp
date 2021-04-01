@@ -8,15 +8,28 @@ Component({
    */
   data: {
     idbeforeImg:'',
-    idAfterImg:''
+    idAfterImg:'',
+    idArray:[
+      {text:"业主",identity:"owner"},
+      {text:"家属",identity:"family"},
+      {text:"租客",identity:"tenant"},
+    ],
+    index:0
   },
   properties: {
-    identity: String // 简化的定义方式
+    // identity: String // 简化的定义方式
   },
   /**
    * 事件
    */
   methods:{
+    idChange(e){
+      console.log(e)
+      let index = e.detail.value;
+      this.setData({
+        index:index
+      })
+    },
     chose_pic_before(t){
       let _this=this,
       curPic = t.target;
@@ -78,7 +91,7 @@ Component({
       }
     })
     },
-    setData(e){
+    setDataForm(e){
       console.log(e)
       if(lock){
         return;
@@ -91,7 +104,6 @@ Component({
           ownername = e.detail.value.ownername,
           userID = e.detail.value.userID;
       
-      if(this.properties.identity == 'owner'){
         
         if(name =='' && phone==''&& userID==''&&floor==''){
           wx.showModal({
@@ -103,31 +115,7 @@ Component({
           return false
         }
         console.log('owner')
-      }
-      if(this.properties.identity == 'tenant'){
-        if(name == '' && phone ==''&& userID =='' && floor=='' && ownername == ''){
-          wx.showModal({
-            title: '提示',
-            content: '请确认必填信息已填写完',
-            showCancel:false,
-            success (res) {}
-          })
-          return false
-        }
-        console.log('tenant')
-      }
-      if(this.properties.identity == 'family'){
-        if(name == '' && phone ==''&& userID =='' && floor=='' && ownername == ''){
-          wx.showModal({
-            title: '提示',
-            content: '请确认必填信息已填写完',
-            showCancel:false,
-            success (res) {}
-          })
-          return false
-        }
-        console.log('family')
-      }
+     
        // 按钮禁用
        this.setData({
         disabled: true
@@ -139,7 +127,6 @@ Component({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(this.properties.identity)
   },
 
   /**

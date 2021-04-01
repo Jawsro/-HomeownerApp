@@ -269,14 +269,14 @@ Page({
         villageIsShow:false,
       })
     }else{//扫码进入
+      this._getHomepageSwiperList(xiaoquid);
+      this._getNewsList(xiaoquid);
       this.setData({
         villageIsShow:true,
         changeVillageIsShow:false,
       })
     }
     this._getSubdistrictList(xiaoquid);
-    this._getHomepageSwiperList(xiaoquid);
-    this._getNewsList(xiaoquid);
     let _this = this;
     //获取登录和认证的状态，控制页面功能
     try {

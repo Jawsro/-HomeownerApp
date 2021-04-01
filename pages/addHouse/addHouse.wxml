@@ -4,38 +4,55 @@
   <header  my-property="绑定房屋"></header> 
   <view style="margin-top:150rpx" class="main">
     <form bindsubmit="addHouse">
-        <view class="category-title font-14">
-          <text>填写房屋信息</text>
+      <view class="category-title font-14">
+        <text>填写房屋信息</text>
+      </view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16 font-weight-500">选择小区</text>
         </view>
-        <view class="msg-item font-16">
-          <view class="msg-item-left">
-            <text>城市</text>
-          </view>
-          <view class="msg-item-right">
-            <picker bindchange="bindPickerChange"
-              bindcolumnchange="bindcolumnchange"
-              value="{{cityArray[cityIndex]}}"
-              range="{{cityArray}}">
-              <view class="picker" style="padding-right:10rpx">
-                <text class="iconfont icon-dingwei margin-right" style="font-weight:600"></text>
-                {{cityArray[cityIndex]}}
-              </view>
-            </picker>
-          </view>
+        <view class="input">
+          <picker bindchange="subdistrictNameChange"
+            value="{{subdistrictList[villageNameIndex]}}"
+            range="{{subdistrictList}}"
+            range-key='short_name'
+          >
+            <view class="picker">
+              {{subdistrictList[villageNameIndex].short_name}}
+              <text class="iconfont icon-xiajiantou margin-right" style="font-weight:600"></text>
+            </view>
+          </picker>
+          <input placeholder="" class="font-15" name="ownername" style="color:#B7B7B7;display:none"></input>
         </view>
-        <view class="msg-item font-16">
-          <view class="msg-item-left">
-            <text>小区</text>
-          </view>
-          <view class="msg-item-right">
-            <picker bindchange="XiaoQuChange" value="{{xiaoquArray[index]}}" range="{{xiaoquArray}}">
-              <view class="picker">
-               <text class="margin-right"> {{xiaoquArray[index]}}</text>
-                <text class="iconfont icon-gengduo margin-right" style="font-weight:600"></text>
-              </view>
-            </picker>
-          </view>
+      </view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16 font-weight-500">楼栋号</text>
         </view>
+        <view class="input">
+          <input placeholder="请输入楼栋号" class="font-15" name="floor1" style="color:#B7B7B7"></input>
+        </view>
+      </view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16 font-weight-500">单元号</text>
+        </view>
+        <view class="input">
+          <input placeholder="若没有区分单元，请输入1" class="font-15" name="floor1" style="color:#B7B7B7"></input>
+        </view>
+      </view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16 font-weight-500">房号</text>
+        </view>
+        <view class="input">
+          <input placeholder="请输入房号" class="font-15" name="floor" style="color:#B7B7B7"></input>
+        </view>
+      </view>
         <button class="form-btn font-14" formType="submit" style=" width: 90%;">确认提交</button>
     </form>
   </view>
