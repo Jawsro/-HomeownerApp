@@ -4,7 +4,13 @@
 
     "pages/login/login",---------登录
 
-    "pages/addHouse/addHouse",-------新增绑定房屋
+    "pages/addHouse/addHouse",-------添加房屋
+
+    "pages/addcar/addcar",--------------添加汽车
+
+    "pages/addparking/addparking",--------------添加车位
+
+    "pages/addshops/addshops",----------------添加商铺
 
     "pages/paymentlist/paymentlist",--------------物业缴费列表
 
@@ -27,3 +33,5 @@
     "pages/certification/certification"---------------实名认证成功后的详细信息（待定）
 
     "pages/opendoor/opendoor", -----------------一键开门
+
+  

@@ -9,12 +9,12 @@ Component({
   data: {
     idbeforeImg:'',
     idAfterImg:'',
-    idArray:[
-      {text:"业主",identity:"owner"},
-      {text:"家属",identity:"family"},
-      {text:"租客",identity:"tenant"},
-    ],
-    index:0
+    // idArray:[
+    //   {text:"业主",identity:"owner"},
+    //   {text:"家属",identity:"family"},
+    //   {text:"租客",identity:"tenant"},
+    // ],
+    // index:0
   },
   properties: {
     // identity: String // 简化的定义方式
@@ -23,13 +23,13 @@ Component({
    * 事件
    */
   methods:{
-    idChange(e){
-      console.log(e)
-      let index = e.detail.value;
-      this.setData({
-        index:index
-      })
-    },
+    // idChange(e){
+    //   console.log(e)
+    //   let index = e.detail.value;
+    //   this.setData({
+    //     index:index
+    //   })
+    // },
     chose_pic_before(t){
       let _this=this,
       curPic = t.target;

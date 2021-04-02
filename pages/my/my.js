@@ -22,21 +22,21 @@ Page({
         id:2,
         name:'我的车位 ',
         text:'车位',
-        url:'../addHouse/addHouse',
+        url:'../addparking/addparking',
         dataList:[],
         isShow:false
       },{
         id:3,
         name:'我的汽车 ',
         text:'汽车',
-        url:'',
+        url:'../addcar/addcar',
         dataList:[],
         isShow:false
       },{
         id:4,
         name:'我的商铺 ',
         text:'商铺',
-        url:'',
+        url:'../addshops/addshops',
         dataList:[],
         isShow:false
       },
@@ -65,7 +65,6 @@ Page({
   },
   goOwner(){
     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
-    console.log(loginStatue)
     if(loginStatue){ 
       wx.navigateTo({
         url: '../owner/owner'
@@ -82,9 +81,9 @@ Page({
     let id = e.currentTarget.dataset.id;
     this.data.functionList.forEach(item =>{
       if(item.id==id){
-       wx.navigateTo({
-         url:item.url
-       })
+        wx.navigateTo({
+          url:item.url
+        })
       }
     })
   },
@@ -92,31 +91,22 @@ Page({
     let id = e.currentTarget.dataset.id;
     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
     let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-    if(loginStatue && authenticationStatus != ''){ 
-      if(id != 4){
-        this.data.functionList.forEach(item =>{
-          if(item.id==id){
-            if(item.isShow==true){
-              item.isShow=false
-            }else{
-              item.isShow=true
-            }
-          }else{
+    if(loginStatue ){ // && authenticationStatus != ''
+      this.data.functionList.forEach(item =>{
+        if(item.id==id){
+          if(item.isShow==true){
             item.isShow=false
+          }else{
+            item.isShow=true
           }
-        })
-        this.setData({
-          functionList:this.data.functionList
-        })
-      }else{
-        wx.showModal({
-          title: '提示',
-          content: '功能开发中...',
-          showCancel: false
-        })
-      }
-      
-    }else { console.log(1111)
+        }else{
+          item.isShow=false
+        }
+      })
+      this.setData({
+        functionList:this.data.functionList
+      })
+    }else { 
         wx.showModal({
           title: '提示',
           content: '请先登录并且完成身份认证！',

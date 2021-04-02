@@ -1,7 +1,7 @@
 <view class="container">
  <view class="top-css"></view>
   <!-- 组件引入 -->
-  <header  my-property="业主认证"></header> 
+  <header  my-property="实名认证"></header> 
   <view class="main main-margin-top" style="margin-top:150rpx">
      <!-- 组件引入 -->
     <ertificationForm 

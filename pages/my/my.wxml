@@ -77,11 +77,6 @@
           <view class="functions-item-left">
             <text>{{item.name}}</text>
           </view>
-          <!-- <view class="functions-item-right" wx:if ="{{ item.text =='房屋'  && authenticationStatus == ''? true:false}}" 
-          catchtap="goOwner">
-            <text class="right-text margin-right font-14" style="color:#DDB39E" >认证业主受更多福利</text>
-            
-          </view> -->
           <text class="iconfont icon-gengduo" 
             style="color:#A6A6A6" 
             wx:if ="{{!item.isShow}}"></text>

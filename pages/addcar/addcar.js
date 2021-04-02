@@ -7,23 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cityArray: ['广西','桂林'],
-    cityIndex: 0,
     subdistrictList:[],
-    villageNameIndex:0,
-    idArray:[
-      {text:"业主",identity:"owner"},
-      {text:"家属",identity:"family"},
-      {text:"租客",identity:"tenant"},
-    ],
-    index:0
-  },
-  idChange(e){
-    console.log(e)
-    let index = e.detail.value;
-    this.setData({
-      index:index
-    })
+    villageNameIndex:0
   },
   //请求小区列表
   _getSubdistrictList(){
