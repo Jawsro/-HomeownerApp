@@ -8,13 +8,7 @@ Component({
    */
   data: {
     idbeforeImg:'',
-    idAfterImg:'',
-    // idArray:[
-    //   {text:"业主",identity:"owner"},
-    //   {text:"家属",identity:"family"},
-    //   {text:"租客",identity:"tenant"},
-    // ],
-    // index:0
+    idAfterImg:''
   },
   properties: {
     // identity: String // 简化的定义方式
@@ -23,16 +17,8 @@ Component({
    * 事件
    */
   methods:{
-    // idChange(e){
-    //   console.log(e)
-    //   let index = e.detail.value;
-    //   this.setData({
-    //     index:index
-    //   })
-    // },
     chose_pic_before(t){
-      let _this=this,
-      curPic = t.target;
+      let _this=this;
       wx.chooseImage({
         count:1,
         sizeType: ['original', 'compressed'],
@@ -80,10 +66,10 @@ Component({
             },
             success(res) {
               const data = JSON.parse(res.data);
-              let url = data.image_url;
+              let url = data.url;
               if(data.status && url){
                 _this.setData({
-                  idbeforeImg: app.globalData.siteUrl + url 
+                  idAfterImg: app.globalData.siteUrl + url 
                 })
               }
             }
@@ -98,14 +84,12 @@ Component({
       }
       lock=true
      
-      let name = e.detail.value.name,
-          phone = e.detail.value.phone,
-          floor = e.detail.value.floor,
-          ownername = e.detail.value.ownername,
-          userID = e.detail.value.userID;
+      let trueName = e.detail.value.trueName,
+          telNumber = e.detail.value.telNumber,
+          identityCode = e.detail.value. identityCode;
       
         
-        if(name =='' && phone==''&& userID==''&&floor==''){
+        if(trueName =='' && telNumber==''&& identityCode==''){
           wx.showModal({
             title: '提示',
             content: '请确认必填信息已填写完',

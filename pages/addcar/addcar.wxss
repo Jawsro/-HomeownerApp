@@ -12,6 +12,7 @@
   background-color: #fff;
   margin-bottom: 10rpx;
 }
+
 .left-name{
   flex:0 0 200rpx;
   display: flex;
@@ -31,4 +32,36 @@
   color: #fff;
   font-weight: 100;
   margin-top: 60rpx;
+}
+.input-msg1{
+  padding: 40rpx 10rpx;
+  border-radius: 20rpx;
+  background-color: #fff;
+  margin-bottom: 10rpx;
+}
+.input-box{
+  display: flex;
+  margin-top: 20rpx;
+  align-items: center;
+}
+.input-item{
+  border:1rpx solid #B7B7B7;
+  width:80rpx;
+  height:100rpx;
+  margin-right:8rpx;
+  text-align: center;
+}
+.input-item input{
+  height: 100%;
+  font-weight: 500;
+}
+.last{
+  border:1rpx dashed #B7B7B7;
+  
+}
+.last input{
+  background-color: #F9FAFC;
+}
+.placeholder-class{
+  font-size:20rpx
 }

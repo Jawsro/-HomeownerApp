@@ -6,7 +6,7 @@
           <text class="font-16 font-weight-500">真实姓名</text>
         </view>
         <view class="input">
-          <input placeholder="请输入真实姓名" class="font-15" name="name" style="color:#B7B7B7"></input>
+          <input placeholder="请输入真实姓名" class="font-15" name="trueName" style="color:#B7B7B7"></input>
         </view>
       </view>
       <view class="input-msg">
@@ -15,78 +15,16 @@
           <text class="font-16 font-weight-500">身份证号</text>
         </view>
         <view class="input">
-          <input placeholder="请输入正确的身份证号" class="font-15" name="userID" style="color:#B7B7B7"></input>
+          <input placeholder="请输入正确的身份证号" class="font-15" name=" identityCode" style="color:#B7B7B7"></input>
         </view>
       </view>
-      <!-- <view class="input-msg">
-        <view class="left-name">
-          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-          <text class="font-16 font-weight-500">楼栋号</text>
-        </view>
-        <view class="input">
-          <input placeholder="请输入楼栋号" class="font-15" name="floor1" style="color:#B7B7B7"></input>
-        </view>
-      </view>
-      <view class="input-msg">
-        <view class="left-name">
-          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-          <text class="font-16 font-weight-500">单元号</text>
-        </view>
-        <view class="input">
-          <input placeholder="若没有区分单元，请输入1" class="font-15" name="floor1" style="color:#B7B7B7"></input>
-        </view>
-      </view>
-      <view class="input-msg">
-        <view class="left-name">
-          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-          <text class="font-16 font-weight-500">房号</text>
-        </view>
-        <view class="input">
-          <input placeholder="请输入房号" class="font-15" name="floor" style="color:#B7B7B7"></input>
-        </view>
-      </view> -->
-      <!-- <view class="input-msg">
-        <view class="left-name">
-          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-          <text class="font-16 font-weight-500">身份选择</text>
-        </view>
-        <view class="input">
-          <picker bindchange="idChange"
-            value="{{idArray[index]}}"
-            range="{{idArray}}"
-            range-key='text'
-          >
-            <view class="picker">
-              {{idArray[index].text}}
-              <text class="iconfont icon-xiajiantou margin-right" style="font-weight:600"></text>
-            </view>
-          </picker>
-          <input placeholder="" class="font-15" name="ownername" style="color:#B7B7B7;display:none"></input>
-        </view>
-      </view> -->
-      <!-- <view class="input-msg">
-        <view class="left-name">
-          <text class="font-16 font-weight-500" style="margin-left:37rpx">车位信息</text>
-        </view>
-        <view class="input">
-          <input placeholder="请输入车位信息" class="font-15" name="carmsg" style="color:#B7B7B7"></input>
-        </view>
-      </view> -->
-      <!-- <view class="input-msg">
-        <view class="left-name">
-          <text class="font-16 font-weight-500" style="margin-left:37rpx">车牌号码</text>
-        </view>
-        <view class="input">
-          <input placeholder="请输入完整的车牌号" class="font-15" name="carnum" style="color:#B7B7B7"></input>
-        </view>
-      </view> -->
       <view class="input-msg">
         <view class="left-name">
           <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
           <text class="font-16 font-weight-500">手机号</text>
         </view>
         <view class="input">
-          <input placeholder="请输入手机号" class="font-15" name="phone" style="color:#B7B7B7"></input>
+          <input placeholder="请输入手机号" class="font-15" name="telNumber" style="color:#B7B7B7"></input>
         </view>
       </view>
       <view class="pic">
@@ -103,7 +41,7 @@
                 src="../../images/phone.png"  
                 mode='widthFix' 
                 class="phone" 
-                hidden="{{idAfterImg != ''}}">
+                hidden="{{idbeforeImg != ''}}">
               </image>
               <image src='{{idbeforeImg}}' hidden="{{idbeforeImg == ''}}"></image>
               <input  name="idbefore" value="" style="display:none"></input>

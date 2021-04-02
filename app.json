@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/addcar/addcar",
     "pages/my/my",
+    "pages/addcar/addcar",
     "pages/addparking/addparking",
     "pages/addshops/addshops",
     "pages/index/index",
@@ -15,8 +15,8 @@
     "pages/noticelist/noticelist",
     "pages/announcement/announcement",
     "pages/services/services",
-    "pages/phonenumber/phonenumber",
-    "pages/certification/certification"
+    "pages/certification/certification",
+    "pages/phonenumber/phonenumber"
   ],
   "window":{
     "backgroundTextStyle":"light",

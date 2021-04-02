@@ -12,9 +12,10 @@
   </view>
   <view class="top" style="height:320rpx" wx:if='{{!loginStatue}}'>
     <view class="top-title" style="height:{{height}}px;position:fixed;top:{{top}}px;left:20px;right:0;color:#833833;font-weight:600;display:flex;justify-content: center;align-items: center;z-index:10">
-      <view style="flex:0 0 110rpx;" class="font-18 font-weight-500">
+      <view style="flex:0 0 90rpx;" class="font-18 font-weight-500">
         我的
       </view>
+      <image src="../../images/logo.png" class="logo" mode="widthFix" style="flex:0 0 90rpx;"></image>
       <view class="wx-title font-14" style="flex:1">
         |筑造美好生活
       </view>

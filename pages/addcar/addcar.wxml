@@ -4,8 +4,8 @@
   <header  my-property="添加汽车"></header> 
   <view style="margin-top:150rpx" class="main">
     <form bindsubmit="addHouse">
-      <view class="category-title font-14">
-        <text>填写车位信息</text>
+      <!-- <view class="category-title font-14">
+        <text>填写汽车信息</text>
       </view>
       <view class="input-msg">
         <view class="left-name">
@@ -25,14 +25,41 @@
           </picker>
           <input placeholder="" class="font-15" name="ownername" style="color:#B7B7B7;display:none"></input>
         </view>
-      </view>
-      <view class="input-msg">
-        <view class="left-name">
+      </view> -->
+      <view class="input-msg1">
+        <view class="">
           <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-          <text class="font-16 font-weight-500">车位号</text>
+          <text class="font-16 font-weight-500">请输入车牌号</text>
         </view>
-        <view class="input">
-          <input placeholder="请输入车位号" class="font-15" name="floor1" style="color:#B7B7B7"></input>
+        <view class="input-box">
+         <view class="input-item">
+            <input class="font-15" name="floor1" ></input>
+         </view>
+         <view class="input-item">
+            <input class="font-15" name="floor1" ></input>
+         </view>
+         <view style=" margin-right:8rpx;font-size:18px;font-weight:600;color:#B7B7B7">
+           ·
+         </view>
+         <view class="input-item">
+            <input class="font-15" name="floor1" ></input>
+         </view>
+         <view class="input-item">
+            <input class="font-15" name="floor1" ></input>
+         </view>
+
+         <view class="input-item">
+            <input class="font-15" name="floor1"></input>
+         </view>
+         <view class="input-item">
+            <input class="font-15" name="floor1" ></input>
+         </view>
+         <view class="input-item">
+            <input class="font-15" name="floor1" ></input>
+         </view>
+         <view class="input-item last">
+            <input class="font-15" name="floor1"  placeholder="新能源" placeholder-class='placeholder-class'></input>
+         </view>
         </view>
       </view>
       <button class="form-btn font-14" formType="submit" style=" width: 90%;">确认提交</button>
