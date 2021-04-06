@@ -15,7 +15,7 @@
           <text class="font-16 font-weight-500">身份证号</text>
         </view>
         <view class="input">
-          <input placeholder="请输入正确的身份证号" class="font-15" name=" identityCode" style="color:#B7B7B7"></input>
+          <input placeholder="请输入正确的身份证号" class="font-15" name="identityCode" style="color:#B7B7B7"></input>
         </view>
       </view>
       <view class="input-msg">
@@ -69,7 +69,7 @@
       </view>
       <view class="zhuyi">
         <text class="iconfont icon-zhuyi margin-right icon" style="color:#FFB109"></text>
-        <text class="zhuyi-text font-12" style="color:#9B9A98">证件必须是清晰彩色原件电子版本。可以是扫描件或者数码拍摄照片。仅支持jpg、 png、 jpeg的图片格式。
+        <text class="zhuyi-text" style="color:#9B9A98">证件必须是清晰彩色原件电子版本。可以是扫描件或者数码拍摄照片。仅支持jpg、 png、 jpeg的图片格式。
         </text>
       </view>
       <button class="form-btn font-14 {{disabled?'disabled-true':''}}" 

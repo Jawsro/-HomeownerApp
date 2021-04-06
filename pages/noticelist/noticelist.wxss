@@ -12,6 +12,7 @@
 }
 .news-list-right{
   flex: 0 0 200rpx;
+  height: 104rpx;
 }
 .news-list-left{
   flex:1;

@@ -40,7 +40,7 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.14.4",
+  "libVersion": "2.16.0",
   "appid": "wx0ddefc13c48681b0",
   "projectname": "-HomeownerApp",
   "debugOptions": {

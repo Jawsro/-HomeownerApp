@@ -11,7 +11,7 @@
     </view>
   </view>
   <view class="top" style="height:320rpx" wx:if='{{!loginStatue}}'>
-    <view class="top-title" style="height:{{height}}px;position:fixed;top:{{top}}px;left:20px;right:0;color:#833833;font-weight:600;display:flex;justify-content: center;align-items: center;z-index:10">
+    <!-- <view class="top-title" style="height:{{height}}px;position:fixed;top:{{top}}px;left:20px;right:0;color:#833833;font-weight:600;display:flex;justify-content: center;align-items: center;z-index:10">
       <view style="flex:0 0 90rpx;" class="font-18 font-weight-500">
         我的
       </view>
@@ -19,8 +19,8 @@
       <view class="wx-title font-14" style="flex:1">
         |筑造美好生活
       </view>
-    </view>
-    <view class="user-msg">
+    </view> -->
+    <view class="user-msg" wx:if='{{yemian}}'>
       <view class="head-img">
         <text class="iconfont icon-touxiang" style="color:#C7C7C7;font-size:60px" wx:if="{{userInfo.weixin_headimg==null?true:false}}"></text>
         <image src="{{userInfo.weixin_headimg}}" wx:if="{{headImg!=null?true:false}}" mode="widthFix" style="border-radius: 50%;"></image>
@@ -28,10 +28,10 @@
       <view class="user-text">
         <view class="user-name font-20  font-weight-500">{{userInfo.nickname}}</view>
         <view class="grade font-12" 
-          wx:if ="{{ authenticationStatus == ''? true:false}}"
+          wx:if ="{{authenticationStatus == 'yes'? false:true}}"
           bindtap="goOwner">
           未实名认证</view>
-        <view class="grade font-12" wx:if ="{{ authenticationStatus != ''? true:false}}">已认证</view>
+        <view class="grade font-12" wx:if ="{{ authenticationStatus == 'yes'? true:false}}">已认证</view>
       </view>
       <!-- <view class="erweima">
         <text class="iconfont icon-ico" style="color: #894231;font-size:80rpx"></text>

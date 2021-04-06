@@ -19,7 +19,7 @@
     </view>
   </view>
 </view>
-<view class="container" wx:if="{{villageIsShow}}">
+<view class="container" wx:if="{{villageIsShow && yemian}}">
   <view class="top" style="background:url('http://api.5gzvip.idcfengye.com/assets/app/bg4.jpg') center center no-repeat;background-size: cover">
     <!-- 小区选择 -->
     <view class="subdistrict-list font-14 font-weight-600">
@@ -49,35 +49,8 @@
         <view class="xiaoqu-name font-16">
           <text class="margin-right">{{subdistrictList[villageNameIndex].short_name}}</text>
           <text class="margin-right">欢迎您！</text>
-          <!-- 认证后显示 开始 -->
-          
-          <!-- <view class="houses" hidden="{{!coloseHose}}">
-            <view class="house-list">
-              <view class="house-list-left">
-                <text class="iconfont icon-tijiaochenggong" style="color:#7F402F;margin-right: 20rpx;"></text>
-                <text class="house-msg">盛公馆1号楼/2单元/1-3301</text>
-                
-              </view>
-              <view class="house-list-right">
-                <text class="iconfont icon-gengduo" style="color:#D4D7DE"></text>
-              </view>
-            </view>
-            <navigator class="add-house" url="../addHouse/addHouse" hover-class="none">
-              <text class="iconfont icon-tianjiaadd73" style="color:#3B3B3B;font-size:40rpx;margin-right: 30rpx;"></text>
-              <text class="font-16">添加房屋</text>
-            </navigator>
-          </view> -->
-           <!-- 认证后显示 结束-->
        </view>
-       <!-- <view class="xiaoqu-floor font-14" hidden="{{hoeseListIsShow}}">
-          <text>1号楼/2单元/1-3301</text>
-          <text class="iconfont icon-shouqi" bindtap="openHouseList" hidden="{{coloseHose ||hoeseListIsShow}}"></text>
-          <text class="iconfont icon-xiajiantou" bindtap="closeHouseList" hidden="{{!coloseHose}}"></text>
-        </view> -->
       </view>
-      <!-- <view class="erweima">
-        <text class="iconfont icon-ico" style="color: #894231;font-size:80rpx"></text>
-      </view> -->
       <view class="doudou-img">
         <image src="../../images/doudou.png"></image>
       </view>

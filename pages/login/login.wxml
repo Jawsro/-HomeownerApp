@@ -4,8 +4,8 @@
   <header  my-property="登录"></header> 
   <!--登录方式选择 -->
   <view class="userinfo">
-     <button open-type="getUserInfo" 
-      bindgetuserinfo="getUserInfo"
+     <button 
+      bindtap="getUserInfo"
       class="wx-button font-16"
       style="width:100%"
       >

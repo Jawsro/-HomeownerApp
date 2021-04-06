@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    text:'#本小区于本月15号起开通线上缴费功能开通线上缴费功能',
+    yemian:false,
     marqueePace: 1,
     marqueeDistance: 0,//初始滚动距离
     marquee_margin: 20,
@@ -56,7 +56,6 @@ Page({
     if(_this.data.moreText != '加载中'){
       return false;
     }
-    console.log(123)
     _this.data.moreText = '正在加载更多';
     let data = {
       subdistrictId :subdistrictId,
@@ -81,7 +80,8 @@ Page({
         }
         _this.setData({
           announcementList:_this.data.announcementList,
-          moreText:_this.data.moreText
+          moreText:_this.data.moreText,
+          yemian:true,
         })
       } 
     })
@@ -115,14 +115,14 @@ Page({
    */
   onShow: function () {
      // 页面显示
-     var that = this;
-     var length = that.data.text.length * that.data.size;//文字长度
-     var windowWidth = wx.getSystemInfoSync().windowWidth ;// 屏幕宽度
-     that.setData({
-       length: length,
-       windowWidth: windowWidth
-     });
-     that.scrolltxt();// 第一个字消失后立即从右边出现
+    //  var that = this;
+    //  var length = that.data.text.length * that.data.size;//文字长度
+    //  var windowWidth = wx.getSystemInfoSync().windowWidth ;// 屏幕宽度
+    //  that.setData({
+    //    length: length,
+    //    windowWidth: windowWidth
+    //  });
+    //  that.scrolltxt();// 第一个字消失后立即从右边出现
      //数据请求
     this._getAnnouncementList()
   },

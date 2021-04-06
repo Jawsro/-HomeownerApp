@@ -1,4 +1,4 @@
-<view class='container'>
+<view class='container' wx:if='{{yemian}}'>
   <view class="top-css"></view>
   <!-- 组件引入 -->
   <header  my-property="{{title}}" bind:attached="attached"></header> 
@@ -22,7 +22,7 @@
             </view>
           </view>
           <view class="news-list-right">
-            <image src="{{item.head_image}}" mode='widthFix'></image>
+            <image src="{{item.head_image}}" mode='aspectFill'></image>
           </view>
         </view>
       </view>

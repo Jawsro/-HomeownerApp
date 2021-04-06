@@ -1,10 +1,10 @@
-<view class='container'>
+<view class='container' wx:if='{{yemian}}'>
   <view class="top-css"></view>
   <!-- 组件引入 -->
   <header  my-property="社区公告" ></header> 
   <!-- 精彩资讯 -->
   <view class="information" style="margin-top:150rpx">
-    <view class="title">
+    <!-- <view class="title">
       <view class="img">
         <image src="../../images/laba.png" mode='widthFix'></image>
       </view>
@@ -14,19 +14,17 @@
           <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>    
         </view>
       </view>
-      <!-- <view class="more">
-        <text class="iconfont icon-gengduo "></text>
-      </view> -->
-    </view>
+      
+    </view> -->
     <view class="main">
-      <view class="main-title ">
+      <!-- <view class="main-title ">
         <view class="left font-16 font-weight-600">
           <text>精选资讯</text>
-        </view>
+        </view> -->
         <!-- <view class="main-more">
           <text>更多</text> <text class="iconfont icon-gengduo "></text>
         </view> -->
-      </view>
+      <!-- </view> -->
       <view class="news">
         <view 
           class="news-list" 
@@ -46,9 +44,12 @@
             </view>
           </view>
           <view class="news-list-right">
-            <image src="{{item.head_image}}" mode='widthFix'></image>
+            <image src="{{item.head_image}}" mode='aspectFill'></image>
           </view>
         </view>
+      </view>
+      <view class="more font-14">
+        <text>------{{moreText}}------</text>
       </view>
     </view>
   </view>  

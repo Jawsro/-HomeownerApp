@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    yemian:false,
     subdistrictList:[],//小区列表
     villageNameIndex:0,//首页显示的小区的索引
     newsList:[],//社区动态
@@ -18,12 +19,12 @@ Page({
       {
         icon:"icon-wuyefeiyongchuzhang",
         text:"物业缴费",
-        url:"../houselist/houselist"
+        url:"../paymentlist/paymentlist"
       },
       {
         icon:"icon-yuechi",
         text:"一键开门",
-        ulr:""
+        url:"../opendoor/opendoor"
       },
       {
         icon:"icon-baoxiu",
@@ -73,8 +74,8 @@ Page({
         text:"投票"
       },
     ],
-    loginIsshow:false,//控制登录注册按钮
-    loginNoshow:false,//控制登录注册按钮
+    loginIsshow:false,//控制登录注册按钮未登录
+    loginNoshow:false,//控制登录注册按钮已登录
     changeVillageIsShow:false,//控制小区列表选择页面（搜索进入小区）
     villageIsShow:false,//控制首页是个显示（扫码进入）
     // hoeseListIsShow:true
@@ -82,7 +83,6 @@ Page({
   goGrid(e){
     let index = e.currentTarget.dataset.index;
     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
-    console.log(loginStatue)
     if(loginStatue){ 
      if(index == 0){
       wx.navigateTo({
@@ -151,7 +151,8 @@ Page({
         /////////
         _this.setData({
           subdistrictList: _this.data.subdistrictList,
-          villageNameIndex: _this.data.villageNameIndex
+          villageNameIndex: _this.data.villageNameIndex,
+          yemian:true
         })
       }
     })
@@ -200,16 +201,6 @@ Page({
       url: '../login/login',
     })
   },
-  // openHouseList(){
-  //   this.setData({
-  //     coloseHose:true
-  //   })
-  // },
-  // closeHouseList(){
-  //   this.setData({
-  //     coloseHose:false
-  //   })
-  // },
   goIcon(e){
     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
     let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
@@ -239,18 +230,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
      //判断用户的登录状态(非第一次进入小程序)
      if(wx.getStorageSync('token') != ''){
       HttpRequest('/app.php/login_api/loginStatus',{token:wx.getStorageSync('token')},'get',res=>{
@@ -274,14 +253,26 @@ Page({
       this.setData({
         villageIsShow:true,
         changeVillageIsShow:false,
+        villageNameIndex:wx.getStorageSync('subdistrictId')
       })
     }
     this._getSubdistrictList(xiaoquid);
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
     let _this = this;
-    //获取登录和认证的状态，控制页面功能
+    //获取登录状态，控制页面功能
     try {
         let loginStatue = wx.getStorageSync('loginStatue');//登录状态
-        // let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
         if (!loginStatue) {
           _this.setData({
             loginIsshow:true,
@@ -293,21 +284,8 @@ Page({
             loginNoshow:true,
             villageIsShow:true,
             changeVillageIsShow:false,
-            villageNameIndex:wx.getStorageSync('subdistrictId')
           })
-          // //登录状态并且已认证
-          // if (!authenticationStatus) {
-          //   _this.setData({
-          //     // hoeseListIsShow:true
-          //   })
-          // }else{
-          //   _this.setData({
-          //     hoeseListIsShow:false,
-          //     villageNameIndex:wx.getStorageSync('subdistrictId')
-          //   })
-          // }
         }
-        
       } catch (e) {}
   },
 

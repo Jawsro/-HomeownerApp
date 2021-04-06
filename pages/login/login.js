@@ -14,51 +14,51 @@ Page({
   
   onLoad() {},
   getUserInfo(e) {
-    if (e.detail.errMsg !== 'getUserInfo:ok') {
-      return false;
-    }
     wx.showLoading({
       title: "正在登录",
       mask: true
     });
-    let nickname = e.detail.userInfo.nickName,
-        weixin_headimg = e.detail.userInfo.avatarUrl
-    console.log(e)
-    // 登录
-    wx.login({
-      success: res => {
-        console.log(res);
-        let data = {
-          nickname,
-          weixin_headimg,
-          code:res.code
-        }
-        if(res.code){
-          // 发送 res.code 到后台换取 openId, sessionKey, unionId
-          HttpRequest('/app.php/login_api/wechatLogin',data,'get',result=>{
-            console.log(result)
-            if(result.status == true){
-              wx.showToast({
-                title: result.msg,
-                duration:2000
+    let nickname = '';
+    let weixin_headimg = '';
+    wx.getUserProfile({
+      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        nickname = res.userInfo.nickName,
+        weixin_headimg = res.userInfo.avatarUrl;
+        // 登录
+        wx.login({
+          success: res => {
+            let data = {
+              nickname,
+              weixin_headimg,
+              code:res.code
+            }
+            if(res.code){
+              // 发送 res.code 到后台换取 openId, sessionKey, unionId
+              HttpRequest('/app.php/login_api/wechatLogin',data,'get',result=>{
+                if(result.status == true){
+                  wx.showToast({
+                    title: result.msg,
+                    duration:2000
+                  })
+                  //发送用户信息到后台
+                  //成功后将后台返回来的token,用户id保存在本地
+                  wx.setStorageSync('token', result.token);
+                  wx.setStorageSync('loginStatue', true);
+                  setTimeout( () => {
+                    wx.switchTab({
+                      url: '../index/index',
+                    })
+                  },2000)
+                }
               })
-              //发送用户信息到后台
-              //成功后将后台返回来的token,用户id保存在本地
-              wx.setStorageSync('token', result.token);
-              wx.setStorageSync('loginStatue', true);
-              setTimeout( () => {
-                wx.switchTab({
-                  url: '../index/index',
-                })
-              },2000)
             }
             
-            
-          })
-        }
-         
+          }
+        })
       }
     })
+    
     //获取用户信息
     // if (app.globalData.userInfo) {
     //   this.setData({
@@ -76,7 +76,7 @@ Page({
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
+      wx.getUserProfile({
         success: res => {
           this.setData({
             userInfo: res.userInfo

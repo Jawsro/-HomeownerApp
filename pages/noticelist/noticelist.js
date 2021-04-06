@@ -10,24 +10,28 @@ Page({
    * 页面的初始数据
    */
   data: {
+    yemian:false,
     noticeList:[],
     moreText:'加载中',
-    page:1
+    page:1,
   },
   //社区动态
   _getNoticeList(){
+    console.log(1)
     let subdistrictId = wx.getStorageSync('subdistrictId');
     let _this = this;
     if(_this.data.moreText != '加载中'){
       return false;
     }
-    console.log(123)
     _this.data.moreText = '正在加载更多';
     let data = {
       subdistrictId :subdistrictId,
       page:_this.data.page
     };
+    console.log(33633)
     HttpRequest('/app.php/information_api/getNewsList',data,'get',res=>{
+      console.log(1222)
+      console.log(res)
       if(res.status == true){
         res.data.forEach(item =>{
           item.head_image = app.globalData.siteUrl + item.head_image;
@@ -46,7 +50,8 @@ Page({
         }
         _this.setData({
           noticeList:_this.data.noticeList,
-          moreText:_this.data.moreText
+          moreText:_this.data.moreText,
+          yemian:true
         })
       } 
     })
@@ -94,7 +99,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
     let _this = this;
     _this.setData({
       title:options.title

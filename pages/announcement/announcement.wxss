@@ -74,6 +74,7 @@
 }
 .news-list-right{
   flex: 0 0 200rpx;
+  height: 104rpx;
 }
 .news-list-left{
   flex:1;
@@ -148,4 +149,9 @@
   /* display: flex; */
   /* justify-content: right;
   align-items: right; */
+}
+.more{
+  color:#A7A7AA;
+  text-align: center;
+  margin-top:20rpx
 }

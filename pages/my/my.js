@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    yemian:true,
     loginStatue:true,
     authenticationStatus:false,
     headImg:'',
@@ -43,7 +44,7 @@ Page({
   ],
   },
   isLogin(){
-      let _this = this;
+    let _this = this;
     try {
       let loginStatue = wx.getStorageSync('loginStatue');
       if (!loginStatue) {
@@ -56,7 +57,7 @@ Page({
         })
       }
     } catch (e) {}
-    
+  
   },
   goLogin(){
     wx.navigateTo({
@@ -70,12 +71,12 @@ Page({
         url: '../owner/owner'
       })
     }else {
-        wx.showModal({
-          title: '提示',
-          content: '请先登录',
-          showCancel: false
-        })
-      } 
+      wx.showModal({
+        title: '提示',
+        content: '请先登录',
+        showCancel: false
+      })
+    } 
   },
   addMsg(e){
     let id = e.currentTarget.dataset.id;
@@ -91,7 +92,7 @@ Page({
     let id = e.currentTarget.dataset.id;
     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
     let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-    if(loginStatue ){ // && authenticationStatus != ''
+    if(loginStatue && authenticationStatus == 'yes'){ // 
       this.data.functionList.forEach(item =>{
         if(item.id==id){
           if(item.isShow==true){
@@ -124,11 +125,15 @@ Page({
     })
   },
   _getAppUserInfo(){
+    let _this = this;
     HttpRequest("/app.php/app_user_api/getAppUserInfo",{},'get',res =>{
       if(res.status == true){
-        this.setData({
-          userInfo : res.data
+        _this.setData({
+          userInfo : res.data,
+          authenticationStatus:res.data.auth_status,
+          yemian:true,
         })
+        wx.setStorageSync('authenticationStatus', res.data.auth_status)
       }
     })
   },
@@ -136,28 +141,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(wx.getStorageSync('token') != ''){
-      this._getAppUserInfo();
-    }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.attached()
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.attached();
     this.isLogin();
-    let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-    this.setData({
-      authenticationStatus :  authenticationStatus,
-    })
-    
+    if(wx.getStorageSync('token') != ''){
+      this._getAppUserInfo();
+    }
   },
 
   /**

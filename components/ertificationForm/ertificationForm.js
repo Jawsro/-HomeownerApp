@@ -27,7 +27,7 @@ Component({
           const tempFilePaths = res.tempFilePaths
           console.log(tempFilePaths,)
           wx.uploadFile({
-            url: app.globalData.siteUrl+'/app.php/upload_api/idcard?token='+wx.getStorageSync('token')+'&&img=true',
+            url: app.globalData.siteUrl+'/app.php/upload_api/idcard?token='+wx.getStorageSync('token')+'&&img=1',
             filePath: tempFilePaths[0],
             name: 'file',
             formData: {
@@ -58,7 +58,7 @@ Component({
           const tempFilePaths = res.tempFilePaths
           console.log(tempFilePaths,)
           wx.uploadFile({
-            url: app.globalData.siteUrl+'/app.php/upload_api/idcard?token='+wx.getStorageSync('token')+'&&img=false',
+            url: app.globalData.siteUrl+'/app.php/upload_api/idcard?token='+wx.getStorageSync('token')+'&&img=2',
             filePath: tempFilePaths[0],
             name: 'file',
             formData: {
@@ -78,32 +78,55 @@ Component({
     })
     },
     setDataForm(e){
-      console.log(e)
       if(lock){
         return;
       }
       lock=true
-     
       let trueName = e.detail.value.trueName,
           telNumber = e.detail.value.telNumber,
-          identityCode = e.detail.value. identityCode;
-      
-        
-        if(trueName =='' && telNumber==''&& identityCode==''){
-          wx.showModal({
-            title: '提示',
-            content: '请确认必填信息已填写完',
-            showCancel:false,
-            success (res) {}
-          })
-          return false
-        }
-        console.log('owner')
-     
-       // 按钮禁用
-       this.setData({
-        disabled: true
-      });
+          identityCode = e.detail.value. identityCode,
+          token = wx.getStorageSync('token');
+      let data={
+        trueName,
+        telNumber,
+        identityCode,
+        token
+      }
+      if(trueName !='' && telNumber !=''&& identityCode !='' && this.data.idAfterImg != '' && this.data.idbeforeImg != ''){
+        HttpRequest('/app.php/app_user_api/updateAppUserAttachInfo',data,'post',res => {
+          if(res.status == true){
+            //请求状态成功
+            // 按钮禁用
+            this.setData({
+              disabled: true
+            });
+            wx.showModal({
+              title: '提示',
+              content: '信息上传成功',
+              showCancel: false,
+              success (res) {
+                if (res.confirm) {
+                  setTimeout( () => {
+                    wx.switchTab({
+                      url: '../my/my',
+                    })
+                  },1000)
+                }
+              }
+            })
+          }else{
+            lock=false;
+          }
+        })
+      }else{
+        wx.showModal({
+          title: '提示',
+          content: '请确认信息已填写完并且身份证照片已上传',
+          showCancel:false,
+          success (res) {}
+        })
+        lock=false;
+      }
     },
   },
   
