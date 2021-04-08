@@ -14,9 +14,10 @@ Page({
     idArray:[
       {text:"业主",identity:"owner"},
       {text:"家属",identity:"family"},
-      {text:"租客",identity:"tenant"},
+      {text:"租户",identity:"tenant"},
     ],
-    index:0
+    index:0,
+    btnDisabled:false
   },
   idChange(e){
     console.log(e)
@@ -32,7 +33,6 @@ Page({
     HttpRequest('/app.php/subdistrict_api/getSubdistrictList',{},'get',function(res){
       if(res.status == true){
         _this.data.subdistrictList =res.data
-        //表示用户是扫描二维码进入小程序，需要在小区列表查找该ID对应的小区名显示在首页
         if(subdistrictId !='undefined'){
           for(let i = 0;i<res.data.length;i++){
             if(res.data[i].id==subdistrictId){
@@ -52,6 +52,58 @@ Page({
     let index = e.detail.value;
     this.setData({
       villageNameIndex: index
+    })
+  },
+  addHouse(e){
+    let subdistrictId = wx.getStorageSync('subdistrictId');
+    let token = wx.getStorageSync('token');
+    let userType = this.data.idArray[this.data.index].text;
+    let {building,
+        unit,
+        roomNumber,
+        ownerName,
+        ownerIdentityCode,
+        ownerTelNum} = e.detail.value;
+    if(userType == '业主'){
+      userType = 'head'
+    }else if(userType == '家属'){
+      userType = 'dweller'
+    }else if(userType == '租户'){
+      userType = 'tenant'
+    }
+    let data = {
+        token,
+        subdistrictId,
+        building,
+        unit,
+        roomNumber,
+        ownerName,
+        ownerIdentityCode,
+        ownerTelNum,
+        userType
+    }
+    this.setData({
+      btnDisabled : true
+    })
+    HttpRequest('/app.php/app_user_api/appUserAddRoom',data,'post',res => {
+      console.log(res)
+      if(res.status == true){
+        wx.showToast({
+          title: '添加成功',
+          icon: 'success',
+          duration: 2000
+        })
+        setTimeout( () => {
+          wx.switchTab({
+            url: '../my/my',
+          })
+        },2000)
+      }
+      setTimeout(()=>{
+        this.setData({
+          btnDisabled : false
+        })
+      },2000)
     })
   },
   /**

@@ -32,7 +32,7 @@ Page({
   },
   currentNav(e){
     let id = e.currentTarget.dataset.id;
-    let scrollLeft =  e.currentTarget.offsetLeft - ( this.data.windowWidth * 0.9 ) / 2;
+    let scrollLeft =  e.currentTarget.offsetLeft - ( this.data.windowWidth * 0.8 ) / 2;
     this.setData({
       current: id,
       scrollLeft: scrollLeft

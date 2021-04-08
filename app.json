@@ -1,6 +1,5 @@
 {
   "pages":[
-    
     "pages/index/index",
     "pages/my/my",
     "pages/addcar/addcar",
@@ -8,10 +7,9 @@
     "pages/addshops/addshops",
     "pages/owner/owner", 
     "pages/login/login",
-    "pages/addHouse/addHouse",
     "pages/opendoor/opendoor",
     "pages/paymentlist/paymentlist",
-    
+    "pages/addHouse/addHouse",
     "pages/information/information",
     "pages/renovation/renovation",
     "pages/noticelist/noticelist",

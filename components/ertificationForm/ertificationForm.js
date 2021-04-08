@@ -106,6 +106,7 @@ Component({
               showCancel: false,
               success (res) {
                 if (res.confirm) {
+                  wx.setStorageSync('authenticationStatus', 'yes')
                   setTimeout( () => {
                     wx.switchTab({
                       url: '../my/my',

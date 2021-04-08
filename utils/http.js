@@ -37,9 +37,6 @@ function HttpRequest(url, data,method = "GET", callback) {
             }
           }
         })
-        // wx.navigateTo({
-        //   url: "/pages/login/login"
-        // });
       }
       return typeof callback == "function" && callback(res.data)
     },
