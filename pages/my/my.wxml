@@ -29,9 +29,10 @@
         <view class="user-name font-20  font-weight-500">{{userInfo.nickname}}</view>
         <view class="grade font-12" 
           wx:if ="{{authenticationStatus == 'yes'? false:true}}"
-          bindtap="goOwner">
+          >
+          <!-- bindtap="goOwner" -->
           未实名认证</view>
-        <view class="grade font-12" wx:if ="{{ authenticationStatus == 'yes'? true:false}}">已认证</view>
+        <view class="grade font-12" bindtap="goOwner" wx:if ="{{ authenticationStatus == 'yes'? true:false}}">已认证</view>
       </view>
       <!-- <view class="erweima">
         <text class="iconfont icon-ico" style="color: #894231;font-size:80rpx"></text>
@@ -68,53 +69,19 @@
       </view>
     </view> -->
     <view class="functions">
-       <!--汽车，车位，商铺 -->
-       <view class="functions-item" 
+      <!--汽车，车位，商铺 -->
+      <view class="functions-item" 
         wx:for='{{functionList}}'
         wx:key='index'
-        data-id="{{item.id}}"
+        data-url="{{item.url}}"
         bindtap="goFunction">
         <view class="functions-name">
           <view class="functions-item-left">
             <text>{{item.name}}</text>
           </view>
-          <text class="iconfont icon-gengduo" 
-            style="color:#A6A6A6" 
-            wx:if ="{{!item.isShow}}"></text>
-          <text class="iconfont icon-xiajiantou" style="color:#A6A6A6" wx:if="{{item.isShow}}"></text>
-        </view>
-        <view class="functions-content font-14" wx:if="{{item.isShow}}">
-          <view class="content-item" wx:for="{{item.dataList}}" wx:for-item="index"  wx:key='this'>  
-            <text>{{index}}</text>
-          </view>
-          <!-- <view wx:if="{{item.dataList.length<1}}">暂无数据</view> -->
-          <view class="add" catchtap='addMsg'  data-id="{{item.id}}">
-            <text class="iconfont icon-tianjiaadd73" style="font-size:40rpx"></text>添加{{item.text}}
-          </view>
-        </view>
-      </view>
-
-
-
-
-
-
-
-
-
-
-
-      <!-- <view class="functions-item" 
-        wx:for='{{functionLisr}}'
-        wx:key='index'
-        bindtap="goFunction">
-        <view class="functions-item-left">
-          <text>{{item.name}}</text>
-        </view>
-        <view class="functions-item-right">
           <text class="iconfont icon-gengduo" style="color:#A6A6A6"></text>
         </view>
-      </view> -->
+      </view> 
     </view>
   </view>
 </view>

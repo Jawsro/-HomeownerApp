@@ -10,7 +10,7 @@
       <view class="input-msg">
         <view class="left-name">
           <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-          <text class="font-16 font-weight-500">选择小区</text>
+          <text class="font-16">选择小区</text>
         </view>
         <view class="input">
           <picker bindchange="subdistrictNameChange"
@@ -29,7 +29,7 @@
       <view class="input-msg">
         <view class="left-name">
           <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-          <text class="font-16 font-weight-500">车位号</text>
+          <text class="font-16">车位号</text>
         </view>
         <view class="input">
           <input placeholder="请输入车位号" class="font-15" name="floor1" style="color:#B7B7B7"></input>

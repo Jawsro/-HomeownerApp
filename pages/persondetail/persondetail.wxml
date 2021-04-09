@@ -1,0 +1,28 @@
+<view class='container'>
+  <view class="top-css"></view>
+  <!-- 组件引入 -->
+  <header  my-property="住户信息"></header>
+  <view class="main" style="margin-top:150rpx">
+    <view class="xiaoquming">宜昌市御水湾小区</view>
+    <scroll-view scroll-y="true" class="scroll" >
+      <view class="person-msg-item">
+        <view class="person-name">
+          <view class="name">贺亚俊</view>
+          <view class="type">业主</view>
+        </view>
+        <view class="person-msg">
+          <view class="msg-item">
+            <text class="text-color-h">联系电话：</text><text class="text-color">112345678911</text>
+          </view>
+          <view class="msg-item">
+            <text class="text-color-h">身份证号：</text><text class="text-color">1123456789111111111</text>
+          </view>
+          <view class="msg-item">
+            <text class="text-color-h">认证日期：</text><text class="text-color">2021-12-3</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <button class="form-btn"  style="width: 90%;" bindtap="addPerson">添加住户</button>
+  </view>
+</view>

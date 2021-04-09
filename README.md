@@ -18,7 +18,13 @@
 
     "pages/my/my", --------个人中心
 
-    "pages/owner/owner", -----------业主认证
+    "pages/persondetail/persondetail",------------住户详情
+
+    "pages/addperson/addperson",----------添加住户
+
+    "pages/houselist/houselist",------------房屋列表
+
+    "pages/owner/owner", -----------业主认证（取消）
 
     "pages/announcement/announcement",----------------社区公告
 

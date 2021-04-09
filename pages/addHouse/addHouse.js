@@ -61,9 +61,10 @@ Page({
     let {building,
         unit,
         roomNumber,
-        ownerName,
-        ownerIdentityCode,
-        ownerTelNum} = e.detail.value;
+        // ownerName,
+        // ownerIdentityCode,
+        // ownerTelNum
+      } = e.detail.value;
     if(userType == '业主'){
       userType = 'head'
     }else if(userType == '家属'){
@@ -77,10 +78,11 @@ Page({
         building,
         unit,
         roomNumber,
-        ownerName,
-        ownerIdentityCode,
-        ownerTelNum,
         userType
+        // ownerName,
+        // ownerIdentityCode,
+        // ownerTelNum,
+        
     }
     this.setData({
       btnDisabled : true

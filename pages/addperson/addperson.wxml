@@ -1,0 +1,67 @@
+<view class='container'>
+  <view class="top-css"></view>
+  <!-- 组件引入 -->
+  <header  my-property="添加住户"></header>
+  <view class="main" style="margin-top:150rpx">
+    <view class="xiaoquming">当前房屋(宜昌市御水湾小区)</view>
+    <form bindsubmit="setDataForm">
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16 ">姓名</text>
+        </view>
+        <view class="input">
+          <input placeholder="请输入姓名" class="font-15" name="trueName" style="color:#B7B7B7"></input>
+        </view>
+      </view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16 ">手机号</text>
+        </view>
+        <view class="input">
+          <input placeholder="00000000000" class="font-15" name="trueName" style="color:#B7B7B7"></input>
+        </view>
+      </view>
+     
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16">证件类型</text>
+        </view>
+        <view class="input">
+          <input placeholder="身份证" class="font-15" name="trueName" style="color:#B7B7B7"></input>
+        </view>
+      </view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16">证件号码</text>
+        </view>
+        <view class="input">
+          <input placeholder="请输入身份证号码" class="font-15" name="trueName" style="color:#B7B7B7"></input>
+        </view>
+      </view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16">身份选择</text>
+        </view>
+        <view class="input">
+          <picker bindchange="idChange"
+            value="{{idArray[index]}}"
+            range="{{idArray}}"
+            range-key='text'
+          >
+            <view class="picker">
+              {{idArray[index].text}}
+              <text class="iconfont icon-xiajiantou margin-right" style="font-weight:600"></text>
+            </view>
+          </picker>
+          <input placeholder="" class="font-15" name="userType" style="color:#B7B7B7;display:none"></input>
+        </view>
+      </view>
+      <button class="form-btn"  style="width: 90%;" bindtap="addPerson" formType="submit">提交</button>
+    </form>
+  </view>
+</view>

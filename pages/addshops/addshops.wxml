@@ -10,7 +10,7 @@
       <view class="input-msg">
         <view class="left-name">
           <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-          <text class="font-16 font-weight-500">选择小区</text>
+          <text class="font-16 ">选择小区</text>
         </view>
         <view class="input">
           <picker bindchange="subdistrictNameChange"
@@ -29,7 +29,7 @@
       <view class="input-msg">
         <view class="left-name">
           <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-          <text class="font-16 font-weight-500">商铺号</text>
+          <text class="font-16 ">商铺号</text>
         </view>
         <view class="input">
           <input placeholder="请输入商铺号" class="font-15" name="floor1" style="color:#B7B7B7"></input>
@@ -39,7 +39,7 @@
       <view class="input-msg">
         <view class="left-name">
           <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-          <text class="font-16 font-weight-500">身份选择</text>
+          <text class="font-16 ">身份选择</text>
         </view>
         <view class="input">
           <picker bindchange="idChange"
@@ -60,7 +60,7 @@
         <view class="input-msg">
           <view class="left-name">
             <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-            <text class="font-16 font-weight-500">业主姓名</text>
+            <text class="font-16 ">业主姓名</text>
           </view>
           <view class="input">
             <input placeholder="请输入真实姓名" class="font-15" name="name" style="color:#B7B7B7"></input>
@@ -69,7 +69,7 @@
         <view class="input-msg">
           <view class="left-name">
             <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-            <text class="font-16 font-weight-500">业主身份证号</text>
+            <text class="font-16 ">业主身份证号</text>
           </view>
           <view class="input">
             <input placeholder="请输入正确的身份证号" class="font-15" name="userID" style="color:#B7B7B7"></input>
@@ -78,7 +78,7 @@
         <view class="input-msg">
           <view class="left-name">
             <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-            <text class="font-16 font-weight-500">业主手机号</text>
+            <text class="font-16 ">业主手机号</text>
           </view>
           <view class="input">
             <input placeholder="请输入联系电话" class="font-15" name="phone" style="color:#B7B7B7"></input>
@@ -86,9 +86,7 @@
         </view>
 
       </view>
-
-
-        <button class="form-btn font-14" formType="submit" style=" width: 90%;">确认提交</button>
+      <button class="form-btn font-14" formType="submit" style=" width: 90%; ">确认提交</button>
     </form>
   </view>
 </view>

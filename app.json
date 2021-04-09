@@ -1,7 +1,12 @@
 {
   "pages":[
-    "pages/index/index",
+    
     "pages/my/my",
+    "pages/persondetail/persondetail",
+    "pages/addperson/addperson",
+    "pages/houselist/houselist",
+    "pages/index/index", 
+    "pages/addHouse/addHouse",
     "pages/addcar/addcar",
     "pages/addparking/addparking",
     "pages/addshops/addshops",
@@ -9,7 +14,6 @@
     "pages/login/login",
     "pages/opendoor/opendoor",
     "pages/paymentlist/paymentlist",
-    "pages/addHouse/addHouse",
     "pages/information/information",
     "pages/renovation/renovation",
     "pages/noticelist/noticelist",

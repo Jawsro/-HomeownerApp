@@ -1,34 +1,17 @@
 .container{
-  padding: 30rpx;
+  position: absolute;
+  top:0;
+  left: 0;
+  bottom:0;
+  right: 0;
+}
+.main{
+  padding: 30rpx 30rpx 145rpx 30rpx;
+  background-color: #F7F2EF;
+}
+.scroll{
+  height: 100%;
 }
 .category-title{
   padding:20rpx 10rpx;
-}
-.input-msg{
-  padding: 40rpx 10rpx;
-  display: flex;
-  align-items: center;
-  border-radius: 20rpx;
-  background-color: #fff;
-  margin-bottom: 10rpx;
-}
-.left-name{
-  flex:0 0 200rpx;
-  display: flex;
-  align-items: center;
-}
-.input{
-  flex:1;
-  padding-left: 20rpx;
-}
-.picker{
-  font-size:30rpx;
-  color:#B7B7B7;
-}
-.form-btn{
-  border-radius: 20rpx;
-  background-color: #884334;
-  color: #fff;
-  font-weight: 100;
-  margin-top: 60rpx;
 }

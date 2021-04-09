@@ -1,0 +1,40 @@
+<view class='container'>
+  <view class="top-css"></view>
+  <!-- 组件引入 -->
+  <header  my-property="我的房屋"></header>
+  <view class="main" style="margin-top:150rpx">
+    <scroll-view scroll-y="true" class="scroll" enhanced='false' show-scrollbar='false'>
+      <view class="unauthorized" wx:if="{{authenticationStatus !='yes'}}">
+        <view class="iconfont icon-weichaxundao" style="font-size:100rpx"></view>
+        <view>暂无您的房屋信息，认证成功后可查看</view>
+      </view>
+      <view class="authorized" wx:if="{{authenticationStatus =='yes'}}">
+        <view class="houseitem">
+          <view class="right-yibangding">
+            已绑定
+          </view>
+          <view class="top-housemsg">
+            <view class="xiaoqu">宜昌市御水湾小区</view>
+            <view class="house"> 1栋2单元2102</view>
+          </view>
+          <view class="bottom-personmsg">
+            <view class="head">
+              <image mode="widthFix"
+                src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKLbdEJznia33EvB7wQaUoESw9ngplLMLzmptHGp4xphZJIX78YOKSaGuhZ8cibDPuuEQRDBDdmXEcA/132"></image>
+            </view>
+            <view class="yezhu">
+              <text>我是业主</text>
+              |
+              <text>业主</text>
+            </view>
+            <view class="person-num" bindtap="goPersonDetails">
+              <text class="margin-right">共1人</text>
+              <text class="iconfont icon-gengduo"></text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <button class="form-btn"  style="width: 90%;" bindtap="goAddHouse">绑定房屋</button>
+  </view>
+</view>

@@ -29,7 +29,7 @@
       <view class="input-msg1">
         <view class="">
           <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
-          <text class="font-16 font-weight-500">请输入车牌号</text>
+          <text class="font-16" style="color:#884334;">请输入车牌号</text>
         </view>
         <view class="input-box">
          <view class="input-item">

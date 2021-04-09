@@ -15,31 +15,23 @@ Page({
         id:1,
         name:'我的房屋信息 ',
         text:'房屋',
-        url:'../addHouse/addHouse',
-        dataList:[],
-        isShow:false
+        url:'../houselist/houselist'
       },
       {
         id:2,
         name:'我的车位 ',
         text:'车位',
-        url:'../addparking/addparking',
-        dataList:[],
-        isShow:false
+        url:'../addparking/addparking'
       },{
         id:3,
         name:'我的汽车 ',
         text:'汽车',
-        url:'../addcar/addcar',
-        dataList:[],
-        isShow:false
+        url:'../addcar/addcar'
       },{
         id:4,
         name:'我的商铺 ',
         text:'商铺',
-        url:'../addshops/addshops',
-        dataList:[],
-        isShow:false
+        url:'../addshops/addshops'
       },
   ],
   },
@@ -89,28 +81,31 @@ Page({
     })
   },
   goFunction(e){
-    let id = e.currentTarget.dataset.id;
+    let url = e.currentTarget.dataset.url;
     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
-    let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-    if(loginStatue && authenticationStatus == 'yes'){ // 
-      this.data.functionList.forEach(item =>{
-        if(item.id==id){
-          if(item.isShow==true){
-            item.isShow=false
-          }else{
-            item.isShow=true
-          }
-        }else{
-          item.isShow=false
-        }
-      })
-      this.setData({
-        functionList:this.data.functionList
+    // let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
+    if(loginStatue){ //  && authenticationStatus == 'yes'
+      // this.data.functionList.forEach(item =>{
+      //   if(item.id==id){
+      //     if(item.isShow==true){
+      //       item.isShow=false
+      //     }else{
+      //       item.isShow=true
+      //     }
+      //   }else{
+      //     item.isShow=false
+      //   }
+      // })
+      // this.setData({
+      //   functionList:this.data.functionList
+      // })
+      wx.navigateTo({
+        url: url,
       })
     }else { 
         wx.showModal({
           title: '提示',
-          content: '请先登录并且完成身份认证！',
+          content: '请先登录！',
           showCancel: false
         })
       } 
@@ -128,12 +123,18 @@ Page({
     let _this = this;
     HttpRequest("/app.php/app_user_api/getAppUserInfo",{},'get',res =>{
       if(res.status == true){
+        _this.data.functionList.forEach( item =>{
+          if( item.text == '房屋') {
+            item.dataList = res.data.roomList
+          }
+        })
         _this.setData({
           userInfo : res.data,
           authenticationStatus:res.data.auth_status,
           yemian:true,
+          functionList: _this.data.functionList
         })
-        wx.setStorageSync('authenticationStatus', res.data.auth_status)
+        wx.setStorageSync('authenticationStatus', res.data.auth_status);
       }
     })
   },

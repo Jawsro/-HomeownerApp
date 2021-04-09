@@ -1,0 +1,79 @@
+.container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+}
+.main{
+  height: 100%;
+  padding: 30rpx 40rpx 145rpx 40rpx;
+}
+.scroll{
+  height: 100%;
+  position: relative;
+}
+/* .scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+} */
+.unauthorized{
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%,-50%);
+  color: #BDBDBD;
+}
+.houseitem{
+  padding: 30rpx 40rpx;
+  background-color: #BE9C90;
+  border-radius: 30rpx;
+  color: #fff;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+.top-housemsg{
+  border-bottom:2rpx solid #B18B80;
+}
+.right-yibangding{
+  position: absolute;
+  top:26rpx;
+  right: 0;
+  background-color: #A3796D;
+  font-size: 28rpx;
+  border-top-left-radius:30rpx;
+  border-bottom-left-radius:30rpx;
+  padding:10rpx 80rpx 10rpx 30rpx
+}
+.top-housemsg>view{
+  padding-bottom:20rpx;
+}
+.xiaoqu{
+  font-size: 32rpx;
+}
+.house{
+  font-size: 28rpx;
+}
+.bottom-personmsg{
+  padding-top:30rpx;
+  display: flex;
+  align-items: center;
+  font-size:28rpx;
+}
+.head{
+  flex:0 0 100;
+  width:100rpx;
+  height: 100rpx;
+ }
+.head image{
+  border-radius: 50%;
+}
+.yezhu{
+  flex:1;
+  margin-left: 40rpx;
+}
