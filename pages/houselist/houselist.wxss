@@ -1,29 +1,27 @@
 .container{
   position: absolute;
-  top: 0;
+  top: 150rpx;
   left: 0;
   right: 0;
   bottom: 0;
-  
+  padding-top: 30rpx;
 }
 .main{
   height: 100%;
-  padding: 30rpx 40rpx 145rpx 40rpx;
+  padding: 0rpx 40rpx 0rpx 40rpx;
+  background-color: #F7F2EF;
 }
 .scroll{
   height: 100%;
   position: relative;
 }
-/* .scroll::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
-  display: none;
-} */
+.authorized{
+  margin:0rpx 0 145rpx;
+}
 .unauthorized{
   position: absolute;
   width: 100%;
-  top: 50%;
+  top: 33%;
   left: 50%;
   text-align: center;
   transform: translate(-50%,-50%);

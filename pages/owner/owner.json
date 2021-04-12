@@ -1,6 +1,5 @@
 { 
   "usingComponents": {
-    "header":"../../components/title/title",
-    "ertificationForm":"../../components/ertificationForm/ertificationForm"
+    "header":"../../components/title/title"
   }
 }

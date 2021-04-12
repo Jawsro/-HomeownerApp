@@ -55,15 +55,15 @@ Page({
     })
   },
   addHouse(e){
+    console.log(e.detail.value)
     let subdistrictId = wx.getStorageSync('subdistrictId');
-    let token = wx.getStorageSync('token');
     let userType = this.data.idArray[this.data.index].text;
     let {building,
         unit,
-        roomNumber,
-        // ownerName,
-        // ownerIdentityCode,
-        // ownerTelNum
+        roomCode,
+        name,
+        identityCode,
+        phone,
       } = e.detail.value;
     if(userType == '业主'){
       userType = 'head'
@@ -73,16 +73,14 @@ Page({
       userType = 'tenant'
     }
     let data = {
-        token,
         subdistrictId,
         building,
         unit,
-        roomNumber,
-        userType
-        // ownerName,
-        // ownerIdentityCode,
-        // ownerTelNum,
-        
+        roomCode,
+        userType,
+        name,
+        identityCode,
+        phone,
     }
     this.setData({
       btnDisabled : true
@@ -96,8 +94,8 @@ Page({
           duration: 2000
         })
         setTimeout( () => {
-          wx.switchTab({
-            url: '../my/my',
+          wx.navigateTo({
+            url: '../houselist/houselist',
           })
         },2000)
       }

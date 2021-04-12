@@ -4,27 +4,7 @@
   <header  my-property="社区公告" ></header> 
   <!-- 精彩资讯 -->
   <view class="information" style="margin-top:150rpx">
-    <!-- <view class="title">
-      <view class="img">
-        <image src="../../images/laba.png" mode='widthFix'></image>
-      </view>
-      <view class="text font-14">
-        <view style="transform: translateX(-{{marqueeDistance}}px)">
-          <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>
-          <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>    
-        </view>
-      </view>
-      
-    </view> -->
     <view class="main">
-      <!-- <view class="main-title ">
-        <view class="left font-16 font-weight-600">
-          <text>精选资讯</text>
-        </view> -->
-        <!-- <view class="main-more">
-          <text>更多</text> <text class="iconfont icon-gengduo "></text>
-        </view> -->
-      <!-- </view> -->
       <view class="news">
         <view 
           class="news-list" 
@@ -40,7 +20,6 @@
             </view>
             <view class="time font-12">
               <text class="date">{{item.createtime}}</text>
-              <!-- <text>{{item.createtime}}</text> -->
             </view>
           </view>
           <view class="news-list-right">
@@ -52,61 +31,5 @@
         <text>------{{moreText}}------</text>
       </view>
     </view>
-  </view>  
-  <!-- 留言板 -->
-  <!-- <view class="message-board">
-    <view class="message-board-title">
-      <view class="left font-18 font-weight-600">
-        <text>小区留言板</text>
-      </view>
-      <view class="main-more">
-        <text>更多</text> <text class="iconfont icon-gengduo "></text>
-      </view>
-    </view> -->
-    <!-- 留言内容 -->
-    <!-- <view class="msg-list">
-      <view class="msg-item">
-
-        <view class="user-msg">
-          <view class="user-img">
-            <text class="iconfont icon-touxiang" style="color:#C9CACA;font-size:90rpx;"></text>
-          </view>
-          <view class="user-name">
-            <view class="name font-16">楼上老李子</view>
-            <view class="floor font-12">2#2518住户</view>
-          </view>
-        </view>
-
-        <view class="msg-main">
-          <view class="msg-text font-14">
-            <text>家里水管爆了，昨天物业马上来修了。这效率不错，表扬一下</text>
-          </view>
-          <view class="msg-img">
-             <view class="imgs"><image src="http://property.shangyouyun.cn/image/bg3.png" mode="widthFix"></image></view>
-             <view class="imgs"><image src="http://property.shangyouyun.cn/image/bg3.png" mode="widthFix"></image></view>
-             <view class="imgs"><image src="http://property.shangyouyun.cn/image/bg3.png" mode="widthFix"></image></view>
-          </view>
-          <view class="bottom">
-            <view class="left font-12">
-              <text>1小时前</text>
-            </view>
-            <view class="right ">
-              <text class="iconfont  {{zanIsShow ? 'icon-aixin_shixin' : 'icon-aixin'}} {{zanIsShow ? 'iscolor' : 'nocolor'}}" 
-                  style='margin-right:10rpx;font-size:16px'
-                  bindtap="dianzan">
-              </text>
-              <text style="color:#443C38; margin-right:60rpx" class="font-14">{{zanNum}}</text>
-          
-                <text class="iconfont icon-pinglun " 
-                  style='color:#393939;margin-right:10rpx;font-size:14px'>
-              </text>
-              <text 
-              style="color:#443C38;" class="font-14">10</text>
-             
-            </view>
-          </view>
-        </view>
-      </view>
-    </view> -->
-  <!-- </view> -->
+  </view>
 </view>

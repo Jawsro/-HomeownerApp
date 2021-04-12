@@ -1,51 +1,27 @@
 
 .container{
-  /* position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;  */
+  bottom: 0;  
+  
 }
 .main{
-  padding: 20rpx 0;
+  padding: 30rpx 30rpx 145rpx 30rpx;
+  background-color: #F7F2EF;
 }
-.margin-right{
-  margin-right: 10rpx;
-}
-.input-msg{
-  padding: 40rpx 10rpx;
-  margin: 0 20rpx 10rpx;
-  display: flex;
-  align-items: center;
-  border-radius: 20rpx;
-  background-color: #fff;
-}
-.left-name{
-  flex:0 0 200rpx;
-  display: flex;
-  align-items: center;
-}
-.input{
-  flex:1;
-  padding-left: 20rpx;
-}
-.form-btn{
-  border-radius: 20rpx;
-  background-color: #884334;
-  color: #fff;
-  font-weight: 100;
-  margin-top: 60rpx;
-  /* position: fixed;
-  bottom: 40rpx;
-  left: 5%; */
+.scroll{
+  height: 100%;
 }
 .pic{
   padding: 40rpx 0rpx 40rpx 20rpx;
   background-color: #fff;
-  margin: 0 20rpx 10rpx;
+  margin: 0 0rpx 10rpx;
 }
 .title{
   padding:0rpx 20rpx;
+  color: #884334;
 }
 .pic-chose{
   display: flex;
@@ -64,9 +40,6 @@
   margin-bottom: 20rpx;
   border-radius: 20rpx;
 }
-/* .pic-right{
-  flex: 1;
-} */
 .image{
   
   height: 200rpx;
@@ -75,22 +48,6 @@
 image{
   border-radius: 20rpx;
   height: 100%;
-}
-.text{
-  text-align: center;
-  margin-top: 20rpx;
-}
-.zhuyi{
-  padding:20rpx 20rpx 0 10rpx ;
-  display: flex;
-  justify-content: center;
-}
-.icon{
-  flex: 0 0 32rpx;
-  width:32rpx
-}
-.zhuyi-text{
-  flex: 1;
 }
 .phone{
   width:100rpx;
@@ -101,7 +58,8 @@ image{
 }
 .textarea-wrp{
   background-color: #fff;
-  padding: 0 25rpx;margin: 0 20rpx 10rpx;
+  padding: 0 25rpx;
+  margin: 0 0rpx 10rpx;
 }
 textarea {
   width: 700rpx;

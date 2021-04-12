@@ -52,39 +52,6 @@
 .fontcolor{
   color:#fff
 }
-.zan-text{
+/* .zan-text{
   padding-top: 20rpx;
-}
-/* .recommend{
-  background-color: #fff;
-  padding: 40rpx 30rpx;
-}
-.news-list{
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid #EBEBEB;
-  padding:40rpx 0 ;
-}
-.news-list-right{
-  width: 360rpx;
-  height: 140rpx;
-}
-.news-list-left{
-  padding-right:60rpx;
-  position: relative;
-}
-.news-title {
-  color:#000;
-}
-.time{
-  color:#A6A6A7;
-  position: absolute;
-  bottom: 0;
-}
-.date{
-  margin-right: 40rpx;
-}
-.news-list-right image{
-  border-radius: 20rpx;
-  height: 100%;
 } */

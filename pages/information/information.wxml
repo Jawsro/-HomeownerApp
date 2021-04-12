@@ -35,32 +35,4 @@
     </view>
   </view>
 
-  <!-- <view class="recommend">
-    <view class="recommern-title font-weight-600 font-16">
-      <text>相关推荐</text>
-    </view>
-    <view class="news">
-
-        <navigator class="news-list"
-          hover-class="none"
-          wx:for="{{newsList}}"
-          wx:key='index'
-          wx:if="{{index<5}}">
-          <view class="news-list-left ">
-            <view class="news-title font-14">
-              <text>#小区福利#凡本月预存下月物业费前10名奖励食用油一桶！</text>
-            </view>
-            <view class="time font-12">
-              <text class="margin-right">民乐财经</text>
-              <text class="margin-right">2.4千阅读</text>
-              <text class="margin-right">35赞</text>
-            </view>
-          </view>
-          <view class="news-list-right">
-            <image src="http://property.shangyouyun.cn/image/gonggao.jpg"></image>
-          </view>
-        </navigator>
-
-    </view>
-  </view> -->
 </view>

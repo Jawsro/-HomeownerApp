@@ -1,40 +1,53 @@
-<view class='container'>
+<view class='container' wx:if = '{{yemianIsShow}}'>
   <view class="top-css"></view>
   <!-- 组件引入 -->
   <header  my-property="我的房屋"></header>
-  <view class="main" style="margin-top:150rpx">
-    <scroll-view scroll-y="true" class="scroll" enhanced='false' show-scrollbar='false'>
+  <view class="main">
+    <view class="scroll">
       <view class="unauthorized" wx:if="{{authenticationStatus !='yes'}}">
         <view class="iconfont icon-weichaxundao" style="font-size:100rpx"></view>
         <view>暂无您的房屋信息，认证成功后可查看</view>
       </view>
+      
       <view class="authorized" wx:if="{{authenticationStatus =='yes'}}">
-        <view class="houseitem">
-          <view class="right-yibangding">
-            已绑定
+        <view class="unauthorized" wx:if="{{roomList.length<1}}">
+          <view>暂无您的房屋信息</view>
+        </view>
+        <view class="houseitem" 
+          wx:for = "{{roomList}}"
+          wx:key = "index"
+          wx:if="{{roomList.length>0}}">
+          <view class="right-yibangding" 
+            data-roomMemberId = "{{item.roomMemberId}}" 
+            data-index="{{index}}"
+            bindtap="deleteHouse">
+            解除绑定
           </view>
           <view class="top-housemsg">
-            <view class="xiaoqu">宜昌市御水湾小区</view>
-            <view class="house"> 1栋2单元2102</view>
+            <view class="xiaoqu">{{item.city_name}}{{item.short_name}}</view>
+            <view class="house">{{item.block_name}}栋{{item.cell_name}}单元{{item.room_code}}室</view>
           </view>
           <view class="bottom-personmsg">
             <view class="head">
               <image mode="widthFix"
-                src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKLbdEJznia33EvB7wQaUoESw9ngplLMLzmptHGp4xphZJIX78YOKSaGuhZ8cibDPuuEQRDBDdmXEcA/132"></image>
+                src="{{item.headimg}}"></image>
             </view>
             <view class="yezhu">
-              <text>我是业主</text>
-              |
-              <text>业主</text>
+              <text>{{item.owner_name}}</text>
+                |
+                <text>{{item.user_type == 'head' ? '业主' :(item.user_type == 'dweller' ? '家属' :'租户')}}</text> 
             </view>
-            <view class="person-num" bindtap="goPersonDetails">
-              <text class="margin-right">共1人</text>
+            <view class="person-num" 
+              bindtap="goPersonDetails" 
+              data-roomid = '{{item.room_id}}' 
+              data-cellname="{{item.city_name}}{{item.short_name}}{{item.block_name}}栋{{item.cell_name}}单元{{item.room_code}}室">
+              <text class="margin-right">共{{item.roomMemberList.length}}人</text>
               <text class="iconfont icon-gengduo"></text>
             </view>
           </view>
         </view>
       </view>
-    </scroll-view>
+    </view>
     <button class="form-btn"  style="width: 90%;" bindtap="goAddHouse">绑定房屋</button>
   </view>
 </view>

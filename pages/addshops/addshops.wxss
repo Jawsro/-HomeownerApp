@@ -6,7 +6,3 @@
   bottom:0;
   right: 0;
 }
-.category-title{
-  padding:20rpx 10rpx;
-  color:#884334;
-}

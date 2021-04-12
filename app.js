@@ -6,7 +6,8 @@ App({
    * 全局变量
    */
   globalData: {
-    siteUrl:'http://api.5gzvip.idcfengye.com'
+    siteUrl:'http://api.5gzvip.idcfengye.com',
+    cellName:''
   },
   /**
    * 生命周期函数--监听小程序初始化

@@ -1,12 +1,13 @@
 {
-  "pages":[
+  "pages":[ 
     
     "pages/my/my",
-    "pages/persondetail/persondetail",
-    "pages/addperson/addperson",
-    "pages/houselist/houselist",
     "pages/index/index", 
     "pages/addHouse/addHouse",
+    "pages/addperson/addperson",
+    "pages/houselist/houselist",
+    "pages/persondetail/persondetail",
+   
     "pages/addcar/addcar",
     "pages/addparking/addparking",
     "pages/addshops/addshops",

@@ -1,20 +1,68 @@
-// pages/houselist/houselist.js
+// 获取应用实例
+const app = getApp();
+import {HttpRequest} from "../../utils/http.js";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    yemianIsShow:false,
+    roomList:[]
   },
-  goPersonDetails(){
+  goPersonDetails(e){
+    console.log(e)
+    let roomId  = e.currentTarget.dataset.roomid;
+    let cellname = e.currentTarget.dataset.cellname;
+    app.globalData.cellName = cellname
     wx.navigateTo({
-      url: '../persondetail/persondetail',
+      url: `../persondetail/persondetail?roomid=${roomId}`,
     })
   },
   goAddHouse(){
     wx.navigateTo({
       url: '../addHouse/addHouse',
+    })
+  },
+  _getRoomList(){
+    HttpRequest('/app.php/app_user_api/appUserRoomList',{},'get',res =>{
+     if(res.status = true){
+       this.data.roomList = res.data;
+       this.setData({
+        roomList:this.data.roomList,
+        yemianIsShow:true
+       })
+     }
+    })
+  },
+  deleteHouse(e){
+    console.log(e)
+    let _this = this;
+    let roomMemberId = e.currentTarget.dataset.roommemberid;
+    let index  = e.target.dataset.index ;
+    let data = {
+      roomMemberId
+    }
+    wx.showModal({
+      title: '提示',
+      content: '您确定要和该房屋解除绑定吗？',
+      success (res) {
+        if (res.confirm) {
+          HttpRequest('/app.php/app_user_api/appUserRemoveRoom',data,'get',res =>{
+           if(res.status == true){
+              wx.showToast({
+                title: '解除绑定成功',
+                icon: 'success',
+                duration: 3000
+              })
+              _this.data.roomList.splice(index,1);
+              _this.setData({
+                roomList: _this.data.roomList
+              })
+           }
+          })
+        } 
+      }
     })
   },
   /**
@@ -35,11 +83,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this._getRoomList();
     let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
     this.setData({
       authenticationStatus
     })
-    console.log(authenticationStatus)
   },
 
   /**

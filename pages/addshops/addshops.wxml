@@ -4,7 +4,7 @@
   <header  my-property="添加商铺"></header> 
   <view style="margin-top:150rpx" class="main">
     <form bindsubmit="addHouse">
-      <view class="category-title font-14">
+      <view class="category-title">
         <text>填写商铺信息</text>
       </view>
       <view class="input-msg">

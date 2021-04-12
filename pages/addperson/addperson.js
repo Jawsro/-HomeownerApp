@@ -1,4 +1,6 @@
-// pages/addperson/addperson.js
+// 获取应用实例
+const app = getApp();
+import {HttpRequest} from "../../utils/http.js";
 Page({
 
   /**
@@ -6,11 +8,12 @@ Page({
    */
   data: {
     idArray:[
-      {text:"业主",identity:"owner"},
       {text:"家属",identity:"family"},
       {text:"租户",identity:"tenant"},
     ],
     index:0,
+    roomId:0,
+    btnDisabled:false
   },
   idChange(e){
     console.log(e)
@@ -19,11 +22,59 @@ Page({
       index:index
     })
   },
+  addRoomMember(e){
+    let userType = this.data.idArray[this.data.index].text;
+    if(userType == '家属'){
+      userType = 'dweller'
+    }else if(userType == '租户'){
+      userType = 'tenant'
+    }
+    let roomId = this.data.roomId
+    let {
+      name,
+      identityCode, 
+      phone
+    } = e.detail.value;
+    let data = {
+      roomId,
+      name,
+      identityCode, 
+      phone,
+      userType
+    }
+    this.setData({
+      btnDisabled : true
+    })
+    HttpRequest('/app.php/app_user_api/addRoomMember',data,'post',res => {
+      console.log(res)
+      if(res.status == true){
+        wx.showToast({
+          title: '添加成功',
+          icon: 'success',
+          duration: 2000
+        })
+        setTimeout( () => {
+          wx.navigateTo({
+            url: `../persondetail/persondetail?roomid=${roomId}`,
+          })
+        },2000)
+      }
+      setTimeout(()=>{
+        this.setData({
+          btnDisabled : false
+        })
+      },2000)
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.data.roomId = options.roomId;
+    console.log(options)
+    this.setData({
+      cellName: app.globalData.cellName
+    })
   },
 
   /**

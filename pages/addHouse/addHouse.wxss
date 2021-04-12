@@ -12,6 +12,3 @@
 .scroll{
   height: 100%;
 }
-.category-title{
-  padding:20rpx 10rpx;
-}
