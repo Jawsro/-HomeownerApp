@@ -1,0 +1,77 @@
+<view class='container'>
+  <view class="top-css"></view>
+  <!-- 组件引入 -->
+  <header  my-property="车位详情"></header>
+  <view class="main" style="margin-top:150rpx">
+    <form bindsubmit="addRoomMember">
+      <view class="category-title">车位信息</view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="font-16">车位编号</text>
+        </view>
+        <view class="input">
+          <text>手机号</text>
+        </view>
+      </view>
+      <view class="input-msg">
+        <view class="left-name">
+         <text class="font-16 ">车牌</text>
+        </view>
+        <view class="input">
+          <text>手机号</text>
+        </view>
+      </view>
+     
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="font-16">车位类型</text>
+        </view>
+        <view class="input">
+          <text>手机号</text>
+        </view>
+      </view>
+
+      <view class="input-msg">
+        <view class="left-name">
+         <text class="font-16">车位费</text>
+        </view>
+        <view class="input">
+          <text>手机号</text>
+        </view>
+      </view>
+
+      <view class="input-msg">
+        <view class="left-name">
+         <text class="font-16">上次缴费</text>
+        </view>
+        <view class="input">
+          <text>手机号</text>
+        </view>
+      </view>
+
+
+    </form>
+
+    <form bindsubmit="addRoomMember">
+      <view class="category-title">我的车辆</view>
+      <view class="car-list">
+        <view class="input-msg">
+          <view class="left-name">
+            <text class="font-16">车牌号</text>
+          </view>
+          <view class="input">
+            <text>手机号</text>
+          </view>
+        </view>
+        <view class="input-msg">
+          <view class="left-name">
+            <text class="font-16 ">认证日期</text>
+          </view>
+          <view class="input">
+            <text>手机号</text>
+          </view>
+        </view>
+      </view>
+    </form>
+  </view>
+</view>

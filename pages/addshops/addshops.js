@@ -16,7 +16,6 @@ Page({
     index:0
   },
   idChange(e){
-    console.log(e)
     let index = e.detail.value;
     this.setData({
       index:index

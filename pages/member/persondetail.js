@@ -15,7 +15,7 @@ Page({
   },
   addPerson(){
     wx.navigateTo({
-      url: `../addperson/addperson?roomId=${this.data.roomId}&&cellname=${this.data.cellName}`,
+      url: `../member/addperson?roomId=${this.data.roomId}&&cellname=${this.data.cellName}`,
     })
   },
   _getroomMemberList(roomId){
@@ -24,7 +24,6 @@ Page({
     }
     HttpRequest('/app.php/app_user_api/roomMemberList',data,'get',res =>{
       if(res.status == true){
-        console.log(res)
         this.data.roomMemberList = res.data;
         this.data.roomMemberList.forEach(item => {
          if(item.createtime){
@@ -41,7 +40,6 @@ Page({
     })
   },  
   deleteRoomMeber(e){
-    console.log(e)
     let _this = this;
     let index = e.currentTarget.dataset.index;
     let roomMemberId = e.currentTarget.dataset.roommemberid;
@@ -74,7 +72,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     let roomId = options.roomid;
     this.data.roomId = roomId;
     this.setData({

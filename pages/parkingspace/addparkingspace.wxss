@@ -1,0 +1,16 @@
+.container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; 
+}
+.main{
+  height: 100%;
+  padding: 30rpx 40rpx 145rpx 40rpx;
+}
+.xiaoquming{
+  color:#884334;
+  font-size:28rpx;
+  padding-bottom:30rpx;
+}

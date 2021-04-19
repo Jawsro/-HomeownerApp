@@ -8,13 +8,12 @@
 }
 .main{
   height: 100%;
-  padding: 0rpx 40rpx 0rpx 40rpx;
-  background-color: #F7F2EF;
+ 
 }
 .scroll{
-  height: 100%;
   position: relative;
-  margin:0rpx 0 145rpx;
+  background-color: #F7F2EF;
+  padding: 0rpx 40rpx 145rpx 40rpx;
 }
 .person-msg-item{
   background-color: #fff;

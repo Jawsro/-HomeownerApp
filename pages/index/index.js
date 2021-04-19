@@ -133,6 +133,9 @@ Page({
     this._getNewsList(id);
     //并缓存小区id
     wx.setStorageSync('subdistrictId', id)
+    let city = this.data.subdistrictList[index].city_name || '',
+        short_name = this.data.subdistrictList[index].short_name || '';
+        app.globalData.cellName = city + short_name
   },
   //请求小区列表
   _getSubdistrictList(id){
@@ -154,6 +157,9 @@ Page({
           villageNameIndex: _this.data.villageNameIndex,
           yemian:true
         })
+        let city = _this.data.subdistrictList[_this.data.villageNameIndex].city_name || '',
+          short_name = _this.data.subdistrictList[_this.data.villageNameIndex].short_name || '';
+        app.globalData.cellName = city +short_name
       }
     })
   },
@@ -219,7 +225,6 @@ Page({
   goInformation(e){
     let id = e.currentTarget.dataset.id;
     let content = e.currentTarget.dataset.content;
-    console.log(typeof content)
     if (content == true){
       wx.navigateTo({
         url: '/pages/information/information?newsId='+id+'&title=社区动态',

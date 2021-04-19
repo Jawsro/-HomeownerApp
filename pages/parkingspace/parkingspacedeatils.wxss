@@ -1,0 +1,30 @@
+.container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; 
+}
+.main{
+  height: 100%;
+  padding: 30rpx 20rpx 145rpx 20rpx;
+}
+.xiaoquming{
+  color:#884334;
+  font-size:28rpx;
+  padding-bottom:30rpx;
+}
+.input-msg{
+  margin-bottom:0 !important;
+  border-bottom:2rpx solid #DADADA;
+  border-radius:0 !important;
+  
+  padding: 40rpx 30rpx !important;
+}
+.input{
+  text-align: right;
+  color:#B7B7B7;
+}
+.car-list{
+  margin-bottom:10rpx; 
+}

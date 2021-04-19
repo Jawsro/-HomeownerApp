@@ -7,8 +7,8 @@
     <view class="scroll" >
       <view class="category-title">{{cellName}}</view>
       <view class="person-msg-item" 
-      wx:for="{{roomMemberList}}"
-      wx:key="index">
+        wx:for="{{roomMemberList}}"
+        wx:key="index">
         <view class="person-name">
           <view class="name">{{item.owner_name}}</view>
           <view class="type">{{item.user_type == 'head' ? '业主' :(item.user_type == 'dweller' ? '家属' :'租户')}}</view>
@@ -33,6 +33,6 @@
         </view>
       </view>
     </view>
-    <button class="form-btn"  style="width: 90%;" bindtap="addPerson" >添加住户</button>
+    <button class="form-btn"  style="width: 90%;margin-left:40rpx" bindtap="addPerson" >添加住户</button>
   </view>
 </view>

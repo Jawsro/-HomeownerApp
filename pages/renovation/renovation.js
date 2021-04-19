@@ -11,7 +11,6 @@ Page({
   },
   
   setDatas(e){
-    console.log(e,this.data.chosePictureArray)
     if(lock){
       return;
     }
@@ -31,7 +30,6 @@ Page({
       sourceType:['album', 'camera'],
       success(res) {
         const tempFilePaths = res.tempFilePaths
-        console.log(tempFilePaths)
         _this.data.chosePictureArray=_this.data.chosePictureArray.concat(res.tempFilePaths)
         _this.setData({
           chosePictureArray: _this.data.chosePictureArray
@@ -56,7 +54,6 @@ Page({
     })
   },
   deletePicture(e){
-    console.log(e)
     var _this = this;
     let index  = e.target.dataset.index ;
     wx.showModal({
@@ -68,14 +65,11 @@ Page({
           _this.setData({
             chosePictureArray: _this.data.chosePictureArray
           })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
+        } 
       }
     })
   },
   bindDateChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
     })
@@ -86,9 +80,6 @@ Page({
   onLoad: function (options) {
     let now = new Date();
     let today = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
-
-    console.log(now)
-    
     this.setData({
       date:today
     })

@@ -20,7 +20,6 @@ Page({
     btnDisabled:false
   },
   idChange(e){
-    console.log(e)
     let index = e.detail.value;
     this.setData({
       index:index
@@ -55,7 +54,6 @@ Page({
     })
   },
   addHouse(e){
-    console.log(e.detail.value)
     let subdistrictId = wx.getStorageSync('subdistrictId');
     let userType = this.data.idArray[this.data.index].text;
     let {building,
@@ -86,7 +84,6 @@ Page({
       btnDisabled : true
     })
     HttpRequest('/app.php/app_user_api/appUserAddRoom',data,'post',res => {
-      console.log(res)
       if(res.status == true){
         wx.showToast({
           title: '添加成功',

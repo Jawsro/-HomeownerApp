@@ -20,7 +20,7 @@
           <text class="font-16 ">手机号</text>
         </view>
         <view class="input">
-          <input placeholder="00000000000" class="font-15" name="phone" style="color:#B7B7B7"></input>
+          <input placeholder="00000000000" class="font-15" name="phone" style="color:#B7B7B7" type="number"></input>
         </view>
       </view>
      
@@ -30,7 +30,10 @@
           <text class="font-16">证件号码</text>
         </view>
         <view class="input">
-          <input placeholder="身份证号码" class="font-15" name="identityCode" style="color:#B7B7B7"></input>
+          <input placeholder="身份证号码" 
+          class="font-15" 
+          name="identityCode" 
+          style="color:#B7B7B7" type="idcard"></input>
         </view>
       </view>
       <view class="input-msg">

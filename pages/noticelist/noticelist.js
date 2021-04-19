@@ -17,7 +17,6 @@ Page({
   },
   //社区动态
   _getNoticeList(){
-    console.log(1)
     let subdistrictId = wx.getStorageSync('subdistrictId');
     let _this = this;
     if(_this.data.moreText != '加载中'){
@@ -28,10 +27,7 @@ Page({
       subdistrictId :subdistrictId,
       page:_this.data.page
     };
-    console.log(33633)
     HttpRequest('/app.php/information_api/getNewsList',data,'get',res=>{
-      console.log(1222)
-      console.log(res)
       if(res.status == true){
         res.data.forEach(item =>{
           item.head_image = app.globalData.siteUrl + item.head_image;
@@ -59,7 +55,6 @@ Page({
   goInformation(e){
     let id = e.currentTarget.dataset.id;
     let content = e.currentTarget.dataset.content;
-    console.log(typeof content)
     if (content == true){
       wx.navigateTo({
         url: '/pages/information/information?newsId='+id+'&title=社区动态',
@@ -148,7 +143,6 @@ Page({
    */
   onReachBottom: function () {
     this._getNoticeList();//上拉加载列表数据
-  console.log('页面上拉触底事件的处理函数')
   },
 
   /**

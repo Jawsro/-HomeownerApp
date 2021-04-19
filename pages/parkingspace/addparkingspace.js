@@ -1,4 +1,4 @@
-// pages/phonenumber/phonenumber.js
+// pages/parkingspace/addparkingspace.js
 Page({
 
   /**

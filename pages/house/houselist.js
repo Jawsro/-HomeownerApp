@@ -11,17 +11,16 @@ Page({
     roomList:[]
   },
   goPersonDetails(e){
-    console.log(e)
     let roomId  = e.currentTarget.dataset.roomid;
     let cellname = e.currentTarget.dataset.cellname;
     app.globalData.cellName = cellname
     wx.navigateTo({
-      url: `../persondetail/persondetail?roomid=${roomId}`,
+      url: `../member/persondetail?roomid=${roomId}`,
     })
   },
   goAddHouse(){
     wx.navigateTo({
-      url: '../addHouse/addHouse',
+      url: '../house/addhouse',
     })
   },
   _getRoomList(){
@@ -36,7 +35,6 @@ Page({
     })
   },
   deleteHouse(e){
-    console.log(e)
     let _this = this;
     let roomMemberId = e.currentTarget.dataset.roommemberid;
     let index  = e.target.dataset.index ;

@@ -27,31 +27,13 @@
       </view>
       <view class="user-text">
         <view class="user-name font-20  font-weight-500">{{userInfo.nickname}}</view>
-        <view class="grade font-12" 
-          wx:if ="{{authenticationStatus == 'yes'? false:true}}"
-          >
-          <!-- bindtap="goOwner" -->
+        <!-- <view class="grade font-12" 
+          wx:if ="{{authenticationStatus == 'yes'? false:true}}">
           未实名认证</view>
-        <view class="grade font-12" bindtap="goOwner" wx:if ="{{ authenticationStatus == 'yes'? true:false}}">已认证</view>
-      </view>
-      <!-- <view class="erweima">
-        <text class="iconfont icon-ico" style="color: #894231;font-size:80rpx"></text>
-      </view> -->
-    </view>
-    <!-- <view class="img-vip" style="background:url('http://api.5gzvip.idcfengye.com/assets/app/bg1.jpg') center center no-repeat;background-size: cover">
-       <view class="text" >
-        <view class="left">
-          <text class="font-weight-600 font-20" style="margin-right:20rpx">VIP</text>
-          <text class="font-26">开启业主特权生活</text>
-        </view>
-        <navigator class="right font-14" hover-class="none" url="../owner/owner">
-          <text>立即认证</text>
-        </navigator>
+        <view class="grade font-12" bindtap="goOwner" wx:if ="{{ authenticationStatus == 'yes'? true:false}}">已认证</view> -->
       </view>
     </view>
-    <view class="img">
-      <image src="../../images/doudou.png"></image>
-    </view> -->
+   
   </view>
 
   <view class="main">

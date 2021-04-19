@@ -89,7 +89,6 @@ Page({
   goInformation(e){
     let id = e.currentTarget.dataset.id;
     let content = e.currentTarget.dataset.content;
-    console.log(typeof content)
     if (content == true){
       wx.navigateTo({
         url: '/pages/information/information?newsId='+id+'&title=社区公告',

@@ -1,4 +1,4 @@
-// pages/services/services.js
+// pages/parkingspace/parkingspacedeatils.js
 Page({
 
   /**
@@ -7,21 +7,7 @@ Page({
   data: {
 
   },
-  goRenovation(){
-    let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
-    if(!authenticationStatus){
-      wx.showModal({
-        title: '提示',
-        content: '请先认证',
-        showCancel: false
-      })
-    }else{
-      wx.navigateTo({
-        url: '../renovation/renovation',
-      })
-    }
-    
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

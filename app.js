@@ -13,7 +13,6 @@ App({
    * 生命周期函数--监听小程序初始化
    */
   onLaunch(options) {
-   // console.log(options)
     //获取二维码里面的参数，缓存在本地
     let xiaoquid=decodeURIComponent(options.query.subdistrictId);
     if(xiaoquid != 'undefined'){

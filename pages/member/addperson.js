@@ -16,7 +16,6 @@ Page({
     btnDisabled:false
   },
   idChange(e){
-    console.log(e)
     let index = e.detail.value;
     this.setData({
       index:index
@@ -46,7 +45,6 @@ Page({
       btnDisabled : true
     })
     HttpRequest('/app.php/app_user_api/addRoomMember',data,'post',res => {
-      console.log(res)
       if(res.status == true){
         wx.showToast({
           title: '添加成功',
@@ -71,7 +69,6 @@ Page({
    */
   onLoad: function (options) {
     this.data.roomId = options.roomId;
-    console.log(options)
     this.setData({
       cellName: app.globalData.cellName
     })

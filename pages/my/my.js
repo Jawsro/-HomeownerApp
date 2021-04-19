@@ -15,19 +15,21 @@ Page({
         id:1,
         name:'我的房屋信息 ',
         text:'房屋',
-        url:'../houselist/houselist'
+        url:'../house/houselist'
       },
       {
         id:2,
         name:'我的车位 ',
         text:'车位',
-        url:'../addparking/addparking'
-      },{
-        id:3,
-        name:'我的汽车 ',
-        text:'汽车',
-        url:'../addcar/addcar'
-      },{
+        url:'../parkingspace/parkingspacelist'
+      },
+      // {
+      //   id:3,
+      //   name:'我的汽车 ',
+      //   text:'汽车',
+      //   url:'../car/carlist'
+      // },
+      {
         id:4,
         name:'我的商铺 ',
         text:'商铺',
@@ -85,20 +87,6 @@ Page({
     let loginStatue = wx.getStorageSync('loginStatue');//登录状态
     // let authenticationStatus = wx.getStorageSync('authenticationStatus');//认证状态
     if(loginStatue){ //  && authenticationStatus == 'yes'
-      // this.data.functionList.forEach(item =>{
-      //   if(item.id==id){
-      //     if(item.isShow==true){
-      //       item.isShow=false
-      //     }else{
-      //       item.isShow=true
-      //     }
-      //   }else{
-      //     item.isShow=false
-      //   }
-      // })
-      // this.setData({
-      //   functionList:this.data.functionList
-      // })
       wx.navigateTo({
         url: url,
       })
@@ -110,38 +98,32 @@ Page({
         })
       } 
   },
-  attached() { 
-    let bar = wx.getMenuButtonBoundingClientRect()		// 获取胶囊丸信息
-    // 胶囊的top有时候获取到是0 ，所以兼容 statusBarHeight（刘海的高度，原生标题栏的top，比胶囊的top高一些）
-    let top = bar.top || wx.getSystemInfoSync().statusBarHeight+4	
-    this.setData({
-        height: bar.height,	// 标题栏高度与胶囊 高度相同，适用于透明标题栏。
-        top	// 标题栏top。如果标题栏高度比胶囊大，设置为 top - (navigationHeight - bar.height)/2
-    })
-  },
+  // attached() { 
+  //   let bar = wx.getMenuButtonBoundingClientRect()		// 获取胶囊丸信息
+  //   // 胶囊的top有时候获取到是0 ，所以兼容 statusBarHeight（刘海的高度，原生标题栏的top，比胶囊的top高一些）
+  //   let top = bar.top || wx.getSystemInfoSync().statusBarHeight+4	
+  //   this.setData({
+  //       height: bar.height,	// 标题栏高度与胶囊 高度相同，适用于透明标题栏。
+  //       top	// 标题栏top。如果标题栏高度比胶囊大，设置为 top - (navigationHeight - bar.height)/2
+  //   })
+  // },
   _getAppUserInfo(){
     let _this = this;
     HttpRequest("/app.php/app_user_api/getAppUserInfo",{},'get',res =>{
       if(res.status == true){
-        _this.data.functionList.forEach( item =>{
-          if( item.text == '房屋') {
-            item.dataList = res.data.roomList
-          }
-        })
         _this.setData({
           userInfo : res.data,
-          authenticationStatus:res.data.auth_status,
-          yemian:true,
-          functionList: _this.data.functionList
+          yemian:true
         })
-        wx.setStorageSync('authenticationStatus', res.data.auth_status);
+        // wx.setStorageSync('authenticationStatus', res.data.auth_status);
+
       }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options) {wx.setStorageSync('authenticationStatus','yes')
   },
 
   /**
@@ -155,7 +137,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.attached();
+    // this.attached();
     this.isLogin();
     if(wx.getStorageSync('token') != ''){
       this._getAppUserInfo();

@@ -50,7 +50,6 @@ Page({
         id:_this.data.newsId
       }
       HttpRequest('/app.php/information_api/newsPraise',data,'get',res=>{
-        console.log(res)
         if(res.status == true){
           wx.showToast({
             title: '点赞成功',
@@ -136,7 +135,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     let subdistrictId = wx.getStorageSync('subdistrictId');
     this.data.newsId = options.newsId;
     this.setData({

@@ -33,7 +33,7 @@
             <text class="font-16">楼栋号</text>
           </view>
           <view class="input">
-            <input placeholder="请输入楼栋号" class="font-15" name="building" style="color:#B7B7B7"></input>
+            <input placeholder="请输入楼栋号" type="number" class="font-15" name="building" style="color:#B7B7B7"></input>
           </view>
         </view>
         <view class="input-msg">
@@ -42,7 +42,11 @@
             <text class="font-16">单元号</text>
           </view>
           <view class="input">
-            <input placeholder="若没有区分单元，请输入1" class="font-15" name="unit" style="color:#B7B7B7"></input>
+            <input placeholder="若没有区分单元，请输入1" 
+            class="font-15" 
+            name="unit" 
+            style="color:#B7B7B7"
+            type="number"></input>
           </view>
         </view>
         <view class="input-msg">
@@ -51,7 +55,7 @@
             <text class="font-16">房号</text>
           </view>
           <view class="input">
-            <input placeholder="请输入房号" class="font-15" name="roomCode" style="color:#B7B7B7"></input>
+            <input placeholder="请输入房号" type="number" class="font-15" name="roomCode" style="color:#B7B7B7"></input>
           </view>
         </view>
 
@@ -90,7 +94,11 @@
               <text class="font-16">身份证号</text>
             </view>
             <view class="input">
-              <input placeholder="请输入正确的身份证号" class="font-15" name="identityCode" style="color:#B7B7B7"></input>
+              <input placeholder="请输入正确的身份证号" 
+              class="font-15" 
+              name="identityCode" 
+              type="idcard"
+              style="color:#B7B7B7"></input>
             </view>
           </view>
           <view class="input-msg">
@@ -99,7 +107,11 @@
               <text class="font-16 ">手机号</text>
             </view>
             <view class="input">
-              <input placeholder="请输入联系电话" class="font-15" name="phone" style="color:#B7B7B7"></input>
+              <input placeholder="请输入联系电话" 
+              class="font-15" 
+              type="number"
+              name="phone" 
+              style="color:#B7B7B7"></input>
             </view>
           </view>
 

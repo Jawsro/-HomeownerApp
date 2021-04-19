@@ -1,0 +1,62 @@
+<view class='container'>
+  <view class="top-css"></view>
+  <!-- 组件引入 -->
+  <header  my-property="绑定车位"></header>
+  <view class="main" style="margin-top:150rpx">
+    <form bindsubmit="addRoomMember">
+      <view class="category-title">填写物业登记车辆信息</view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16 ">车位编号</text>
+        </view>
+        <view class="input">
+          <input placeholder="请输入车位编号" class="font-15" name="name" style="color:#B7B7B7"></input>
+        </view>
+      </view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16 ">姓名</text>
+        </view>
+        <view class="input">
+          <input placeholder="请输入姓名" class="font-15" name="phone" style="color:#B7B7B7" type="number"></input>
+        </view>
+      </view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16 ">手机号</text>
+        </view>
+        <view class="input">
+          <input placeholder="00000000000" class="font-15" name="phone" style="color:#B7B7B7" type="number"></input>
+        </view>
+      </view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16">证件类型</text>
+        </view>
+        <view class="input">
+          <input 
+          class="font-15" 
+          name="identityCode" 
+          style="color:#B7B7B7" type="idcard" disabled="disabled" value="身份证"></input>
+        </view>
+      </view>
+      <view class="input-msg">
+        <view class="left-name">
+          <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+          <text class="font-16">证件号码</text>
+        </view>
+        <view class="input">
+          <input placeholder="身份证号码" 
+          class="font-15" 
+          name="identityCode" 
+          style="color:#B7B7B7" type="idcard"></input>
+        </view>
+      </view>
+      <button class="form-btn"  style="width: 90%;" bindtap="addPerson" formType="submit">绑定</button>
+    </form>
+  </view>
+</view>
