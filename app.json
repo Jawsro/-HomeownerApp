@@ -1,13 +1,17 @@
 {
   "pages":[ 
+    
+    "pages/repairevent/repaireventdetails",
+    "pages/index/index",
     "pages/parkingspace/parkingspacedeatils",
     "pages/parkingspace/addparkingspace",
+    "pages/repairevent/repairevent",
+    "pages/repairevent/repaireventlist",
     "pages/my/my", 
     "pages/house/houselist",
     "pages/house/addhouse",
     "pages/member/addperson",
     "pages/member/persondetail",
-    "pages/index/index",
     "pages/addshops/addshops", 
     "pages/login/login",
     "pages/opendoor/opendoor",

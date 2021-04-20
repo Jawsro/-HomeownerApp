@@ -73,6 +73,7 @@ form .input input{
 form .picker{
   font-size:30rpx;
   color:#B7B7B7;
+  text-align: right;
 }
 .form-btn{
   background-color: #884334;

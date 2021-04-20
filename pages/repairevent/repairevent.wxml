@@ -1,0 +1,112 @@
+<!--报事报修-->
+<view class="container">
+  <view class="top-css"></view>
+  <!-- 组件引入 -->
+  <header  my-property="报事报修"></header> 
+  <view class="main-margin-top main" >
+    <view class="scroll">
+      <form bindsubmit="addRepairEvent" class="form">
+        <view class="input-msg">
+          <view class="left-name">
+            <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+            <text class="font-16 ">姓名</text>
+          </view>
+          <view class="input">
+            <input placeholder="请输入姓名" class="font-15" name="name" style="color:#B7B7B7" ></input>
+          </view>
+        </view>
+
+        <view class="input-msg">
+          <view class="left-name">
+            <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+            <text class="font-16 ">联系电话</text>
+          </view>
+          <view class="input">
+            <input placeholder="请输入联系电话" class="font-15" name="phone" style="color:#B7B7B7"></input>
+          </view>
+        </view>
+
+        <view class="input-msg">
+          <view class="left-name">
+            <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+            <text class="font-16">范围选择</text>
+          </view>
+          <view class="input">
+            <picker bindchange="idChange"
+              value="{{idArray[index]}}"
+              range="{{idArray}}"
+              range-key='text'
+            >
+              <view class="picker">
+                {{idArray[index].text}}
+                <text class="iconfont icon-xiajiantou margin-right" style="font-weight:600"></text>
+              </view>
+            </picker>
+          </view>
+        </view>
+        
+        <view class="input-msg">
+          <view class="left-name">
+            <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+            <text class="font-16 ">房屋号</text>
+          </view>
+          <view class="input">
+            <input placeholder="楼栋单元门牌号 例1-1-101" class="font-15" name="roomNumber" style="color:#B7B7B7"></input>
+          </view>
+        </view>
+
+        <view class="input-msg">
+          <view class="left-name">
+            <text class="iconfont icon-required margin-right" style="color:#FF3000"></text>
+            <text class="font-16 ">标题</text>
+          </view>
+          <view class="input">
+            <input placeholder="请输入标题" class="font-15" name="title" style="color:#B7B7B7"></input>
+          </view>
+        </view>
+
+        <view class="input-msg">
+          <view class="left-name">
+            <text class="iconfont icon-required margin-right" style="color:#fff"></text>
+            <text class="font-16 ">详细地址</text>
+          </view>
+          <view class="input">
+            <input placeholder="请输入详细地址" class="font-15" name="address" style="color:#B7B7B7"></input>
+          </view>
+        </view>
+
+        <view class="pic">
+          <view class="title  font-18">上传图片(最多上传五张)</view>
+          <view class="pic-chose">
+            <view class="pic-list" wx:for="{{images}}" wx:key="index">
+              <image src="{{item}}" mode="aspectFit"></image>
+              <view class="iconfont icon-close-o delete-pic" 
+                bindtap="deletePicture" 
+                data-index="{{index}}"
+                data-url="{{item}}">
+              </view>
+            </view>
+            <view class="pic-list" hidden="{{images.length==5}}">
+              <view class="image" bindtap="chosePicture">
+                <image 
+                  src="../../images/phone.png"  
+                  mode='widthFix' 
+                  class="phone" >
+                </image>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="textarea-wrp">
+          <textarea style="height: 3em" name='description' placeholder="请输入详情描述，不超过200字"/>
+        </view>
+        <button class="form-btn font-14 {{disabled?'disabled-true':''}}" 
+          formType="submit" 
+          style=" width: 90%;" 
+          disabled="{{disabled}}">
+          确认提交
+        </button>
+      </form>
+    </view>
+  </view>
+</view>

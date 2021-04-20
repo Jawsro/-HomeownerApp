@@ -18,6 +18,12 @@
 
     "pages/renovation/renovation",------------装修申报
 
+    "pages/repairevent/repairevent",------------报事报修
+
+    "pages/repairevent/repaireventlist",------------报事报修列表
+
+    "pages/repairevent/repaireventdetails",------------报事报修列表详情
+
     "pages/opendoor/opendoor", -----------------一键开门
 
     "pages/member/addperson",----------添加住户

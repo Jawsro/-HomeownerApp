@@ -29,7 +29,7 @@ Page({
       {
         icon:"icon-baoxiu",
         text:"报事报修",
-        url:"../renovation/renovation"
+        url:"../repairevent/repairevent"
       },
       {
         icon:"icon-wuyebaoxiu",

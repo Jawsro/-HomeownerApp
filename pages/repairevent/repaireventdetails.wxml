@@ -1,0 +1,9 @@
+<!--报事报修-->
+<view class="container">
+  <view class="top-css"></view>
+  <!-- 组件引入 -->
+  <header  my-property="物业报修"></header> 
+  <view class="main-margin-top main" >
+    {{id}}
+  </view>
+</view>

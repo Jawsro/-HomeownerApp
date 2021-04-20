@@ -1,0 +1,58 @@
+<view class="container" wx:if='{{yemian}}'>
+  <view class="top-css"></view>
+  <!-- 组件引入 -->
+  <header  my-property="我的报事报修"></header>
+  <view class=" main">
+    <view class="sort-box">
+      <view class="sort">
+        <view class="sort-item {{activeIndex==item.id?'active':''}}" 
+          wx:for="{{sortTitle}}"
+          wx:key="index"
+          data-id="{{item.id}}"
+          bindtap="changeTitle">
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+    <view class="scroll" wx:if="{{activeIndex == 1}}">
+      <view class="event-item" 
+        wx:for="{{repairEventList}}"
+        wx:key="index"
+        data-id="{{item.id}}"
+        bindtap="goRepairEventDetails">
+        <view class="title">
+          <view class="title-left">{{item.item_short_description}}</view>
+          <view class="title-right">待评价</view>
+        </view>
+        <view class="description">
+          <view class="description-text">
+            <text>{{item.item_full_description}}</text>
+          </view>
+          <view class="description-time">
+            <text>{{item.createtime}}</text>
+          </view>
+        </view>  
+      </view>
+    </view>
+    <view class="scroll" wx:if="{{activeIndex == 2}}">
+      <view class="event-item" 
+        wx:for="{{processingList}}"
+        wx:key="index" 
+        data-id="{{item.id}}"
+        bindtap="goRepairEventDetails">
+        <view class="title">
+          <view class="title-left">{{item.item_short_description}}</view>
+          <view class="title-right">待评价</view>
+        </view>
+        <view class="description">
+          <view class="description-text">
+            <text>{{item.item_full_description}}</text>
+          </view>
+          <view class="description-time">
+            <text>{{item.createtime}}</text>
+          </view>
+        </view>  
+      </view>
+    </view>
+  </view>
+</view>

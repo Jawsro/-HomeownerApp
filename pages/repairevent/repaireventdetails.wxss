@@ -1,0 +1,12 @@
+.container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;  
+  
+}
+.main{
+  padding: 30rpx 30rpx 145rpx 30rpx;
+  background-color: #F7F2EF;
+}

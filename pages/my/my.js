@@ -14,26 +14,27 @@ Page({
       {
         id:1,
         name:'我的房屋信息 ',
-        text:'房屋',
         url:'../house/houselist'
       },
       {
         id:2,
         name:'我的车位 ',
-        text:'车位',
         url:'../parkingspace/parkingspacelist'
       },
       // {
       //   id:3,
       //   name:'我的汽车 ',
-      //   text:'汽车',
       //   url:'../car/carlist'
       // },
       {
         id:4,
         name:'我的商铺 ',
-        text:'商铺',
         url:'../addshops/addshops'
+      },
+      {
+        id:5,
+        name:'我的报事报修 ',
+        url:'../repairevent/repaireventlist'
       },
   ],
   },
