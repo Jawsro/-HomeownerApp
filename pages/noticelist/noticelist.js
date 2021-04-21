@@ -61,35 +61,6 @@ Page({
       })
     }
   },
-  //上拉加载
-  // _getMoreList(){
-   
-    
-  //   let data = {
-  //     subdistrictId :subdistrictId,
-  //     page:_this.data.page
-  //   };
-  //   HttpRequest('/app.php/information_api/getNewsList',data,'get',res =>{
-  //     _this.data.moreText = '';
-  //     if(res.status == true ){
-  //       rea.data.forEach(item =>{
-  //         item.head_image = app.globalData.siteUrl + item.head_image;
-  //         item.createtime=timeDate(item.createtime)
-  //       })
-  //       _this.data.noticeList = _this.data.noticeList.concat( rea.data)
-  //       if(res.data.length<10){
-  //         _this.data.moreText ='没有更多数据了';
-  //       }else{
-  //         _this.data.moreText = '加载更多';
-  //         _this.data.page ++;
-  //       }
-  //       _this.setData({
-  //         noticeList:_this.data.noticeList,
-  //         moreText:_this.data.moreText
-  //       })
-  //     }
-  //   })
-  // },
   /**
    * 生命周期函数--监听页面加载
    */

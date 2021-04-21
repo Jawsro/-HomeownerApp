@@ -1,13 +1,33 @@
-// pages/repairevent/repaireventdetails.js
+const app = getApp();
+//调用封装的函数
+import {HttpRequest} from "../../utils/http.js"
+import {timeDate2,formatTime} from "../../utils/util.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    wuxingArr:[
+      {id:1,icon:"icon-wuxing"},
+      {id:2,icon:"icon-wuxing"},
+      {id:3,icon:"icon-wuxing"},
+      {id:4,icon:"icon-wuxing"},
+      {id:5,icon:"icon-wuxing"},
+    ],
+    completedIshow:false
   },
-
+  getAppraise(e){
+    console.log(e)
+    let index = e.currentTarget.dataset.index;
+    let myDate = new Date();
+    let data = formatTime(myDate)
+    this.setData({
+      activeLen:index,
+      completedIshow:true,
+      data
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

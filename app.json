@@ -1,12 +1,12 @@
 {
   "pages":[ 
-    
-    "pages/repairevent/repaireventdetails",
     "pages/index/index",
+    "pages/repairevent/repaireventlist",
+    "pages/repairevent/repaireventdetails",
+   
     "pages/parkingspace/parkingspacedeatils",
     "pages/parkingspace/addparkingspace",
     "pages/repairevent/repairevent",
-    "pages/repairevent/repaireventlist",
     "pages/my/my", 
     "pages/house/houselist",
     "pages/house/addhouse",
