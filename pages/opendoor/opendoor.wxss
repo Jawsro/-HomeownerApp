@@ -68,21 +68,28 @@
   padding:150rpx 0;
 }
 .jindutiao{
-  width:300rpx;
-  height: 30rpx;
-  background-color: pink;
-  border-radius: 40rpx;
-  margin:10rpx auto ;
-  position: relative;
+  width:60rpx;
+  height: 60rpx;
+  margin:20rpx auto ;
 }
-.jindutiao1{
-  position: absolute;
-  top:0;
-  left:0;
-  bottom:0;
-  background-color: #803D33;
-  border-radius: 40rpx;
+.icons{
+  animation: animations1 2s linear infinite forwards;
+  width: 60rpx;
+  height:60rpx; margin:0rpx auto ;
 }
 .close{
   margin-top:30rpx
+}
+
+@keyframes animations1 {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	50% {
+		transform:  rotate(180deg);
+	}
+	100% {
+		transform:  rotate(360deg);
+	}
 }

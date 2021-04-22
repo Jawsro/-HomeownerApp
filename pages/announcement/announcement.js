@@ -99,7 +99,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.showLoading({
+      title: '加载中...',
+    })
+    this._getAnnouncementList()
   },
 
   /**
@@ -123,7 +126,7 @@ Page({
     //  });
     //  that.scrolltxt();// 第一个字消失后立即从右边出现
      //数据请求
-    this._getAnnouncementList()
+    
   },
   /**
    * 生命周期函数--监听页面隐藏

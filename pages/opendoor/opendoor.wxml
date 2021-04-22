@@ -1,4 +1,4 @@
-<view class='container'>
+<view class='container' wx:if="{{yemian}}">
   <view class="top-css"></view>
   <!-- 组件引入 -->
   <header  my-property="一键开门" ></header> 
@@ -10,9 +10,9 @@
       <view class="door-msg">
         <view class="door-item" wx:for='{{doorMsg}}'wx:key='index'>
           <view class="item-left">
-            <text>{{item.name}}</text>
+            <text>{{item.alias_name}}</text>
           </view>
-          <view class="right-item" bindtap="openDoor" data-name='{{item.name}}'>
+          <view class="right-item" bindtap="openDoor" data-name='{{item.alias_name}}' data-id="{{item.id}}">
             <text>开门</text>
           </view>
         </view>
@@ -47,7 +47,8 @@
             <text class="iconfont icon-yuechi1" style="color:#803D33;font-size:100rpx;"></text>
           </view>
           <view class="jindutiao">
-            <view class="jindutiao1" style="width:{{width}}rpx"></view>
+            <!-- <view class="jindutiao1" style="width:{{width}}rpx"></view> -->
+            <image src='../../images/loading.png' class=" icons"></image>
           </view>
           <view class="font-14" style="color:#803D33;">正在开门</view>
         </view>

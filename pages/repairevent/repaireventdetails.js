@@ -18,7 +18,6 @@ Page({
     completedIshow:false
   },
   getAppraise(e){
-    console.log(e)
     let index = e.currentTarget.dataset.index;
     let myDate = new Date();
     let data = formatTime(myDate)

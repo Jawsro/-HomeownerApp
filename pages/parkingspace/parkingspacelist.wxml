@@ -1,17 +1,17 @@
 <view class='container'>
   <view class="top-css"></view>
   <!-- 组件引入 -->
-  <header  my-property="我的房屋"></header>
+  <header  my-property="我的车位"></header>
   <view class="main">
     <view class="scroll">
-      <view class="unauthorized" wx:if="{{authenticationStatus !='yes'}}">
+      <!-- <view class="unauthorized" wx:if="{{authenticationStatus !='yes'}}">
         <view class="iconfont icon-weichaxundao" style="font-size:100rpx"></view>
         <view>暂无您的车位信息，绑定成功后可查看</view>
-      </view>
+      </view> -->
       
-      <view class="authorized" wx:if="{{authenticationStatus =='yes'}}">
+      <view class="authorized">
         <view class="unauthorized" wx:if="{{roomList.length<1}}">
-          <view>暂无您的房屋信息</view>
+          <view>暂无您的车位信息</view>
         </view>
         <view class="houseitem" 
           wx:for = "{{roomList}}"
@@ -48,6 +48,6 @@
         </view>
       </view>
     </view>
-    <button class="form-btn"  style="width: 90%;" bindtap="goAddHouse">添加车位</button>
+    <button class="form-btn"  style="width: 90%;" bindtap="goAddPakingspace">添加车位</button>
   </view>
 </view>

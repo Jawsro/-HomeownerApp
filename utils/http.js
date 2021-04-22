@@ -7,9 +7,9 @@ function HttpRequest(url, data,method = "GET", callback) {
   data = Object.assign({
     token: wx.getStorageSync('token')
   }, data);
-  wx.showLoading({
-    title: '加载中...',
-  })
+  // wx.showLoading({
+  //   title: '加载中...',
+  // })
   wx.request({
     url: rootDocment + url,
     header: header,

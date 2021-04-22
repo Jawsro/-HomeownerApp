@@ -64,7 +64,6 @@
   font-size:28rpx;
 }
 .speed-title{
-  
   margin-top: 15rpx;
   color:#884334;
 }
@@ -81,7 +80,7 @@
 }
 .speed-item:last-child>.icons,.speed-item:last-child>.speed-msg{
   color:#884334;
-  left: -20rpx;
+  left: -18rpx;
 }
 .icons{
   position: absolute;
@@ -98,6 +97,7 @@
 }
 .appraise{
   margin-top: 10rpx;
+  padding-left: 35rpx;
 }
 .appraise-title,.completed{
   color:#884334;

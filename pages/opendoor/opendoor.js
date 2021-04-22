@@ -1,47 +1,54 @@
-// pages/opendoor/opendoor.js
+// 获取应用实例
+const app = getApp();
+//调用封装的函数
+import {HttpRequest} from "../../utils/http.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      doorMsg:[
-        {id:1,name:'13栋2单元门'},
-        {id:1,name:'13栋2单元门'},
-        {id:1,name:'13栋2单元门'},
-        {id:1,name:'13栋2单元门'}
-      ],
-      successIshow:false,
-      loadingIshow:false,
-      maskIsshow:false,
-      w:0
+    yemian:false,
+    doorMsg:[],
+    successIshow:false,
+    loadingIshow:false,
+    maskIsshow:false,
+  },
+  _getLockList(){
+    let subdistrictId = wx.getStorageSync('subdistrictId');
+    let data = {
+      subdistrictId
+    }
+    HttpRequest('/app.php/app_user_api/gateLockList',data,'get',res=>{
+      if(res.status == true) {
+        this.data.doorMsg = res.data;
+        this.setData({
+          doorMsg: this.data.doorMsg,
+          yemian:true
+        })
+      }
+    })
   },
   openDoor(e) {
-    let name = e.currentTarget.dataset.name;
-    let width = 0.1;
-    let w = 0;
-    let _this= this;
-    let i = setInterval(() =>{
-      if(width>=1){
-        clearInterval(i);
-        this.setData({
-          loadingIshow:false,
-          successIshow:true
-        })
-      }else{
-        width = parseFloat(width.toFixed(1))+0.1
-        w = width*300
-        console.log(width,w)
-      }
-     
-      _this.setData({
-        width:w
-      })
-    },1000)
+    let name = e.currentTarget.dataset.name,
+        id = e.currentTarget.dataset.id;
     this.setData({
       doorName: name,
       maskIsshow:true,
       loadingIshow:true
+    })
+    let data = {
+      gateLockId :id
+    }
+    
+    HttpRequest('/app.php/app_user_api/openGateLock',data,'get',res=>{
+      if(res.status == true) {
+        //请求成功后
+         this.setData({
+          loadingIshow:false,
+          successIshow:true
+        })
+      }
     })
     
   },
@@ -55,7 +62,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.showLoading({
+      title: '加载中...',
+    })
+    this._getLockList()
   },
 
   /**

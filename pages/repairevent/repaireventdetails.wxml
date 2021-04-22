@@ -53,28 +53,21 @@
           <view class="iconfont icon-lingxing icons"></view>
           <view class="speed-msg">报修进度报修进度</view>
           <view class="speed-date">2020-1-1</view>
-          <view class="appraise">
-            <view class="appraise-title">请您为本次服务评价：</view>
-            <view class="wuxing">
-              <view class="xingxing" wx:for="{{wuxingArr}}" wx:key="index">
-                <text class="iconfont {{item.icon}} {{activeLen>index ? 'active':'none'}}" 
-                  style="font-size:50rpx;"
-                  data-index="{{item.id}}" 
-                  bindtap="getAppraise"></text>
-              </view>
-            </view>
-            <view class="completed" wx:if="{{completedIshow}}">
-              您已完成本次评价。
-            </view>
-          </view>
         </view>
         
-        <view class="speed-item" wx:if="{{completedIshow}}">
-          <view class="iconfont icon-lingxing icons"></view>
-          <view class="speed-msg">
-            客服于七个工作日内进行回访，届时请留意接听物业来电。
+      </view>
+      <view class="appraise">
+        <view class="appraise-title">请您为本次服务评价：</view>
+        <view class="wuxing">
+          <view class="xingxing" wx:for="{{wuxingArr}}" wx:key="index">
+            <text class="iconfont {{item.icon}} {{activeLen>index ? 'active':'none'}}" 
+              style="font-size:50rpx;"
+              data-index="{{item.id}}" 
+              bindtap="getAppraise"></text>
           </view>
-          <view class="speed-date">{{data}}</view>
+        </view>
+        <view class="completed" wx:if="{{completedIshow}}">
+          您已完成本次评价。
         </view>
       </view>
     </view>

@@ -235,6 +235,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中...',
+    })
      //判断用户的登录状态(非第一次进入小程序)
      if(wx.getStorageSync('token') != ''){
       HttpRequest('/app.php/login_api/loginStatus',{token:wx.getStorageSync('token')},'get',res=>{
