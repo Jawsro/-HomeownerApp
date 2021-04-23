@@ -56,7 +56,7 @@ form .input-msg{
   margin-bottom: 10rpx;
 }
 form .left-name{
-  flex:0 0 200rpx;
+  flex:0 0 210rpx;
   display: flex;
   align-items: center;
   color:#884334;
@@ -74,6 +74,10 @@ form .picker{
   font-size:30rpx;
   color:#B7B7B7;
   text-align: right;
+}
+form textarea{
+  color:#B7B7B7;
+  font-size: 30rpx;
 }
 .form-btn{
   background-color: #884334;

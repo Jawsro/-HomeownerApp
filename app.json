@@ -1,5 +1,6 @@
 {
   "pages":[ 
+   
     "pages/index/index",
     "pages/opendoor/opendoor",
     "pages/repairevent/repaireventdetails",
@@ -7,7 +8,7 @@
     "pages/parkingspace/parkingspacedeatils",
     "pages/parkingspace/addparkingspace",
     "pages/repairevent/repairevent",
-    "pages/my/my", 
+    "pages/my/my",  "pages/renovation/renovation",
     "pages/house/houselist",
     "pages/house/addhouse",
     "pages/member/addperson",
@@ -16,7 +17,6 @@
     "pages/login/login",
     "pages/paymentlist/paymentlist",
     "pages/information/information",
-    "pages/renovation/renovation",
     "pages/noticelist/noticelist",
     "pages/announcement/announcement"
   ],

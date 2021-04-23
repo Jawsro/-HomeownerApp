@@ -1,8 +1,8 @@
-<view class="container" wx:if='{{yemian}}'>
+<view class="container" >
   <view class="top-css"></view>
   <!-- 组件引入 -->
   <header  my-property="我的报事报修"></header>
-  <view class=" main">
+  <view class=" main" wx:if='{{yemian}}'>
     <view class="sort-box">
       <view class="sort">
         <view class="sort-item {{activeIndex==item.id?'active':''}}" 

@@ -1,9 +1,9 @@
-<view class='container' wx:if='{{yemian}}'>
+<view class='container'>
   <view class="top-css"></view>
   <!-- 组件引入 -->
   <header  my-property="社区公告" ></header> 
   <!-- 精彩资讯 -->
-  <view class="information" style="margin-top:150rpx">
+  <view class="information" style="margin-top:150rpx"  wx:if='{{yemian}}'>
     <view class="main">
       <view class="news">
         <view 

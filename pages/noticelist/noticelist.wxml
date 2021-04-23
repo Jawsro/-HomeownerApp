@@ -1,8 +1,8 @@
-<view class='container' wx:if='{{yemian}}'>
+<view class='container' >
   <view class="top-css"></view>
   <!-- 组件引入 -->
   <header  my-property="{{title}}" bind:attached="attached"></header> 
-  <view class="information" >
+  <view class="information" wx:if='{{yemian}}'>
     <view class="main">
       <view class="news" wx:if='{{noticeList.length > 0}}'>
         <view 

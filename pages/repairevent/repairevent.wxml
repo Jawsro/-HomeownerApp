@@ -76,7 +76,7 @@
         </view>
 
         <view class="pic">
-          <view class="title  font-18">上传图片(最多上传五张)</view>
+          <view class="title  font-18">上传图片<text style="font-size:28rpx">（最多上传5张图片）</text></view>
           <view class="pic-chose">
             <view class="pic-list" wx:for="{{images}}" wx:key="index">
               <image src="{{item}}" mode="aspectFit"></image>

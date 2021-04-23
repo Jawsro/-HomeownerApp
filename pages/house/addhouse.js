@@ -92,7 +92,7 @@ Page({
         })
         setTimeout( () => {
           wx.navigateTo({
-            url: '../houselist/houselist',
+            url: '../house/houselist',
           })
         },2000)
       }

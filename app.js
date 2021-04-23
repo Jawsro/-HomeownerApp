@@ -1,6 +1,4 @@
 // app.js
-//调用封装的函数
-import {HttpRequest,siteUrl} from "./utils/http.js"
 App({
   /**
    * 全局变量

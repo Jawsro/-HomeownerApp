@@ -1,8 +1,8 @@
-<view class='container' wx:if="{{yemian}}">
+<view class='container' >
   <view class="top-css"></view>
   <!-- 组件引入 -->
   <header  my-property="一键开门" ></header> 
-  <view class="main font-14">
+  <view class="main font-14" wx:if="{{yemian}}">
     <view class="title">
       <text class="">可开启的门禁</text>
     </view>
