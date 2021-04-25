@@ -5,7 +5,7 @@ var header = {
 }
 function HttpRequest(url, data,method = "GET", callback) {
   data = Object.assign({
-    token: wx.getStorageSync('token')
+    token: wx.getStorageSync('token')||''
   }, data);
   // wx.showLoading({
   //   title: '加载中...',

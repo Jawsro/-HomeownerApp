@@ -36,6 +36,11 @@ Page({
         name:'我的报事报修 ',
         url:'../repairevent/repaireventlist'
       },
+      {
+        id:5,
+        name:'装修信息 ',
+        url:'../renovation/renovationlist'
+      },
   ],
   },
   isLogin(){

@@ -1,0 +1,39 @@
+.container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;  
+  
+}
+.main{
+  padding: 30rpx;
+  background-color: #F7F2EF;
+}
+.scroll{
+  height: 100%;
+}
+.top{
+  display: flex;
+}
+.item{
+  font-size: 28rpx;
+  background: #fff;
+  padding:30rpx;
+  margin-bottom:20rpx;
+}
+.top{
+  border-bottom:2rpx solid #DADADA;
+  padding-bottom:20rpx;
+}
+.time{
+  flex:1
+}
+.status{
+  flex:1;
+  text-align: right;
+  color:#884334;
+}
+.description{
+  padding-top:20rpx;
+}

@@ -1,0 +1,21 @@
+<!--装修-->
+<view class="container">
+  <view class="top-css"></view>
+  <!-- 组件引入 -->
+  <header  my-property="装修申报记录"></header>
+  <view class="main main-margin-top" wx:if="{{yemian}}">
+    <view class="scroll">
+      <view class="item" 
+        wx:for="{{decorateList}}"
+        wx:key="index"
+        data-id='{{item.id}}'
+        bindtap="goDateils">
+        <view class="top">
+          <view class="time">{{item.createtime}}</view>
+          <view class="status">{{item.complete_status == 'no' ? '未完成' :'已完成'}}</view>
+        </view>
+        <view class="description">{{item.item_short_description}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -8,13 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    chosePictureArray:[],
     disabled:false,
-    idArray:[
-      {text:"业主"},
-      {text:"家属"},
-      {text:"租户"},
-    ],
     index:0,
     zhuangxiu:["自装","装修公司"],
     zhuangxiuIndex:0,
@@ -22,12 +16,18 @@ Page({
     endTime:'',
     startTime:'',
     roomList:[],
+    disabled:false,
+    roomId:0,
   },
   idChange(e){
-    let index = e.detail.value;
+    console.log(e)
+    let index = parseInt(e.detail.value);
+    this.data.roomId = this.data.roomList[index].room_id;
     this.setData({
-      index:index
+      index:index,
+      roomId:this.data.roomId
     })
+    console.log(this.data.roomList)
   },
   changezhuangxiu(e){
     let index = e.detail.value;
@@ -35,19 +35,8 @@ Page({
       zhuangxiuIndex:index
     })
   },
-  setDatas(e){
-    if(lock){
-      return;
-    }
-    lock=true
-    // 按钮禁用
-    this.setData({
-      disabled: true
-    });
-    
-  },
   //上传图片
-  chosePicture(t){
+  chosePicture(){
     let _this=this;
     wx.chooseImage({
       count:5,
@@ -57,7 +46,7 @@ Page({
         const tempFilePaths = res.tempFilePaths
         for(let i = 0, len =tempFilePaths.length;i<len;i++ ){
           wx.uploadFile({
-            url: app.globalData.siteUrl+'/app.php/upload_api/eventImage?token='+wx.getStorageSync('token'),
+            url: app.globalData.siteUrl+'/app.php/upload_api/decorateImage?token='+wx.getStorageSync('token'),
             filePath: tempFilePaths[i],
             name: 'file',
             formData: {
@@ -93,54 +82,6 @@ Page({
       })
     }
   },
-  // chosePicture: function (t){
-  //   let _this=this,
-  //     curPic = t.target;
-  //   wx.chooseImage({
-  //     count:9,
-  //     sizeType: ['original', 'compressed'],
-  //     sourceType:['album', 'camera'],
-  //     success(res) {
-  //       const tempFilePaths = res.tempFilePaths
-  //       _this.data.chosePictureArray=_this.data.chosePictureArray.concat(res.tempFilePaths)
-  //       _this.setData({
-  //         chosePictureArray: _this.data.chosePictureArray
-  //       })
-  //       wx.uploadFile({
-  //         // url: app.globalData.site_url+'index.php?s=/api/upload/image&wxapp_id=10001',
-  //         filePath: tempFilePaths[0],
-  //         name: 'file',
-  //         formData: {
-  //           'user': 'test'
-  //         },
-  //         success(res) {
-  //           const data = JSON.parse(res.data);
-  //           let url = data.image_url;
-  //           // if(data.status&&url){
-  //           //   _this.setData({
-  //           //     mendian_url: app.globalData.site_url + url 
-            
-  //         }
-  //       })
-  //     }
-  //   })
-  // },
-  // deletePicture(e){
-  //   var _this = this;
-  //   let index  = e.target.dataset.index ;
-  //   wx.showModal({
-  //     title: '提示',
-  //     content: '是否删除该图片？',
-  //     success (res) {
-  //       if (res.confirm) {
-  //         _this.data.chosePictureArray.splice(index,1)
-  //         _this.setData({
-  //           chosePictureArray: _this.data.chosePictureArray
-  //         })
-  //       } 
-  //     }
-  //   })
-  // },
   bindStartTimeChange: function(e) {
     this.setData({
       startTime: e.detail.value
@@ -151,18 +92,68 @@ Page({
       endTime: e.detail.value
     })
   },
+  addDecorate(e){console.log(this.data.roomId)
+    let decorateType = '';
+    let zhuangxiuIndex = this.data.zhuangxiuIndex;
+    if(zhuangxiuIndex ==0){
+      decorateType ='bysel'
+    }else{
+      decorateType ='outside'
+    }
+    this.setData({
+      disabled:true
+    })
+    let roomId =this.data.roomId;
+    let {
+      name,
+      phone,
+      description
+    } = e.detail.value;
+    let images = JSON.stringify(this.data.images);
+    let data = {
+      name,
+      phone,
+      description,
+      endTime:this.data.endTime,
+      startTime:this.data.startTime,
+      images,
+      roomId,
+      decorateType
+    }
+    HttpRequest('/app.php/app_user_api/addDecorate',data,'post',res =>{
+      if(res.status == true){
+        wx.showToast({
+          title: '提交成功！',
+          icon: 'success',
+          duration: 3000
+        })
+        setTimeout( () => {
+          wx.redirectTo({
+            url: '../renovation/renovationlist',
+          })
+        },2000)
+      }else{
+        this.setData({
+          disabled:false
+        })
+      }
+
+    })
+  },
   _getRoomList(){
     HttpRequest('/app.php/app_user_api/appUserRoomList',{},'get',res =>{
      if(res.status = true){
        res.data.forEach(item =>{
           let roomMsg = ''
           roomMsg =`${item.short_name}${item.block_name}栋${item.cell_name}单元${item.room_code}室`
-          this.data.roomList.push(roomMsg)
+          this.data.roomList.push({roommsg:roomMsg,room_id:item.room_id})
+      
         })
-        
+        let roomId =  res.data[0].room_id
        this.setData({
         roomList:this.data.roomList,
-        yemianIsShow:true
+        yemianIsShow:true,
+        roomId
        })
      }
     })

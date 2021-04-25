@@ -1,0 +1,93 @@
+<!--装修-->
+<view class="container">
+  <view class="top-css"></view>
+  <!-- 组件引入 -->
+  <header  my-property="装修信息"></header> 
+  <view class="main-margin-top main" wx:if="{{yemian}}">
+    <view class="sort-box">
+      <view class="sort">
+        <view class="sort-item {{activeIndex==item.id?'active':''}}" 
+          wx:for="{{sortTitle}}"
+          wx:key="index"
+          data-id="{{item.id}}"
+          bindtap="changeTitle">
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+    <view class="msg-box msg-box1" wx:if="{{activeIndex==1}}">
+      <view class="msg-item">
+        <view class="msg-left">
+          <text>房间号</text>
+        </view>
+        <view class="msg-right">{{decorateInfoList.room_number}}</view>
+      </view>
+      <view class="msg-item">
+        <view class="msg-left">
+          <text>姓名</text>
+        </view>
+        <view class="msg-right">{{decorateInfoList.apply_user_name}}</view>
+      </view>
+      <view class="msg-item">
+        <view class="msg-left">
+          <text>电话</text>
+        </view>
+        <view class="msg-right">{{decorateInfoList.apply_user_tel}}</view>
+      </view>
+      <view class="msg-item">
+        <view class="msg-left">
+          <text>开始时间</text>
+        </view>
+        <view class="msg-right">{{decorateInfoList.start_time}}</view>
+      </view>
+      <view class="msg-item">
+        <view class="msg-left">
+          <text>结束时间</text>
+        </view>
+        <view class="msg-right">{{decorateInfoList.end_time}}</view>
+      </view>
+      <view class="msg-item">
+        <view class="msg-left">
+          <text>装修方式</text>
+        </view>
+        <view class="msg-right">{{decorateInfoList.decorate_type =='byself' ?'自装':'装修公司'}}</view>
+      </view>
+      <view class="msg-item">
+        <view class="msg-left">
+          <text>申请时间</text>
+        </view>
+        <view class="msg-right">{{decorateInfoList.createtime}}</view>
+      </view>
+      <view class="msg-item">
+        <view class="msg-left">
+          <text>许可证号</text>
+        </view>
+        <view class="msg-right">{{decorateInfoList.licence_code == null ? '':decorateInfoList.licence_code}}</view>
+      </view>
+      <view class="msg-item">
+        <view class="msg-left">
+          <text>施工证号</text>
+        </view>
+        <view class="msg-right">{{decorateInfoList.build_code == null ? '' : decorateInfoList.build_code}}</view>
+      </view>
+      <view class="msg-item">
+        <view class="msg-left">
+          <text>具体描述</text>
+        </view>
+        <view class="msg-right">{{decorateInfoList.item_short_description}}</view>
+      </view>
+      <view class="msg-item-last">
+        <view class="msg-left">
+          <text>图片</text>
+        </view>
+        <view class="images">
+          <view class="image" 
+            wx:for="{{decorateInfoList.images}}"
+            wx:key="index">
+            <image src="{{item}}" mode="aspectFit"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

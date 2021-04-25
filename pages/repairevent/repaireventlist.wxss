@@ -8,7 +8,7 @@
   
 }
 .main{
-  padding: 30rpx 0rpx 145rpx 0rpx;
+  padding: 30rpx 0rpx 5rpx 0rpx;
   background-color: #F7F2EF;
   margin-top:228rpx;
 }

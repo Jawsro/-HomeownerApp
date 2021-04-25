@@ -18,6 +18,8 @@
 
     "pages/renovation/renovation",------------装修申报
 
+    "pages/renovation/renovationdetails",------------装修详情
+
     "pages/repairevent/repairevent",------------报事报修
 
     "pages/repairevent/repaireventlist",------------报事报修列表

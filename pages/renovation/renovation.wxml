@@ -5,7 +5,7 @@
   <header  my-property="装修申报"></header> 
   <view class="main-margin-top main" wx:if="{{yemianIsShow}}">
     <view class="scroll">
-      <form bindsubmit="setDatas" class="form">
+      <form bindsubmit="addDecorate" class="form">
 
         <view class="input-msg">
           <view class="left-name">
@@ -16,9 +16,10 @@
             <picker bindchange="idChange"
               value="{{roomList[index]}}"
               range="{{roomList}}"
+              range-key="roommsg"
             >
               <view class="picker">
-                {{roomList[index]}}
+                {{roomList[index].roommsg}}
                 <text class="iconfont icon-xiajiantou margin-right" style="font-weight:600"></text>
               </view>
             </picker>
@@ -41,7 +42,7 @@
             <text class="font-16 ">联系电话</text>
           </view>
           <view class="input">
-            <input placeholder="请输入联系电话" class="font-15" name="floor" style="color:#B7B7B7"></input>
+            <input placeholder="请输入联系电话" class="font-15" name="phone" style="color:#B7B7B7"></input>
           </view>
         </view>
         
@@ -93,7 +94,7 @@
 
         <view class="textarea-wrp">
           <textarea style="height: 3em" 
-            name='beizhu' 
+            name='description' 
             placeholder="请输入事项描述，不超过100字"
             maxlength='100'/>
         </view>
