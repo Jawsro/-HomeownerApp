@@ -5,6 +5,9 @@
   <header  my-property="装修申报记录"></header>
   <view class="main main-margin-top" wx:if="{{yemian}}">
     <view class="scroll">
+      <view class="unauthorized" wx:if="{{decorateList.length<1}}">
+        <view>暂无信息</view>
+      </view>
       <view class="item" 
         wx:for="{{decorateList}}"
         wx:key="index"

@@ -91,3 +91,13 @@ form textarea{
   border-radius: 60rpx !important;
   
 }
+/*没有数据时，提示用户*/
+.unauthorized{
+  position: absolute;
+  width: 100%;
+  top: 33%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%,-50%);
+  color: #BDBDBD;
+}

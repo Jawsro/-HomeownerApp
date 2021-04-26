@@ -4,7 +4,6 @@
   left: 0;
   right: 0;
   bottom: 0;  
-  
 }
 .main{
   padding: 0rpx 10rpx 15rpx 10rpx;
@@ -40,12 +39,28 @@
 }
 .msg-box{
   margin-top: 20rpx;
+}
+.msg-box1 {
+  
   background: #fff;
 }
 .msg-box1 .msg-item{
   border-bottom:2rpx solid #F9F9F9;
   padding:20rpx 30rpx;
   font-size:30rpx;
+}
+.msg-item{
+  padding:15rpx 30rpx;
+  font-size:30rpx;
+}
+.msg-list{
+  margin-bottom: 20rpx;
+  background: #fff;
+}
+.msg-title{
+  padding:20rpx 30rpx;
+  color:#884334;
+  border-bottom:2rpx solid #DADADA;
 }
 .msg-item-last{
   padding:20rpx 30rpx;
@@ -80,4 +95,26 @@ image{
   flex: 1;
   text-align: right;
   color:#884334;
+}
+.card-item{
+  padding:20rpx 30rpx;
+  font-size:30rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.card-top{
+  color:#884334;
+  border-bottom:2rpx solid #DADADA;
+  padding-bottom:20rpx;
+}
+.card-bottom{
+  display: flex;
+  padding-top:20rpx;
+}
+.phone{
+  flex:1
+}
+.identity_code{
+  flex: 1;
+  text-align: right;
 }

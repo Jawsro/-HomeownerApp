@@ -16,7 +16,10 @@ Page({
     ],
     activeIndex:1,
     yemian:false,
-    decorateInfoList:[]
+    decorateInfoList:[],
+    decorateFund:[],//款项
+    decoratePassCard:[],//出入证
+    decorateViolate:[],//违规
   },
   changeTitle(e){
     let id = e.currentTarget.dataset.id;
@@ -34,9 +37,43 @@ Page({
         res.data.start_time = timeDate(res.data.start_time)
         res.data.end_time = timeDate(res.data.end_time)
         res.data.images = JSON.parse(res.data.images)
+        this.data.decorateFund = res.data.decorate_fund
+        if(this.data.decorateFund.length > 0){
+          this.data.decorateFund.forEach(item=>{
+            item.createtime = timeDate(item.createtime)
+            switch(item.fund_type){
+              case 'deposit':item.fund_type = '装修押金';
+              break;
+              case 'pass_card':item.fund_type = '出入证';
+              break;
+              case 'garbage_deal':item.fund_type = '垃圾清理费';
+              break;
+              case 'penalty':item.fund_type = '罚款';
+              break;
+              case 'others':item.fund_type = '其他';
+              break;
+            }
+          })
+        }
+        this.data.decoratePassCard = res.data.decorate_pass_card;
+        if(this.data.decoratePassCard.length > 0){
+          this.data.decoratePassCard.forEach(item=>{
+            item.start_time = timeDate(item.start_time);
+            item.end_time = timeDate(item.end_time);
+          })
+        }
+        this.data.decorateViolate = res.data.decorate_violate
+        // if(this.data.decorateViolate.length > 0){
+        //   this.data.decorateViolate.forEach(item=>{
+        //     item = app.globalData.siteUrl + item;
+        //   })
+        // }
         this.setData({
           decorateInfoList:res.data,
           yemian:true,
+          decorateFund:this.data.decorateFund ,//款项
+          decoratePassCard: this.data.decoratePassCard,//出入证
+          decorateViolate:this.data.decorateViolate ,//违规
         })
       }
     })

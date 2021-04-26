@@ -1,11 +1,11 @@
 {
   "pages":[ 
    
-    "pages/index/index",
+    
+    "pages/index/index","pages/renovation/renovationlist",
     "pages/opendoor/opendoor",
     "pages/repairevent/repaireventdetails",
     "pages/parkingspace/parkingspacedeatils",
-    "pages/renovation/renovationlist",
     "pages/repairevent/repaireventlist",
     "pages/parkingspace/addparkingspace",
     "pages/repairevent/repairevent",

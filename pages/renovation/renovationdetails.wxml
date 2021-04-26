@@ -89,5 +89,106 @@
         </view>
       </view>
     </view>
+
+    <view class="msg-box" wx:if="{{activeIndex==2}}">
+      <view class="msg-list" wx:for="{{decorateFund}}">
+        <view class="msg-title">{{item.createtime}}</view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <text>类型：</text>
+          </view>
+          <view class="msg-right">{{item.fund_type}}</view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <text>金额：</text>
+          </view>
+          <view class="msg-right">￥{{item.amount}}</view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <text>已收：</text>
+          </view>
+          <view class="msg-right">{{item.is_collected == 'yes'? '是':'否'}}</view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <text>已退：</text>
+          </view>
+          <view class="msg-right">{{item.is_returned == 'yes'? '是':'否'}}</view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <text>退款金额</text>
+          </view>
+          <view class="msg-right">￥{{item.return_amount}}</view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <text>数量：</text>
+          </view>
+          <view class="msg-right">{{item.use_count}}笔</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="msg-box" wx:if="{{activeIndex==3}}">
+      <view class="msg-list" wx:for="{{decoratePassCard}}">
+        <view class="msg-item">
+          <view class="msg-left">
+            <text>姓名：</text>
+          </view>
+          <view class="msg-right">{{item.name}}</view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <text>手机号：</text>
+          </view>
+          <view class="msg-right">{{item.contact_tel}}</view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <text>出入证号：</text>
+          </view>
+          <view class="msg-right">{{item.identity_code}}</view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <text>起始时间：</text>
+          </view>
+          <view class="msg-right">{{item.start_time}}</view>
+        </view>
+        <view class="msg-item">
+          <view class="msg-left">
+            <text>到期时间</text>
+          </view>
+          <view class="msg-right">{{item.end_time}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="msg-box" wx:if="{{activeIndex==4}}">
+      <view class="msg-list" wx:for="{{decorateViolate}}">
+        <view class="msg-item">
+          <view class="msg-left">
+            <text>违规事项：</text>
+          </view>
+          <view class="msg-right">{{item.violate_item}}</view>
+        </view>
+        <view class="msg-item-last">
+          <view class="msg-left">
+            <text>图片：</text>
+          </view>
+          <!-- <view class="images">
+            <view class="image" 
+              wx:for="{{item.violate_images}}"
+              wx:key="index">
+              <image src="{{item}}" mode="aspectFit"></image>
+            </view>
+          </view> -->
+        </view>
+      </view>
+    </view>
+
   </view>
 </view>
