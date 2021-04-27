@@ -15,8 +15,12 @@ Page({
       {id:4,icon:"icon-wuxing"},
       {id:5,icon:"icon-wuxing"},
     ],
-    completedIshow:false
+    completedIshow:false,
+    repairEventInfo:{},
+    repairProcess:[],
+    yemian:false
   },
+  //五星评价
   getAppraise(e){
     let index = e.currentTarget.dataset.index;
     let myDate = new Date();
@@ -27,14 +31,33 @@ Page({
       data
     })
   },
+  //详情信息
+  _getRepairEventInfo(id){
+    let data = {
+      repairEventId : id
+    }
+    HttpRequest('/app.php/app_user_api/repairEventInfo',data,'get', res =>{
+      if(res.status == true){
+        let repairProcess = res.data.repair_process;
+        res.data.createtime = timeDate2( res.data.createtime)
+        repairProcess.forEach(item =>{
+          item.occur_time = timeDate2(item.occur_time)
+        })
+        this.setData({
+          repairEventInfo :res.data,
+          repairProcess,
+          yemian:true
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(options.id);
-    this.setData({
-      id:options.id
-    })
+    let id = options.id
+    this._getRepairEventInfo(id)
   },
 
   /**

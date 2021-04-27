@@ -3,39 +3,42 @@
   <view class="top-css"></view>
   <!-- 组件引入 -->
   <header  my-property="物业报修"></header> 
-  <view class="main-margin-top main" >
+  <view class="main-margin-top main" wx:if="{{yemian}}">
     <view class="repair-details">
       <view class="title-address">
-        <view class="title">小区楼道墙面脱落</view>
-        <view class="address">御水湾一期10栋3单元</view>
+        <view class="title">{{repairEventInfo.title}}</view>
+        <view class="address">{{repairEventInfo.room_name}}</view>
       </view>
       <view class="description">
-        我家门口过道墙面脱落特别严重，昨天经过差点被砸伤，希
-        望物业能上来看一下处理一下。
+        {{repairEventInfo.item_description}}
       </view> 
       <view class="images">
-        <view class="image-item">
+        <view class="image-item" 
+        wx:for="{{repairEventInfo.report_images}}" 
+        wx:key="{{index}}"
+        wx:if="{{repairEventInfo.report_images.length>0}}">
           <image mode="aspectFit" class="image"
-            src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKLbdEJznia33EvB7wQaUoESw9ngplLMLzmptHGp4xphZJIX78YOKSaGuhZ8cibDPuuEQRDBDdmXEcA/132">
+            src="{{item}}">
           </image>
+          
         </view>
       </view>
       <view class="details-msg">
         <view >
           <text>上报时间：</text>
-          <text>2021-1-1</text>
+          <text>{{repairEventInfo.createtime}}</text>
         </view>
         <view >
           <text>上报人：</text>
-          <text>大哈</text>
+          <text>{{repairEventInfo.report_name}}</text>
         </view>
         <view>
           <text>联系方式：</text>
-          <text>123111111</text>
+          <text>{{repairEventInfo.contact_tel}}</text>
         </view>
         <view>
           <text>维修单号：</text>
-          <text>123111111</text>
+          <text>{{repairEventInfo.serial_code}}</text>
         </view>
       </view>
     </view>
@@ -44,15 +47,15 @@
         <text>报修进度</text>
       </view>
       <view class="speed-mian">
-        <view class="speed-item">
+        <view class="speed-item" 
+          wx:for="{{repairProcess}}"
+          wx:key="{{index}}"
+          wx:if="{{repairProcess.length>0}}">
           <view class="iconfont icon-lingxing icons"></view>
-          <view class="speed-msg">报修进度报修进度</view>
-          <view class="speed-date">2020-1-1</view>
-        </view>
-        <view class="speed-item">
-          <view class="iconfont icon-lingxing icons"></view>
-          <view class="speed-msg">报修进度报修进度</view>
-          <view class="speed-date">2020-1-1</view>
+          <view class="speed-msg">
+            {{item.short_description}}
+          </view>
+          <view class="speed-date">{{item.occur_time}}</view>
         </view>
         
       </view>
