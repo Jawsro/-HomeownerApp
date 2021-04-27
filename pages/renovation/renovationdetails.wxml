@@ -179,13 +179,13 @@
           <view class="msg-left">
             <text>图片：</text>
           </view>
-          <!-- <view class="images">
+          <view class="images">
             <view class="image" 
               wx:for="{{item.violate_images}}"
               wx:key="index">
-              <image src="{{item}}" mode="aspectFit"></image>
+              <image src="{{baseUrl+item}}" mode="aspectFit"></image>
             </view>
-          </view> -->
+          </view>
         </view>
       </view>
     </view>

@@ -63,8 +63,8 @@ Page({
           })
         }
         this.data.decorateViolate = res.data.decorate_violate
-        // if(this.data.decorateViolate.length > 0){
-        //   this.data.decorateViolate.forEach(item=>{
+        // if(this.data.decorateViolate.violate_images.length > 0){
+        //   this.data.decorateViolate.violate_images.forEach(item=>{
         //     item = app.globalData.siteUrl + item;
         //   })
         // }
@@ -87,6 +87,9 @@ Page({
     })
     let id = options.id;
     this._getDecorateInfo(id)
+    this.setData({
+      baseUrl:app.globalData.siteUrl
+    })
   },
 
   /**

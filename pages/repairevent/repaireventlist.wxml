@@ -24,8 +24,9 @@
         data-id="{{item.id}}"
         bindtap="goRepairEventDetails">
         <view class="title">
-          <view class="title-left">{{item.item_short_description}}</view>
+          <view class="title-left">{{item.title}}</view>
           <view class="title-right">待评价</view>
+          <!-- <view class="title-right">{{item.complete_status == 'no'? '待评价' :'已评价'}}</view> -->
         </view>
         <view class="description">
           <view class="description-text">
@@ -44,12 +45,12 @@
         data-id="{{item.id}}"
         bindtap="goRepairEventDetails">
         <view class="title">
-          <view class="title-left">{{item.item_short_description}}</view>
+          <view class="title-left">{{item.title}}</view>
           <view class="title-right">待评价</view>
         </view>
         <view class="description">
           <view class="description-text">
-            <text>{{item.item_full_description}}</text>
+            <text>{{item.item_description}}</text>
           </view>
           <view class="description-time">
             <text>{{item.createtime}}</text>
