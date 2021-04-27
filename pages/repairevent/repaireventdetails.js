@@ -18,18 +18,25 @@ Page({
     completedIshow:false,
     repairEventInfo:{},
     repairProcess:[],
-    yemian:false
+    yemian:false,
+    repairEventId:0
   },
   //五星评价
   getAppraise(e){
     let index = e.currentTarget.dataset.index;
-    let myDate = new Date();
-    let data = formatTime(myDate)
-    this.setData({
-      activeLen:index,
-      completedIshow:true,
-      data
+    let data = {
+      repairEventId:this.data.repairEventId,
+      score:index
+    }
+    HttpRequest('/app.php/app_user_api/repairEventEvaluation',data,'get', res =>{
+      if(res.status == true){
+        this.setData({
+          activeLen:index,
+          completedIshow:true
+        })
+      }
     })
+    
   },
   //详情信息
   _getRepairEventInfo(id){
@@ -55,9 +62,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.id);
+    wx.showLoading({
+      title: '加载中...',
+    })
     let id = options.id
-    this._getRepairEventInfo(id)
+    this._getRepairEventInfo(id);
+    this.setData({
+      repairEventId:id
+    })
   },
 
   /**

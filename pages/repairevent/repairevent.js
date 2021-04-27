@@ -9,7 +9,7 @@ Page({
   data: {
     idArray:[
       {text:"房屋"},
-      {text:"小区"},
+      {text:"公共区域"},
     ],
     index:0,
     images:[],
@@ -77,8 +77,8 @@ Page({
     let eventScope  = this.data.idArray[this.data.index].text;
     if(eventScope == '房屋'){
       eventScope = 'room'
-    }else if(eventScope == '小区'){
-      eventScope = 'subdistrict'
+    }else if(eventScope == '公共区域'){
+      eventScope = 'public'
     }
     let subdistrictId = wx.getStorageSync('subdistrictId');
     let {

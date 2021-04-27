@@ -25,8 +25,7 @@
         bindtap="goRepairEventDetails">
         <view class="title">
           <view class="title-left">{{item.title}}</view>
-          <view class="title-right">待评价</view>
-          <!-- <view class="title-right">{{item.complete_status == 'no'? '待评价' :'已评价'}}</view> -->
+          <view class="title-right">{{item.complete_status == 'yes' && item.appraise_score != null? '已评价' :'待评价'}}</view>
         </view>
         <view class="description">
           <view class="description-text">

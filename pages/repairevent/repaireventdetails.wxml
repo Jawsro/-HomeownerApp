@@ -15,7 +15,7 @@
       <view class="images">
         <view class="image-item" 
         wx:for="{{repairEventInfo.report_images}}" 
-        wx:key="{{index}}"
+        wx:key="index"
         wx:if="{{repairEventInfo.report_images.length>0}}">
           <image mode="aspectFit" class="image"
             src="{{item}}">
@@ -49,7 +49,7 @@
       <view class="speed-mian">
         <view class="speed-item" 
           wx:for="{{repairProcess}}"
-          wx:key="{{index}}"
+          wx:key="index"
           wx:if="{{repairProcess.length>0}}">
           <view class="iconfont icon-lingxing icons"></view>
           <view class="speed-msg">
@@ -59,7 +59,7 @@
         </view>
         
       </view>
-      <view class="appraise">
+      <view class="appraise" wx:if="{{repairEventInfo.complete_status == 'yes'}}">
         <view class="appraise-title">请您为本次服务评价：</view>
         <view class="wuxing">
           <view class="xingxing" wx:for="{{wuxingArr}}" wx:key="index">

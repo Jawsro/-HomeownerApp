@@ -63,11 +63,6 @@ Page({
           })
         }
         this.data.decorateViolate = res.data.decorate_violate
-        // if(this.data.decorateViolate.violate_images.length > 0){
-        //   this.data.decorateViolate.violate_images.forEach(item=>{
-        //     item = app.globalData.siteUrl + item;
-        //   })
-        // }
         this.setData({
           decorateInfoList:res.data,
           yemian:true,
