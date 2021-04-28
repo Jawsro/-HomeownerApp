@@ -4,13 +4,13 @@
   <header  my-property="物业缴费"></header> 
   <view class="main-margin-top main">
     <scroll-view scroll-x="true" class="scroll" scroll-left="{{ scrollLeft }}">
-      <view class=" {{ current==item.id?'select-village':'village' }}" 
-        wx:for="{{ villageNav }}" 
+      <view class=" {{ current==item.room_id?'select-village':'village' }}" 
+        wx:for="{{ roomList }}" 
         wx:key="index" 
         bindtap="currentNav" 
-        data-id="{{ item.id }}">
-        <view class="village-name"><text>{{item.villageName}}</text></view>
-        <view class="village-text"><text>{{item.villageText}}</text></view>
+        data-id="{{ item.room_id }}">
+        <view class="village-name"><text>{{item.short_name}}</text></view>
+        <view class="village-text"><text>{{item.block_name}}栋{{item.cell_name}}单元{{item.room_code}}室</text></view>
       </view>
     </scroll-view>
     <scroll-view class="pay-list" scroll-y="true">

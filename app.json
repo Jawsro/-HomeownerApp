@@ -2,7 +2,9 @@
   "pages":[ 
    
     
-    "pages/index/index","pages/renovation/renovationlist",
+    "pages/paymentlist/paymentlist",
+    "pages/index/index",
+    "pages/renovation/renovationlist",
     "pages/opendoor/opendoor",
     "pages/repairevent/repaireventdetails",
     "pages/parkingspace/parkingspacedeatils",
@@ -18,7 +20,6 @@
     "pages/member/persondetail",
     "pages/addshops/addshops", 
     "pages/login/login",
-    "pages/paymentlist/paymentlist",
     "pages/information/information",
     "pages/noticelist/noticelist",
     "pages/announcement/announcement"

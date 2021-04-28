@@ -1,16 +1,13 @@
-// pages/paymentList/paymentList.js
+// 获取应用实例
+const app = getApp();
+import {HttpRequest} from "../../utils/http.js";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    villageNav:[
-      {villageName:'公园悦府',villageText:'物业费缴费记录',id:1},
-      {villageName:'盛公馆',villageText:'物业费缴费记录',id:2},
-      {villageName:'碧水湾',villageText:'物业费缴费记录',id:3},
-      {villageName:'公园悦府',villageText:'物业费缴费记录',id:4}
-    ],
+    roomList:[],
     current: 1,
     scrollLeft: 0,
     windowWidth: 0,
@@ -55,10 +52,26 @@ Page({
       zhangdan:this.data.zhangdan
     })
   },
+  _getRoomList(){
+    HttpRequest('/app.php/app_user_api/appUserRoomList',{},'get',res =>{
+     if(res.status = true){
+       this.data.roomList = res.data;
+       let room_id = res.data[0].room_id;
+       this.setData({
+        current:room_id,
+        roomList:this.data.roomList,
+        yemianIsShow:true
+       })
+     }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中...',
+    })
     this.data.zhangdan.forEach(item=>{
       item.isShow=false
     })
@@ -72,6 +85,7 @@ Page({
         })
       },
     })
+    this._getRoomList()
   },
 
   /**
